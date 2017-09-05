@@ -24,21 +24,30 @@ import java.util.List;
 
 /**
  * Request aggregate for the security list.
- * @see "Section 13.8.2.2, OFX Spec"
  *
  * @author Jon Perlow
+ * @see "Section 13.8.2.2, OFX Spec"
  */
 @Aggregate("SECLISTRQ")
 public class SecurityListRequest extends RequestMessage {
 
-  private List<SecurityRequest> securityRequests;
+    private List<SecurityRequest> securityRequests;
 
-  @ChildAggregate( required = true, order = 10 )
-  public List<SecurityRequest> getSecurityRequests() {
-    return securityRequests;
-  }
+    @ChildAggregate(required = true, order = 10)
+    public List<SecurityRequest> getSecurityRequests() {
+        return securityRequests;
+    }
 
-  public void setSecurityRequests(List<SecurityRequest> securityRequests) {
-    this.securityRequests = securityRequests;
-  }
+    public void setSecurityRequests(List<SecurityRequest> securityRequests) {
+        this.securityRequests = securityRequests;
+    }
+
+    @Override
+    public String toString() {
+        String inherited = super.toString().replaceFirst("^\\w+\\{", "").replaceAll("}$", "");
+        return "SecurityListRequest{" +
+                (inherited.trim().isEmpty() ? "" : (inherited + ", ")) +
+                "securityRequests=" + securityRequests +
+                "}";
+    }
 }

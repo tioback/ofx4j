@@ -21,92 +21,103 @@ import com.webcohesion.ofx4j.meta.Element;
 
 /**
  * Transaction for selling mutual fund.
- * @see "Section 13.9.2.4.4, OFX Spec"
  *
  * @author Jon Perlow
+ * @see "Section 13.9.2.4.4, OFX Spec"
  */
-@Aggregate( "SELLMF" )
+@Aggregate("SELLMF")
 public class SellMutualFundTransaction extends BaseSellInvestmentTransaction {
 
-  private String sellType;
-  private Double averageCostBasis;
-  private String relatedTransactionId;
+    private String sellType;
+    private Double averageCostBasis;
+    private String relatedTransactionId;
 
-  public SellMutualFundTransaction() {
-    super(TransactionType.SELL_MUTUAL_FUND);
-  }
+    public SellMutualFundTransaction() {
+        super(TransactionType.SELL_MUTUAL_FUND);
+    }
 
-  /**
-   * Gets the type of sale. One of "SELL" or "SELLSHORT".
-   * @see "Section 13.9.2.4.4, OFX Spec"
-   *
-   * @return The type of sale
-   */
-  @Element( name = "SELLTYPE", order = 20)
-  public String getSellType() {
-    return sellType;
-  }
+    /**
+     * Gets the type of sale. One of "SELL" or "SELLSHORT".
+     *
+     * @return The type of sale
+     * @see "Section 13.9.2.4.4, OFX Spec"
+     */
+    @Element(name = "SELLTYPE", order = 20)
+    public String getSellType() {
+        return sellType;
+    }
 
-  /**
-   * Sets the type of sale. One of "SELL" or "SELLSHORT".
-   * @see "Section 13.9.2.4.4, OFX Spec"
-   *
-   * @param sellType The type of sale
-   */
-  public void setSellType(String sellType) {
-    this.sellType = sellType;
-  }
+    /**
+     * Sets the type of sale. One of "SELL" or "SELLSHORT".
+     *
+     * @param sellType The type of sale
+     * @see "Section 13.9.2.4.4, OFX Spec"
+     */
+    public void setSellType(String sellType) {
+        this.sellType = sellType;
+    }
 
-  /**
-   * Gets the sell type as one of the well-known types.
-   *
-   * @return the type of sale or null if it's not known.
-   */
-  public SellType getSellTypeEnum() {
-    return SellType.fromOfx(sellType);
-  }
+    /**
+     * Gets the sell type as one of the well-known types.
+     *
+     * @return the type of sale or null if it's not known.
+     */
+    public SellType getSellTypeEnum() {
+        return SellType.fromOfx(sellType);
+    }
 
-  /**
-   * Gets the average cost basis of the sale.
-   * @see "Section 13.9.2.4.4, OFX Spec"
-   *
-   * @return The average cost basis of the sale
-   */
-  @Element( name = "AVGCOSTBASIS", order = 30)
-  public Double getAverageCostBasis() {
-    return averageCostBasis;
-  }
+    /**
+     * Gets the average cost basis of the sale.
+     *
+     * @return The average cost basis of the sale
+     * @see "Section 13.9.2.4.4, OFX Spec"
+     */
+    @Element(name = "AVGCOSTBASIS", order = 30)
+    public Double getAverageCostBasis() {
+        return averageCostBasis;
+    }
 
-  /**
-   * Sets the average cost basis of the sale.
-   * @see "Section 13.9.2.4.4, OFX Spec"
-   *
-   * @param averageCostBasis The average cost basis of the sale
-   */
-  public void setAverageCostBasis(Double averageCostBasis) {
-    this.averageCostBasis = averageCostBasis;
-  }
+    /**
+     * Sets the average cost basis of the sale.
+     *
+     * @param averageCostBasis The average cost basis of the sale
+     * @see "Section 13.9.2.4.4, OFX Spec"
+     */
+    public void setAverageCostBasis(Double averageCostBasis) {
+        this.averageCostBasis = averageCostBasis;
+    }
 
-  /**
-   * Gets any related transaction id for a mutual fund sale (e.g. for a mutual fund exchange).
-   * This is an optional field according to the OFX spec.
-   * @see "Section 13.9.2.4.4, OFX Spec"
-   *
-   * @return the related transaction id
-   */
-  @Element( name = "RELFITID", order = 40)
-  public String getRelatedTransactionId() {
-    return relatedTransactionId;
-  }
+    /**
+     * Gets any related transaction id for a mutual fund sale (e.g. for a mutual fund exchange).
+     * This is an optional field according to the OFX spec.
+     *
+     * @return the related transaction id
+     * @see "Section 13.9.2.4.4, OFX Spec"
+     */
+    @Element(name = "RELFITID", order = 40)
+    public String getRelatedTransactionId() {
+        return relatedTransactionId;
+    }
 
-  /**
-   * Sets any related transaction id for a mutual fund sale (e.g. for a mutual fund exchange).
-   * This is an optional field according to the OFX spec.
-   * @see "Section 13.9.2.4.4, OFX Spec"
-   *
-   * @param relatedTransactionId the related transaction id
-   */
-  public void setRelatedTransactionId(String relatedTransactionId) {
-    this.relatedTransactionId = relatedTransactionId;
-  }
+    /**
+     * Sets any related transaction id for a mutual fund sale (e.g. for a mutual fund exchange).
+     * This is an optional field according to the OFX spec.
+     *
+     * @param relatedTransactionId the related transaction id
+     * @see "Section 13.9.2.4.4, OFX Spec"
+     */
+    public void setRelatedTransactionId(String relatedTransactionId) {
+        this.relatedTransactionId = relatedTransactionId;
+    }
+
+    @Override
+    public String toString() {
+        String inherited = super.toString().replaceFirst("^\\w+\\{", "").replaceAll("}$", "");
+        return "SellMutualFundTransaction{" +
+                (inherited.trim().isEmpty() ? "" : (inherited + ", ")) +
+                "sellType='" + sellType + '\'' +
+                ", averageCostBasis=" + averageCostBasis +
+                ", relatedTransactionId='" + relatedTransactionId + '\'' +
+                "}";
+    }
 }

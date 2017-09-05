@@ -21,47 +21,56 @@ import com.webcohesion.ofx4j.meta.Element;
 
 /**
  * Security request aggregate.
- * @see "Section 13.8.2.2, OFX Spec"
  *
  * @author Jon Perlow
+ * @see "Section 13.8.2.2, OFX Spec"
  */
 @Aggregate("SECRQ")
 public class SecurityRequest {
 
-  private SecurityId securityId;
-  private String tickerSymbol;
-  private String fiId;
+    private SecurityId securityId;
+    private String tickerSymbol;
+    private String fiId;
 
-  @Element( name = "SECID", order = 10)
-  public SecurityId getSecurityId() {
-    return securityId;
-  }
+    @Element(name = "SECID", order = 10)
+    public SecurityId getSecurityId() {
+        return securityId;
+    }
 
-  public void setSecurityId(SecurityId securityId) {
-    this.securityId = securityId;
-    this.tickerSymbol = null;
-    this.fiId = null;
-  }
+    public void setSecurityId(SecurityId securityId) {
+        this.securityId = securityId;
+        this.tickerSymbol = null;
+        this.fiId = null;
+    }
 
-  @Element( name = "TICKER", order = 20)
-  public String getTickerSymbol() {
-    return tickerSymbol;
-  }
+    @Element(name = "TICKER", order = 20)
+    public String getTickerSymbol() {
+        return tickerSymbol;
+    }
 
-  public void setTickerSymbol(String tickerSymbol) {
-    this.tickerSymbol = tickerSymbol;
-    this.securityId = null;
-    this.fiId = null;
-  }
+    public void setTickerSymbol(String tickerSymbol) {
+        this.tickerSymbol = tickerSymbol;
+        this.securityId = null;
+        this.fiId = null;
+    }
 
-  @Element( name = "FIID", order = 30)
-  public String getFiId() {
-    return fiId;
-  }
+    @Element(name = "FIID", order = 30)
+    public String getFiId() {
+        return fiId;
+    }
 
-  public void setFiId(String fiId) {
-    this.fiId = fiId;
-    this.securityId = null;
-    this.tickerSymbol = null;
-  }
+    public void setFiId(String fiId) {
+        this.fiId = fiId;
+        this.securityId = null;
+        this.tickerSymbol = null;
+    }
+
+    @Override
+    public String toString() {
+        return "SecurityRequest{" +
+                "securityId=" + securityId +
+                ", tickerSymbol='" + tickerSymbol + '\'' +
+                ", fiId='" + fiId + '\'' +
+                "}";
+    }
 }

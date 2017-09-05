@@ -15,69 +15,77 @@
  */
 package com.webcohesion.ofx4j.domain.data.tax1099;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 import com.webcohesion.ofx4j.domain.data.MessageSetType;
 import com.webcohesion.ofx4j.domain.data.ResponseMessage;
 import com.webcohesion.ofx4j.domain.data.ResponseMessageSet;
 import com.webcohesion.ofx4j.meta.Aggregate;
 import com.webcohesion.ofx4j.meta.ChildAggregate;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 /**
  * @author Aparna Gawali
  * aparna.gawali@sungard.com
  */
-@Aggregate ( "TAX1099MSGSRSV1" )
+@Aggregate("TAX1099MSGSRSV1")
 public class Tax1099ResponseMessageSet extends ResponseMessageSet {
 
-  private List<Tax1099ResponseTransaction> taxResponseTransaction;
+    private List<Tax1099ResponseTransaction> taxResponseTransaction;
 
-  public MessageSetType getType() {
-    return MessageSetType.tax1099;
-  }
+    public MessageSetType getType() {
+        return MessageSetType.tax1099;
+    }
 
-  /**
-   * The taxResponseTransaction list.
-   *
-   * Most OFX files have a single statement response, except MT2OFX
-   * which outputs OFX with multiple statement responses
-   * in a single banking response message set.
-   *
-   * @return The taxResponseTransaction list.
-   */
-  @ChildAggregate ( order = 0 )
-  public List<Tax1099ResponseTransaction> getTaxResponseTransaction() {
-    return taxResponseTransaction;
-  }
+    /**
+     * The taxResponseTransaction list.
+     * <p>
+     * Most OFX files have a single statement response, except MT2OFX
+     * which outputs OFX with multiple statement responses
+     * in a single banking response message set.
+     *
+     * @return The taxResponseTransaction list.
+     */
+    @ChildAggregate(order = 0)
+    public List<Tax1099ResponseTransaction> getTaxResponseTransaction() {
+        return taxResponseTransaction;
+    }
 
-  /**
-   * The taxResponseTransaction.
-   *
-   * @param taxResponseTransaction The statement responses.
-   */
-  public void setTaxResponseTransaction(List<Tax1099ResponseTransaction> taxResponseTransaction) {
-    this.taxResponseTransaction = taxResponseTransaction;
-  }
+    public void setTaxResponseTransaction(Tax1099ResponseTransaction taxResponseTransaction) {
+        this.taxResponseTransaction = Collections.singletonList(taxResponseTransaction);
+    }
 
-  // Inherited.
-  public List<ResponseMessage> getResponseMessages() {
-    return new ArrayList<ResponseMessage>(taxResponseTransaction);
-  }
+    /**
+     * The taxResponseTransaction.
+     *
+     * @param taxResponseTransaction The statement responses.
+     */
+    public void setTaxResponseTransaction(List<Tax1099ResponseTransaction> taxResponseTransaction) {
+        this.taxResponseTransaction = taxResponseTransaction;
+    }
 
-  /**
-   * The first statement response.
-   *
-   * @return the first bank statement response.
-   * @deprecated Use getStatementResponses() because sometimes there are multiple responses
-   */
-  public Tax1099ResponseTransaction getStatementResponse() {
-    return taxResponseTransaction == null || taxResponseTransaction.isEmpty() ? null : taxResponseTransaction.get(0);
-  }
+    // Inherited.
+    public List<ResponseMessage> getResponseMessages() {
+        return new ArrayList<ResponseMessage>(taxResponseTransaction);
+    }
 
-  public void setTaxResponseTransaction(Tax1099ResponseTransaction taxResponseTransaction) {
-    this.taxResponseTransaction = Collections.singletonList(taxResponseTransaction);
-  }
+    /**
+     * The first statement response.
+     *
+     * @return the first bank statement response.
+     * @deprecated Use getStatementResponses() because sometimes there are multiple responses
+     */
+    public Tax1099ResponseTransaction getStatementResponse() {
+        return taxResponseTransaction == null || taxResponseTransaction.isEmpty() ? null : taxResponseTransaction.get(0);
+    }
 
+    @Override
+    public String toString() {
+        String inherited = super.toString().replaceFirst("^\\w+\\{", "").replaceAll("}$", "");
+        return "Tax1099ResponseMessageSet{" +
+                (inherited.trim().isEmpty() ? "" : (inherited + ", ")) +
+                "taxResponseTransaction=" + taxResponseTransaction +
+                "}";
+    }
 }

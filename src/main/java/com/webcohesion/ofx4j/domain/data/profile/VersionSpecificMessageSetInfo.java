@@ -16,10 +16,10 @@
 
 package com.webcohesion.ofx4j.domain.data.profile;
 
-import com.webcohesion.ofx4j.meta.ChildAggregate;
-import com.webcohesion.ofx4j.domain.data.MessageSetProfile;
 import com.webcohesion.ofx4j.domain.data.ApplicationSecurity;
+import com.webcohesion.ofx4j.domain.data.MessageSetProfile;
 import com.webcohesion.ofx4j.domain.data.MessageSetType;
+import com.webcohesion.ofx4j.meta.ChildAggregate;
 
 /**
  * Information specific to a version of a message set.
@@ -29,67 +29,74 @@ import com.webcohesion.ofx4j.domain.data.MessageSetType;
  */
 public abstract class VersionSpecificMessageSetInfo implements MessageSetProfile {
 
-  private CoreMessageSetInfo core;
+    private CoreMessageSetInfo core;
 
-  /**
-   * The information core.
-   *
-   * @return The information core.
-   */
-  @ChildAggregate ( order = 0 )
-  public CoreMessageSetInfo getCore() {
-    return core;
-  }
+    /**
+     * The information core.
+     *
+     * @return The information core.
+     */
+    @ChildAggregate(order = 0)
+    public CoreMessageSetInfo getCore() {
+        return core;
+    }
 
-  /**
-   * The information core.
-   *
-   * @param core The information core.
-   */
-  public void setCore(CoreMessageSetInfo core) {
-    this.core = core;
-  }
+    /**
+     * The information core.
+     *
+     * @param core The information core.
+     */
+    public void setCore(CoreMessageSetInfo core) {
+        this.core = core;
+    }
 
-  /**
-   * The message set type.
-   *
-   * @return The message set type.
-   */
-  public abstract MessageSetType getMessageSetType();
+    /**
+     * The message set type.
+     *
+     * @return The message set type.
+     */
+    public abstract MessageSetType getMessageSetType();
 
-  public String getVersion() {
-    return core != null ? core.getVersion() : null;
-  }
+    public String getVersion() {
+        return core != null ? core.getVersion() : null;
+    }
 
-  public String getServiceProviderName() {
-    return core != null ? core.getServiceProviderName() : null;
-  }
+    public String getServiceProviderName() {
+        return core != null ? core.getServiceProviderName() : null;
+    }
 
-  public String getUrl() {
-    return core != null ? core.getUrl() : null;
-  }
+    public String getUrl() {
+        return core != null ? core.getUrl() : null;
+    }
 
-  public ApplicationSecurity getSecurity() {
-    return core != null ? core.getSecurity() : null;
-  }
+    public ApplicationSecurity getSecurity() {
+        return core != null ? core.getSecurity() : null;
+    }
 
-  public boolean isSslRequired() {
-    return core != null && core.getSslRequired() != null ? core.getSslRequired() : true;
-  }
+    public boolean isSslRequired() {
+        return core != null && core.getSslRequired() != null ? core.getSslRequired() : true;
+    }
 
-  public String getRealm() {
-    return core != null ? core.getRealm() : null;
-  }
+    public String getRealm() {
+        return core != null ? core.getRealm() : null;
+    }
 
-  public String getLanguage() {
-    return core != null ? core.getLanguage() : null;
-  }
+    public String getLanguage() {
+        return core != null ? core.getLanguage() : null;
+    }
 
-  public SynchronizationCapability getSyncCapability() {
-    return core != null ? core.getSyncCapability() : null;
-  }
+    public SynchronizationCapability getSyncCapability() {
+        return core != null ? core.getSyncCapability() : null;
+    }
 
-  public boolean hasFileBasedErrorRecoverySupport() {
-    return core != null && core.getFileBasedErrorRecoverySupport() != null ? core.getFileBasedErrorRecoverySupport() : false;
-  }
+    public boolean hasFileBasedErrorRecoverySupport() {
+        return core != null && core.getFileBasedErrorRecoverySupport() != null ? core.getFileBasedErrorRecoverySupport() : false;
+    }
+
+    @Override
+    public String toString() {
+        return "VersionSpecificMessageSetInfo{" +
+                "core=" + core +
+                "}";
+    }
 }

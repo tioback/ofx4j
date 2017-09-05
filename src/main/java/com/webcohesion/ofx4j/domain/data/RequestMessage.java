@@ -22,4 +22,8 @@ package com.webcohesion.ofx4j.domain.data;
  * @author Ryan Heaton
  */
 public abstract class RequestMessage {
+    @Override
+    public String toString() {
+        return "RequestMessage{}";
+    }
 }

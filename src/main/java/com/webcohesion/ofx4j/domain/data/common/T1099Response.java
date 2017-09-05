@@ -24,5 +24,8 @@ import com.webcohesion.ofx4j.domain.data.ResponseMessage;
  */
 public abstract class T1099Response extends ResponseMessage {
 
- 
+    @Override
+    public String toString() {
+        return "T1099Response{}";
+    }
 }

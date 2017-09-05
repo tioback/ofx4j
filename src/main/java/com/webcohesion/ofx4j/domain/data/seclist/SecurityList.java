@@ -23,20 +23,27 @@ import java.util.List;
 
 /**
  * Aggregate for a list of securities.
- * @see "Section 13.8.4, OFX Spec"
  *
  * @author Jon Perlow
+ * @see "Section 13.8.4, OFX Spec"
  */
-@Aggregate( "SECLIST" )
+@Aggregate("SECLIST")
 public class SecurityList {
-  private List<BaseSecurityInfo> securityInfos;
+    private List<BaseSecurityInfo> securityInfos;
 
-  @ChildAggregate( order = 10 )
-  public List<BaseSecurityInfo> getSecurityInfos() {
-    return securityInfos;
-  }
+    @ChildAggregate(order = 10)
+    public List<BaseSecurityInfo> getSecurityInfos() {
+        return securityInfos;
+    }
 
-  public void setSecurityInfos(List<BaseSecurityInfo> securityInfos) {
-    this.securityInfos = securityInfos;
-  }
+    public void setSecurityInfos(List<BaseSecurityInfo> securityInfos) {
+        this.securityInfos = securityInfos;
+    }
+
+    @Override
+    public String toString() {
+        return "SecurityList{" +
+                "securityInfos=" + securityInfos +
+                "}";
+    }
 }

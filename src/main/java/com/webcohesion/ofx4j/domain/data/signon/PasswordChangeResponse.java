@@ -28,52 +28,62 @@ import java.util.Date;
  * @author Ryan Heaton
  * @see "Section 2.5.2.2, OFX Spec."
  */
-@Aggregate ( "PINCHRQ" )
+@Aggregate("PINCHRQ")
 public class PasswordChangeResponse extends ResponseMessage {
 
-  private String userId;
-  private Date changeTimestamp;
+    private String userId;
+    private Date changeTimestamp;
 
-  /**
-   * The id of the user changing password.
-   *
-   * @return The id of the user changing password.
-   */
-  @Element ( name = "USERID", required = true, order = 0 )
-  public String getUserId() {
-    return userId;
-  }
+    /**
+     * The id of the user changing password.
+     *
+     * @return The id of the user changing password.
+     */
+    @Element(name = "USERID", required = true, order = 0)
+    public String getUserId() {
+        return userId;
+    }
 
-  // Inherited.
-  public String getResponseMessageName() {
-    return "password change";
-  }
+    /**
+     * The id of the user changing password.
+     *
+     * @param userId The id of the user changing password.
+     */
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 
-  /**
-   * The id of the user changing password.
-   *
-   * @param userId The id of the user changing password.
-   */
-  public void setUserId(String userId) {
-    this.userId = userId;
-  }
+    // Inherited.
+    public String getResponseMessageName() {
+        return "password change";
+    }
 
-  /**
-   * The timestamp of the password change.
-   *
-   * @return The timestamp of the password change.
-   */
-  @Element ( name = "DTCHANGED", order = 10 )
-  public Date getChangeTimestamp() {
-    return changeTimestamp;
-  }
+    /**
+     * The timestamp of the password change.
+     *
+     * @return The timestamp of the password change.
+     */
+    @Element(name = "DTCHANGED", order = 10)
+    public Date getChangeTimestamp() {
+        return changeTimestamp;
+    }
 
-  /**
-   * The timestamp of the password change.
-   *
-   * @param changeTimestamp The timestamp of the password change.
-   */
-  public void setChangeTimestamp(Date changeTimestamp) {
-    this.changeTimestamp = changeTimestamp;
-  }
+    /**
+     * The timestamp of the password change.
+     *
+     * @param changeTimestamp The timestamp of the password change.
+     */
+    public void setChangeTimestamp(Date changeTimestamp) {
+        this.changeTimestamp = changeTimestamp;
+    }
+
+    @Override
+    public String toString() {
+        String inherited = super.toString().replaceFirst("^\\w+\\{", "").replaceAll("}$", "");
+        return "PasswordChangeResponse{" +
+                (inherited.trim().isEmpty() ? "" : (inherited + ", ")) +
+                "userId='" + userId + '\'' +
+                ", changeTimestamp=" + changeTimestamp +
+                "}";
+    }
 }

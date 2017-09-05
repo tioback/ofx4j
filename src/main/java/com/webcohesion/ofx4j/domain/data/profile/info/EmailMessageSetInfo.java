@@ -23,17 +23,26 @@ import com.webcohesion.ofx4j.meta.ChildAggregate;
 /**
  * @author Ryan Heaton
  */
-@Aggregate ( "EMAILMSGSET" )
+@Aggregate("EMAILMSGSET")
 public class EmailMessageSetInfo extends AbstractMessageSetInfo {
 
-  private EmailV1MessageSetInfo version1Info;
+    private EmailV1MessageSetInfo version1Info;
 
-  @ChildAggregate ( order = 0 )
-  public EmailV1MessageSetInfo getVersion1Info() {
-    return version1Info;
-  }
+    @ChildAggregate(order = 0)
+    public EmailV1MessageSetInfo getVersion1Info() {
+        return version1Info;
+    }
 
-  public void setVersion1Info(EmailV1MessageSetInfo version1Info) {
-    this.version1Info = version1Info;
-  }
+    public void setVersion1Info(EmailV1MessageSetInfo version1Info) {
+        this.version1Info = version1Info;
+    }
+
+    @Override
+    public String toString() {
+        String inherited = super.toString().replaceFirst("^\\w+\\{", "").replaceAll("}$", "");
+        return "EmailMessageSetInfo{" +
+                (inherited.trim().isEmpty() ? "" : (inherited + ", ")) +
+                "version1Info=" + version1Info +
+                "}";
+    }
 }

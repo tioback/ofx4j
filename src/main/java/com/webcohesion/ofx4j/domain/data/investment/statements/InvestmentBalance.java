@@ -22,119 +22,130 @@ import com.webcohesion.ofx4j.meta.Element;
 
 /**
  * Aggregate for the investment balance.
- * @see "Section 13.9.2.7, OFX Spec"
  *
  * @author Jon Perlow
+ * @see "Section 13.9.2.7, OFX Spec"
  */
 @Aggregate("INVBAL")
 public class InvestmentBalance {
 
-  private Double availableCash;
-  private Double marginBalance;
-  private Double shortBalance;
-  private Double buyingPower;
-  private BalanceList balanceList;
+    private Double availableCash;
+    private Double marginBalance;
+    private Double shortBalance;
+    private Double buyingPower;
+    private BalanceList balanceList;
 
-  /**
-   * Gets the available cash balance across all sub-accounts, including sweep funds. This is
-   * required field according to the OFX spec.
-   *
-   * @return the available cash balance
-   */
-  @Element( name = "AVAILCASH", required = true, order = 10)
-  public Double getAvailableCash() {
-    return availableCash;
-  }
+    /**
+     * Gets the available cash balance across all sub-accounts, including sweep funds. This is
+     * required field according to the OFX spec.
+     *
+     * @return the available cash balance
+     */
+    @Element(name = "AVAILCASH", required = true, order = 10)
+    public Double getAvailableCash() {
+        return availableCash;
+    }
 
-  /**
-   * Sets the available cash balance across all sub-accounts, including sweep funds. This is
-   * required field according to the OFX spec.
-   *
-   * @param availableCash the available cash balance
-   */
-  public void setAvailableCash(Double availableCash) {
-    this.availableCash = availableCash;
-  }
+    /**
+     * Sets the available cash balance across all sub-accounts, including sweep funds. This is
+     * required field according to the OFX spec.
+     *
+     * @param availableCash the available cash balance
+     */
+    public void setAvailableCash(Double availableCash) {
+        this.availableCash = availableCash;
+    }
 
-  /**
-   * Gets the margin account balance. A positive balance indicates a positive cash balance, while
-   * a negative balance indicates the customer borrowed funds. This is a required field according
-   * to the OFX spec.
-   *
-   * @return the margin account balance
-   */
-  @Element( name = "MARGINBALANCE", required = true, order = 20)
-  public Double getMarginBalance() {
-    return marginBalance;
-  }
+    /**
+     * Gets the margin account balance. A positive balance indicates a positive cash balance, while
+     * a negative balance indicates the customer borrowed funds. This is a required field according
+     * to the OFX spec.
+     *
+     * @return the margin account balance
+     */
+    @Element(name = "MARGINBALANCE", required = true, order = 20)
+    public Double getMarginBalance() {
+        return marginBalance;
+    }
 
-  /**
-   * Sets the margin account balance. A positive balance indicates a positive cash balance, while
-   * a negative balance indicates the customer borrowed funds. This is a required field according
-   * to the OFX spec.
-   *
-   * @param marginBalance the margin account balance
-   */
-  public void setMarginBalance(Double marginBalance) {
-    this.marginBalance = marginBalance;
-  }
+    /**
+     * Sets the margin account balance. A positive balance indicates a positive cash balance, while
+     * a negative balance indicates the customer borrowed funds. This is a required field according
+     * to the OFX spec.
+     *
+     * @param marginBalance the margin account balance
+     */
+    public void setMarginBalance(Double marginBalance) {
+        this.marginBalance = marginBalance;
+    }
 
-  /**
-   * Gets the market value of all short positions. This is a positive balance. This is a required
-   * field according to the OFX spec.
-   *
-   * @return the market value of all short positions
-   */
-  @Element( name = "SHORTBALANCE", required = true, order = 30)
-  public Double getShortBalance() {
-    return shortBalance;
-  }
+    /**
+     * Gets the market value of all short positions. This is a positive balance. This is a required
+     * field according to the OFX spec.
+     *
+     * @return the market value of all short positions
+     */
+    @Element(name = "SHORTBALANCE", required = true, order = 30)
+    public Double getShortBalance() {
+        return shortBalance;
+    }
 
-  /**
-   * Sets the market value of all short positions. This is a positive balance. This is a required
-   * field according to the OFX spec.
-   *
-   * @param shortBalance the market value of all short positions
-   */
-  public void setShortBalance(Double shortBalance) {
-    this.shortBalance = shortBalance;
-  }
+    /**
+     * Sets the market value of all short positions. This is a positive balance. This is a required
+     * field according to the OFX spec.
+     *
+     * @param shortBalance the market value of all short positions
+     */
+    public void setShortBalance(Double shortBalance) {
+        this.shortBalance = shortBalance;
+    }
 
-  /**
-   * Gets the buying power amount. This is an optional field according to the OFX spec.
-   *
-   * @return the buying power
-   */
-  @Element( name = "BUYPOWER", order = 40)
-  public Double getBuyingPower() {
-    return buyingPower;
-  }
+    /**
+     * Gets the buying power amount. This is an optional field according to the OFX spec.
+     *
+     * @return the buying power
+     */
+    @Element(name = "BUYPOWER", order = 40)
+    public Double getBuyingPower() {
+        return buyingPower;
+    }
 
-  /**
-   * Sets the buying power amount. This is an optional field according to the OFX spec.
-   *
-   * @param buyingPower the buying power
-   */
-  public void setBuyingPower(Double buyingPower) {
-    this.buyingPower = buyingPower;
-  }
+    /**
+     * Sets the buying power amount. This is an optional field according to the OFX spec.
+     *
+     * @param buyingPower the buying power
+     */
+    public void setBuyingPower(Double buyingPower) {
+        this.buyingPower = buyingPower;
+    }
 
-  /**
-   * Gets the investment balance list. This is an optional field according to the OFX spec.
-   *
-   * @return the investment balance list
-   */
-  @ChildAggregate( order = 50 )
-  public BalanceList getBalanceList() {
-    return balanceList;
-  }
+    /**
+     * Gets the investment balance list. This is an optional field according to the OFX spec.
+     *
+     * @return the investment balance list
+     */
+    @ChildAggregate(order = 50)
+    public BalanceList getBalanceList() {
+        return balanceList;
+    }
 
-  /**
-   * Sets the investment balance list. This is an optional field according to the OFX spec.
-   *
-   * @param balanceList the investment balance list
-   */
-  public void setBalanceList(BalanceList balanceList) {
-    this.balanceList = balanceList;
-  }
+    /**
+     * Sets the investment balance list. This is an optional field according to the OFX spec.
+     *
+     * @param balanceList the investment balance list
+     */
+    public void setBalanceList(BalanceList balanceList) {
+        this.balanceList = balanceList;
+    }
+
+    @Override
+    public String toString() {
+        return "InvestmentBalance{" +
+                "availableCash=" + availableCash +
+                ", marginBalance=" + marginBalance +
+                ", shortBalance=" + shortBalance +
+                ", buyingPower=" + buyingPower +
+                ", balanceList=" + balanceList +
+                "}";
+    }
 }

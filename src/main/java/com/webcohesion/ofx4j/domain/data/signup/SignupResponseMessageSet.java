@@ -16,56 +16,67 @@
 
 package com.webcohesion.ofx4j.domain.data.signup;
 
-import com.webcohesion.ofx4j.domain.data.*;
+import com.webcohesion.ofx4j.domain.data.MessageSetType;
+import com.webcohesion.ofx4j.domain.data.ResponseMessage;
+import com.webcohesion.ofx4j.domain.data.ResponseMessageSet;
 import com.webcohesion.ofx4j.meta.Aggregate;
 import com.webcohesion.ofx4j.meta.ChildAggregate;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Ryan Heaton
  */
-@Aggregate ("SIGNUPMSGSRSV1")
+@Aggregate("SIGNUPMSGSRSV1")
 public class SignupResponseMessageSet extends ResponseMessageSet {
 
-  private AccountInfoResponseTransaction accountInfoResponse;
+    private AccountInfoResponseTransaction accountInfoResponse;
 
-  public MessageSetType getType() {
-    return MessageSetType.signup;
-  }
-
-  /**
-   * The account info response.
-   *
-   * @return The account info response.
-   */
-  @ChildAggregate ( order = 0 )
-  public AccountInfoResponseTransaction getAccountInfoResponse() {
-    return accountInfoResponse;
-  }
-
-  /**
-   * The account info response.
-   *
-   * @param accountInfoResponse The account info response.
-   */
-  public void setAccountInfoResponse(AccountInfoResponseTransaction accountInfoResponse) {
-    this.accountInfoResponse = accountInfoResponse;
-  }
-
-  /**
-   * The response messages.
-   *
-   * @return The response messages.
-   */
-  public List<ResponseMessage> getResponseMessages() {
-    ArrayList<ResponseMessage> messages = new ArrayList<ResponseMessage>();
-
-    if (getAccountInfoResponse() != null) {
-      messages.add(getAccountInfoResponse());
+    public MessageSetType getType() {
+        return MessageSetType.signup;
     }
 
-    return messages;
-  }
+    /**
+     * The account info response.
+     *
+     * @return The account info response.
+     */
+    @ChildAggregate(order = 0)
+    public AccountInfoResponseTransaction getAccountInfoResponse() {
+        return accountInfoResponse;
+    }
+
+    /**
+     * The account info response.
+     *
+     * @param accountInfoResponse The account info response.
+     */
+    public void setAccountInfoResponse(AccountInfoResponseTransaction accountInfoResponse) {
+        this.accountInfoResponse = accountInfoResponse;
+    }
+
+    /**
+     * The response messages.
+     *
+     * @return The response messages.
+     */
+    public List<ResponseMessage> getResponseMessages() {
+        ArrayList<ResponseMessage> messages = new ArrayList<ResponseMessage>();
+
+        if (getAccountInfoResponse() != null) {
+            messages.add(getAccountInfoResponse());
+        }
+
+        return messages;
+    }
+
+    @Override
+    public String toString() {
+        String inherited = super.toString().replaceFirst("^\\w+\\{", "").replaceAll("}$", "");
+        return "SignupResponseMessageSet{" +
+                (inherited.trim().isEmpty() ? "" : (inherited + ", ")) +
+                "accountInfoResponse=" + accountInfoResponse +
+                "}";
+    }
 }

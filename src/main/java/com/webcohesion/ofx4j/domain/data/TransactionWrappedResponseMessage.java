@@ -18,9 +18,9 @@ package com.webcohesion.ofx4j.domain.data;
 
 import com.webcohesion.ofx4j.domain.data.common.Status;
 import com.webcohesion.ofx4j.domain.data.common.StatusHolder;
+import com.webcohesion.ofx4j.meta.Aggregate;
 import com.webcohesion.ofx4j.meta.ChildAggregate;
 import com.webcohesion.ofx4j.meta.Element;
-import com.webcohesion.ofx4j.meta.Aggregate;
 
 /**
  * A response message wrapped in a transaction.
@@ -30,90 +30,99 @@ import com.webcohesion.ofx4j.meta.Aggregate;
  */
 public abstract class TransactionWrappedResponseMessage<M extends ResponseMessage> extends ResponseMessage implements StatusHolder {
 
-  private String UID;
-  private String clientCookie;
-  private Status status;
+    private String UID;
+    private String clientCookie;
+    private Status status;
 
-  /**
-   * UID of this transaction.
-   *
-   * @return UID of this transaction.
-   */
-  @Element ( name = "TRNUID", required = true, order = 0 )
-  public String getUID() {
-    return UID;
-  }
-
-  /**
-   * UID of this transaction.
-   *
-   * @param UID UID of this transaction.
-   */
-  public void setUID(String UID) {
-    this.UID = UID;
-  }
-
-  /**
-   * Client cookie (echoed back by the response).
-   *
-   * @return Client cookie (echoed back by the response).
-   */
-  @Element ( name = "CLTCOOKIE", order = 20 )
-  public String getClientCookie() {
-    return clientCookie;
-  }
-
-  /**
-   * Client cookie (echoed back by the response).
-   *
-   * @param clientCookie Client cookie (echoed back by the response).
-   */
-  public void setClientCookie(String clientCookie) {
-    this.clientCookie = clientCookie;
-  }
-
-  // Inherited.
-  public String getStatusHolderName() {
-    return getResponseMessageName();
-  }
-
-  // Inherited.
-  public String getResponseMessageName() {
-    String name = "transaction response";
-    if (getWrappedMessage() != null) {
-      name = getWrappedMessage().getResponseMessageName() + " transaction";
-    }
-    else if (getClass().isAnnotationPresent(Aggregate.class)) {
-      name = getClass().getAnnotation(Aggregate.class).value() + " transaction";
+    /**
+     * UID of this transaction.
+     *
+     * @return UID of this transaction.
+     */
+    @Element(name = "TRNUID", required = true, order = 0)
+    public String getUID() {
+        return UID;
     }
 
-    return name;
-  }
+    /**
+     * UID of this transaction.
+     *
+     * @param UID UID of this transaction.
+     */
+    public void setUID(String UID) {
+        this.UID = UID;
+    }
 
-  /**
-   * Status of the transaction.
-   *
-   * @return Status of the transaction.
-   */
-  @ChildAggregate ( required = true, order = 10 )
-  public Status getStatus() {
-    return status;
-  }
+    /**
+     * Client cookie (echoed back by the response).
+     *
+     * @return Client cookie (echoed back by the response).
+     */
+    @Element(name = "CLTCOOKIE", order = 20)
+    public String getClientCookie() {
+        return clientCookie;
+    }
 
-  /**
-   * Status of the transaction.
-   *
-   * @param status Status of the transaction.
-   */
-  public void setStatus(Status status) {
-    this.status = status;
-  }
+    /**
+     * Client cookie (echoed back by the response).
+     *
+     * @param clientCookie Client cookie (echoed back by the response).
+     */
+    public void setClientCookie(String clientCookie) {
+        this.clientCookie = clientCookie;
+    }
 
-  /**
-   * Get the wrapped message.
-   *
-   * @return The wrapped message.
-   */
-  public abstract M getWrappedMessage();
+    // Inherited.
+    public String getStatusHolderName() {
+        return getResponseMessageName();
+    }
 
+    // Inherited.
+    public String getResponseMessageName() {
+        String name = "transaction response";
+        if (getWrappedMessage() != null) {
+            name = getWrappedMessage().getResponseMessageName() + " transaction";
+        } else if (getClass().isAnnotationPresent(Aggregate.class)) {
+            name = getClass().getAnnotation(Aggregate.class).value() + " transaction";
+        }
+
+        return name;
+    }
+
+    /**
+     * Status of the transaction.
+     *
+     * @return Status of the transaction.
+     */
+    @ChildAggregate(required = true, order = 10)
+    public Status getStatus() {
+        return status;
+    }
+
+    /**
+     * Status of the transaction.
+     *
+     * @param status Status of the transaction.
+     */
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    /**
+     * Get the wrapped message.
+     *
+     * @return The wrapped message.
+     */
+    public abstract M getWrappedMessage();
+
+    @Override
+    public String toString() {
+        String inherited = super.toString().replaceFirst("^\\w+\\{", "").replaceAll("}$", "");
+        return "TransactionWrappedResponseMessage{" +
+                (inherited.trim().isEmpty() ? "" : (inherited + ", ")) +
+                "UID='" + UID + '\'' +
+                ", clientCookie='" + clientCookie + '\'' +
+                ", status=" + status +
+                "}";
+    }
 }

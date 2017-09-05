@@ -23,10 +23,18 @@ import com.webcohesion.ofx4j.meta.Aggregate;
 /**
  * @author Jon Perlow
  */
-@Aggregate( "SIGNONMSGSETV1" )
+@Aggregate("SIGNONMSGSETV1")
 public class SignOnV1MessageSetInfo extends VersionSpecificMessageSetInfo {
-  
-  public MessageSetType getMessageSetType() {
-    return MessageSetType.signon;
-  }
+
+    public MessageSetType getMessageSetType() {
+        return MessageSetType.signon;
+    }
+
+    @Override
+    public String toString() {
+        String inherited = super.toString().replaceFirst("^\\w+\\{", "").replaceAll("}$", "");
+        return "SignOnV1MessageSetInfo{" +
+                (inherited.trim().isEmpty() ? "" : (inherited + ", ")) +
+                "}";
+    }
 }

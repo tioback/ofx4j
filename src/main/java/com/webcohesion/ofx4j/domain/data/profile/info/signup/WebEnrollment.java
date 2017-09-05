@@ -21,25 +21,33 @@ import com.webcohesion.ofx4j.meta.Element;
 
 /**
  * Web Enrollment option containing URL to direct user for web based enrollment, if supported.
+ *
  * @author Scott Priddy
  * @see "Section 8.8 OFX Spec"
  */
-@Aggregate( "WEBENROLL" )
+@Aggregate("WEBENROLL")
 public class WebEnrollment {
 
-  private String url;
+    private String url;
 
-  /**
-   * URL to start enrollment process
-   * @return String
-   */
-  @Element( name = "URL", required = true, order = 0)
-  public String getUrl() {
-    return url;
-  }
+    /**
+     * URL to start enrollment process
+     *
+     * @return String
+     */
+    @Element(name = "URL", required = true, order = 0)
+    public String getUrl() {
+        return url;
+    }
 
-  public void setUrl(String url) {
-    this.url = url;
-  }
+    public void setUrl(String url) {
+        this.url = url;
+    }
 
+    @Override
+    public String toString() {
+        return "WebEnrollment{" +
+                "url='" + url + '\'' +
+                "}";
+    }
 }

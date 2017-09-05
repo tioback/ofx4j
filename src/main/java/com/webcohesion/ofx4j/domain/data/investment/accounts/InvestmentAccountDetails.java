@@ -29,65 +29,74 @@ import com.webcohesion.ofx4j.meta.Element;
 @Aggregate
 public class InvestmentAccountDetails implements AccountDetails {
 
-  private String brokerId;
-  private String accountNumber;
-  private String accountKey;
+    private String brokerId;
+    private String accountNumber;
+    private String accountKey;
 
 
-  /**
-   * Gets the broker id.
-   *
-   * @return the id of the broker
-   */
-  @Element ( name = "BROKERID", required = true, order = 0 )
-  public String getBrokerId() {
-    return brokerId;
-  }
+    /**
+     * Gets the broker id.
+     *
+     * @return the id of the broker
+     */
+    @Element(name = "BROKERID", required = true, order = 0)
+    public String getBrokerId() {
+        return brokerId;
+    }
 
-  /**
-   * Sets the broker id.
-   *
-   * @param brokerId the id of the broker
-   */
-  public void setBrokerId(String brokerId) {
-    this.brokerId = brokerId;
-  }
+    /**
+     * Sets the broker id.
+     *
+     * @param brokerId the id of the broker
+     */
+    public void setBrokerId(String brokerId) {
+        this.brokerId = brokerId;
+    }
 
-  /**
-   * Gets the account number.
-   *
-   * @return the account number
-   */
-  @Element( name = "ACCTID", required = true, order = 20)
-  public String getAccountNumber() {
-    return accountNumber;
-  }
+    /**
+     * Gets the account number.
+     *
+     * @return the account number
+     */
+    @Element(name = "ACCTID", required = true, order = 20)
+    public String getAccountNumber() {
+        return accountNumber;
+    }
 
-  /**
-   * Sets the account number.
-   *
-   * @param accountNumber the account number
-   */
-  public void setAccountNumber(String accountNumber) {
-    this.accountNumber = accountNumber;
-  }
+    /**
+     * Sets the account number.
+     *
+     * @param accountNumber the account number
+     */
+    public void setAccountNumber(String accountNumber) {
+        this.accountNumber = accountNumber;
+    }
 
-  /**
-   * Gets the account key.
-   *
-   * @return the account key
-   */
-  @Element( name = "ACCTKEY", order = 40 )
-  public String getAccountKey() {
-    return accountKey;
-  }
+    /**
+     * Gets the account key.
+     *
+     * @return the account key
+     */
+    @Element(name = "ACCTKEY", order = 40)
+    public String getAccountKey() {
+        return accountKey;
+    }
 
-  /**
-   * Sets the account key.
-   *
-   * @param accountKey the account key
-   */
-  public void setAccountKey(String accountKey) {
-    this.accountKey = accountKey;
-  }
+    /**
+     * Sets the account key.
+     *
+     * @param accountKey the account key
+     */
+    public void setAccountKey(String accountKey) {
+        this.accountKey = accountKey;
+    }
+
+    @Override
+    public String toString() {
+        return "InvestmentAccountDetails{" +
+                "brokerId='" + brokerId + '\'' +
+                ", accountNumber='" + accountNumber + '\'' +
+                ", accountKey='" + accountKey + '\'' +
+                "}";
+    }
 }

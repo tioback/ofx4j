@@ -17,38 +17,47 @@
 package com.webcohesion.ofx4j.domain.data.profile;
 
 import com.webcohesion.ofx4j.domain.data.TransactionWrappedResponseMessage;
-import com.webcohesion.ofx4j.meta.ChildAggregate;
 import com.webcohesion.ofx4j.meta.Aggregate;
+import com.webcohesion.ofx4j.meta.ChildAggregate;
 
 /**
  * @author Ryan Heaton
  */
-@Aggregate ("PROFTRNRS")
+@Aggregate("PROFTRNRS")
 public class ProfileResponseTransaction extends TransactionWrappedResponseMessage<ProfileResponse> {
 
-  private ProfileResponse message;
+    private ProfileResponse message;
 
-  /**
-   * The message.
-   *
-   * @return The message.
-   */
-  @ChildAggregate ( required = true, order = 30 )
-  public ProfileResponse getMessage() {
-    return message;
-  }
+    /**
+     * The message.
+     *
+     * @return The message.
+     */
+    @ChildAggregate(required = true, order = 30)
+    public ProfileResponse getMessage() {
+        return message;
+    }
 
-  /**
-   * The message.
-   *
-   * @param message The message.
-   */
-  public void setMessage(ProfileResponse message) {
-    this.message = message;
-  }
+    /**
+     * The message.
+     *
+     * @param message The message.
+     */
+    public void setMessage(ProfileResponse message) {
+        this.message = message;
+    }
 
-  // Inherited.
-  public ProfileResponse getWrappedMessage() {
-    return getMessage();
-  }
+    // Inherited.
+    public ProfileResponse getWrappedMessage() {
+        return getMessage();
+    }
+
+    @Override
+    public String toString() {
+        String inherited = super.toString().replaceFirst("^\\w+\\{", "").replaceAll("}$", "");
+        return "ProfileResponseTransaction{" +
+                (inherited.trim().isEmpty() ? "" : (inherited + ", ")) +
+                "message=" + message +
+                "}";
+    }
 }

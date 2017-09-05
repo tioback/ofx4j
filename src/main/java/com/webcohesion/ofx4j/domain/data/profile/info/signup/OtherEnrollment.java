@@ -21,25 +21,34 @@ import com.webcohesion.ofx4j.meta.Element;
 
 /**
  * Other Enrollment option containing a text message directing users to some other method (such as a phone call)
+ *
  * @author Scott Priddy
  * @see "Section 8.8 OFX Spec"
  */
 
-@Aggregate( "OTHERENROLL" )
+@Aggregate("OTHERENROLL")
 public class OtherEnrollment {
 
-  private String message;
+    private String message;
 
-  /**
-   * Message to consumer about what to do next (for example, a phone number),
-   * @return String
-   */
-  @Element( name = "MESSAGE", required = true, order = 0)
-  public String getMessage() {
-    return message;
-  }
+    /**
+     * Message to consumer about what to do next (for example, a phone number),
+     *
+     * @return String
+     */
+    @Element(name = "MESSAGE", required = true, order = 0)
+    public String getMessage() {
+        return message;
+    }
 
-  public void setMessage(String message) {
-    this.message = message;
-  }
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    @Override
+    public String toString() {
+        return "OtherEnrollment{" +
+                "message='" + message + '\'' +
+                "}";
+    }
 }

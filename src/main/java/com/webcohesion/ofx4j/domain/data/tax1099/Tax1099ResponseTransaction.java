@@ -23,32 +23,41 @@ import com.webcohesion.ofx4j.meta.ChildAggregate;
  * @author Aparna Gawali
  * aparna.gawali@sungard.com
  */
-@Aggregate ( "TAX1099TRNRS")
+@Aggregate("TAX1099TRNRS")
 public class Tax1099ResponseTransaction extends TransactionWrappedResponseMessage<Tax1099Response> {
 
-  private Tax1099Response tax1099Response;
+    private Tax1099Response tax1099Response;
 
-  /**
-   * The tax1099Response.
-   *
-   * @return The tax1099Response.
-   */
-  @ChildAggregate(required=false, order = 2)
-  public Tax1099Response getTax1099Response() {
-    return tax1099Response;
-  }
+    /**
+     * The tax1099Response.
+     *
+     * @return The tax1099Response.
+     */
+    @ChildAggregate(required = false, order = 2)
+    public Tax1099Response getTax1099Response() {
+        return tax1099Response;
+    }
 
-  /**
-   * The tax1099Response.
-   *
-   * @param tax1099Response The message.
-   */
-  public void setTax1099Response(Tax1099Response tax1099Response) {
-    this.tax1099Response = tax1099Response;
-  }
+    /**
+     * The tax1099Response.
+     *
+     * @param tax1099Response The message.
+     */
+    public void setTax1099Response(Tax1099Response tax1099Response) {
+        this.tax1099Response = tax1099Response;
+    }
 
-  // Inherited.
-  public Tax1099Response getWrappedMessage() {
-    return getTax1099Response();
-  }
+    // Inherited.
+    public Tax1099Response getWrappedMessage() {
+        return getTax1099Response();
+    }
+
+    @Override
+    public String toString() {
+        String inherited = super.toString().replaceFirst("^\\w+\\{", "").replaceAll("}$", "");
+        return "Tax1099ResponseTransaction{" +
+                (inherited.trim().isEmpty() ? "" : (inherited + ", ")) +
+                "tax1099Response=" + tax1099Response +
+                "}";
+    }
 }

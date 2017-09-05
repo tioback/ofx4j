@@ -28,62 +28,71 @@ import java.util.List;
 
 /**
  * Investment statement response message set.
- * @see "Section 13.7.1.2.2, OFX Spec"
  *
  * @author Jon Perlow
+ * @see "Section 13.7.1.2.2, OFX Spec"
  */
-@Aggregate( "INVSTMTMSGSRSV1" )
+@Aggregate("INVSTMTMSGSRSV1")
 public class InvestmentStatementResponseMessageSet extends ResponseMessageSet {
 
-  private List<InvestmentStatementResponseTransaction> statementResponses;
+    private List<InvestmentStatementResponseTransaction> statementResponses;
 
-  public MessageSetType getType() {
-    return MessageSetType.investment;
-  }
+    public MessageSetType getType() {
+        return MessageSetType.investment;
+    }
 
-  /**
-   * Gets the statement response list. Most OFX files have a single statement response.
-   *
-   * @return the statement response list
-   */
-  @ChildAggregate( order = 0 )
-  public List<InvestmentStatementResponseTransaction> getStatementResponses() {
-    return statementResponses;
-  }
-
-
-  /**
-   * Sets the statement reponse list. Most OFX files have a single statement response.
-   *
-   * @param statementResponses the statement response list
-   */
-  public void setStatementResponses(
-      List<InvestmentStatementResponseTransaction> statementResponses) {
-    this.statementResponses = statementResponses;
-  }
+    /**
+     * Gets the statement response list. Most OFX files have a single statement response.
+     *
+     * @return the statement response list
+     */
+    @ChildAggregate(order = 0)
+    public List<InvestmentStatementResponseTransaction> getStatementResponses() {
+        return statementResponses;
+    }
 
 
-  /**
-   * Gets the first statement response. Use getStatementResponses() if you are expecting multiple
-   * responses.
-   *
-   * @return the first investment statement response.
-   */
-  public InvestmentStatementResponseTransaction getStatementResponse() {
-    return statementResponses == null || statementResponses.isEmpty() ? null : statementResponses.get(0);
-  }
+    /**
+     * Sets the statement reponse list. Most OFX files have a single statement response.
+     *
+     * @param statementResponses the statement response list
+     */
+    public void setStatementResponses(
+            List<InvestmentStatementResponseTransaction> statementResponses) {
+        this.statementResponses = statementResponses;
+    }
 
-  /**
-   * Sets the statement response if there is a single response.
-   *
-   * @param statementResponse The statement response.
-   */
-  public void setStatementResponse(InvestmentStatementResponseTransaction statementResponse) {
-    this.statementResponses = Collections.singletonList(statementResponse);
-  }
 
-  // Inherited.
-  public List<ResponseMessage> getResponseMessages() {
-    return new ArrayList<ResponseMessage>(statementResponses);
-  }
+    /**
+     * Gets the first statement response. Use getStatementResponses() if you are expecting multiple
+     * responses.
+     *
+     * @return the first investment statement response.
+     */
+    public InvestmentStatementResponseTransaction getStatementResponse() {
+        return statementResponses == null || statementResponses.isEmpty() ? null : statementResponses.get(0);
+    }
+
+    /**
+     * Sets the statement response if there is a single response.
+     *
+     * @param statementResponse The statement response.
+     */
+    public void setStatementResponse(InvestmentStatementResponseTransaction statementResponse) {
+        this.statementResponses = Collections.singletonList(statementResponse);
+    }
+
+    // Inherited.
+    public List<ResponseMessage> getResponseMessages() {
+        return new ArrayList<ResponseMessage>(statementResponses);
+    }
+
+    @Override
+    public String toString() {
+        String inherited = super.toString().replaceFirst("^\\w+\\{", "").replaceAll("}$", "");
+        return "InvestmentStatementResponseMessageSet{" +
+                (inherited.trim().isEmpty() ? "" : (inherited + ", ")) +
+                "statementResponses=" + statementResponses +
+                "}";
+    }
 }

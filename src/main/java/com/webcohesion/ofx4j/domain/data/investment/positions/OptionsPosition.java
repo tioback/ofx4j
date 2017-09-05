@@ -21,39 +21,48 @@ import com.webcohesion.ofx4j.meta.Element;
 
 /**
  * Represents an options position.
- * @see "Section 13.9.2.6.1, OFX Spec"
  *
  * @author Jon Perlow
+ * @see "Section 13.9.2.6.1, OFX Spec"
  */
-@Aggregate( "POSOPT" )
+@Aggregate("POSOPT")
 public class OptionsPosition extends BasePosition {
-  private String secured;
+    private String secured;
 
-  /**
-   * Gets how the options position is secured (for short positions).
-   *
-   * @return how the options position is secured
-   */
-  @Element( name = "SECURED", order = 20)
-  public String getSecured() {
-    return secured;
-  }
+    /**
+     * Gets how the options position is secured (for short positions).
+     *
+     * @return how the options position is secured
+     */
+    @Element(name = "SECURED", order = 20)
+    public String getSecured() {
+        return secured;
+    }
 
-  /**
-   * Sets how the options position is secured (for short positions).
-   *
-   * @param secured how the options position is secured
-   */
-  public void setSecured(String secured) {
-    this.secured = secured;
-  }
+    /**
+     * Sets how the options position is secured (for short positions).
+     *
+     * @param secured how the options position is secured
+     */
+    public void setSecured(String secured) {
+        this.secured = secured;
+    }
 
-  /**
-   * Gets how the options position is secured as a well-known type.
-   *
-   * @return how the option position is secured or null if it's not a well-known type
-   */
-  ShortOptionSecurity getSecuredEnum() {
-    return ShortOptionSecurity.fromOfx(getSecured());
-  }
+    /**
+     * Gets how the options position is secured as a well-known type.
+     *
+     * @return how the option position is secured or null if it's not a well-known type
+     */
+    ShortOptionSecurity getSecuredEnum() {
+        return ShortOptionSecurity.fromOfx(getSecured());
+    }
+
+    @Override
+    public String toString() {
+        String inherited = super.toString().replaceFirst("^\\w+\\{", "").replaceAll("}$", "");
+        return "OptionsPosition{" +
+                (inherited.trim().isEmpty() ? "" : (inherited + ", ")) +
+                "secured='" + secured + '\'' +
+                "}";
+    }
 }

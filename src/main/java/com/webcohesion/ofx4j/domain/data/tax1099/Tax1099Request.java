@@ -27,17 +27,24 @@ import com.webcohesion.ofx4j.meta.Element;
 @Aggregate("TAX1099RQ")
 public class Tax1099Request extends T1099Request {
 
-  @Element ( name = "TAXYEAR", required = true, order = 0 )	
-  public String getTaxYear() {
-		return taxYear;
-	}
+    private String taxYear;
 
-	public void setTaxYear(String taxYear) {
-		this.taxYear = taxYear;
-	}
+    @Element(name = "TAXYEAR", required = true, order = 0)
+    public String getTaxYear() {
+        return taxYear;
+    }
 
-private String taxYear;
+    public void setTaxYear(String taxYear) {
+        this.taxYear = taxYear;
+    }
 
-  
 
+    @Override
+    public String toString() {
+        String inherited = super.toString().replaceFirst("^\\w+\\{", "").replaceAll("}$", "");
+        return "Tax1099Request{" +
+                (inherited.trim().isEmpty() ? "" : (inherited + ", ")) +
+                "taxYear='" + taxYear + '\'' +
+                "}";
+    }
 }

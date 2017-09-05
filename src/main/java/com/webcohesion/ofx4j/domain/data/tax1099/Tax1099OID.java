@@ -17,7 +17,6 @@ package com.webcohesion.ofx4j.domain.data.tax1099;
 
 import com.webcohesion.ofx4j.meta.Aggregate;
 import com.webcohesion.ofx4j.meta.ChildAggregate;
-
 import com.webcohesion.ofx4j.meta.Element;
 
 /**
@@ -26,247 +25,267 @@ import com.webcohesion.ofx4j.meta.Element;
  */
 
 
-@Aggregate ( "TAX1099OID_V100")
-public class Tax1099OID  {
-
-  
-	private String srvrtId;
-	private String taxYear;
-	
-	private String originalDisc;
-	private String otherPerInt;
-	private String erlWithPen;
-	private String fedTaxWh;
-	private String desc;
-	private String oidOnUstres;
-	private String investExp;
-				
-	private PayerAddress payerAddress;
-	private String payerId;
-	private RecAddress recAddress;
-	private String recId;
-	private String recAcct;
-	
-	 
-	  @Element ( name = "SRVRTID",required = true , order = 0 )
-	  public String getSrvrtId() {
-	    return srvrtId;
-	  }
-
-	  
-	  public void setSrvrtId(String srvrtId) {
-	    this.srvrtId = srvrtId;
-	  }
-
-	 
-	  @Element ( name = "TAXYEAR", required = true, order = 1 )
-	  public String getTaxYear() {
-	    return taxYear;
-	  }
-
-	 
-	  public void setTaxYear(String taxYear) {
-	    this.taxYear = taxYear;
-	  }
-
-	/**
-	 * @return the originalDisc
-	 */
-	@Element ( name = "ORIGISDISC", required = false, order = 2)
-	public String getOriginalDisc() {
-		return originalDisc;
-	}
+@Aggregate("TAX1099OID_V100")
+public class Tax1099OID {
 
 
-	/**
-	 * @param originalDisc the originalDisc to set
-	 */
-	public void setOriginalDisc(String originalDisc) {
-		this.originalDisc = originalDisc;
-	}
+    private String srvrtId;
+    private String taxYear;
+
+    private String originalDisc;
+    private String otherPerInt;
+    private String erlWithPen;
+    private String fedTaxWh;
+    private String desc;
+    private String oidOnUstres;
+    private String investExp;
+
+    private PayerAddress payerAddress;
+    private String payerId;
+    private RecAddress recAddress;
+    private String recId;
+    private String recAcct;
 
 
-	/**
-	 * @return the otherPerInt
-	 */
-	@Element ( name = "OTHERPERINT", required = false, order = 3)
-	public String getOtherPerInt() {
-		return otherPerInt;
-	}
+    @Element(name = "SRVRTID", required = true, order = 0)
+    public String getSrvrtId() {
+        return srvrtId;
+    }
 
 
-	/**
-	 * @param otherPerInt the otherPerInt to set
-	 */
-	public void setOtherPerInt(String otherPerInt) {
-		this.otherPerInt = otherPerInt;
-	}
+    public void setSrvrtId(String srvrtId) {
+        this.srvrtId = srvrtId;
+    }
 
 
-	/**
-	 * @return the erlWithPen
-	 */
-	@Element ( name = "ERLWITHPEN", required = false, order = 4)
-	public String getErlWithPen() {
-		return erlWithPen;
-	}
+    @Element(name = "TAXYEAR", required = true, order = 1)
+    public String getTaxYear() {
+        return taxYear;
+    }
 
 
-	/**
-	 * @param erlWithPen the erlWithPen to set
-	 */
-	public void setErlWithPen(String erlWithPen) {
-		this.erlWithPen = erlWithPen;
-	}
+    public void setTaxYear(String taxYear) {
+        this.taxYear = taxYear;
+    }
+
+    /**
+     * @return the originalDisc
+     */
+    @Element(name = "ORIGISDISC", required = false, order = 2)
+    public String getOriginalDisc() {
+        return originalDisc;
+    }
 
 
-	/**
-	 * @return the fedTaxWh
-	 */
-	@Element ( name = "FEDTAXWH", required = false, order = 5)
-	public String getFedTaxWh() {
-		return fedTaxWh;
-	}
+    /**
+     * @param originalDisc the originalDisc to set
+     */
+    public void setOriginalDisc(String originalDisc) {
+        this.originalDisc = originalDisc;
+    }
 
 
-	/**
-	 * @param fedTaxWh the fedTaxWh to set
-	 */
-	public void setFedTaxWh(String fedTaxWh) {
-		this.fedTaxWh = fedTaxWh;
-	}
+    /**
+     * @return the otherPerInt
+     */
+    @Element(name = "OTHERPERINT", required = false, order = 3)
+    public String getOtherPerInt() {
+        return otherPerInt;
+    }
 
 
-	/**
-	 * @return the desc
-	 */
-	@Element ( name = "DESCRIPTION", required = true, order = 6)
-	public String getDesc() {
-		return desc;
-	}
+    /**
+     * @param otherPerInt the otherPerInt to set
+     */
+    public void setOtherPerInt(String otherPerInt) {
+        this.otherPerInt = otherPerInt;
+    }
 
 
-	/**
-	 * @param desc the desc to set
-	 */
-	public void setDesc(String desc) {
-		this.desc = desc;
-	}
+    /**
+     * @return the erlWithPen
+     */
+    @Element(name = "ERLWITHPEN", required = false, order = 4)
+    public String getErlWithPen() {
+        return erlWithPen;
+    }
 
 
-	/**
-	 * @return the oidOnUstres
-	 */
-	@Element ( name = "OIDONUSTRES", required = false, order = 7)
-	public String getOidOnUstres() {
-		return oidOnUstres;
-	}
+    /**
+     * @param erlWithPen the erlWithPen to set
+     */
+    public void setErlWithPen(String erlWithPen) {
+        this.erlWithPen = erlWithPen;
+    }
 
 
-	/**
-	 * @param oidOnUstres the oidOnUstres to set
-	 */
-	public void setOidOnUstres(String oidOnUstres) {
-		this.oidOnUstres = oidOnUstres;
-	}
+    /**
+     * @return the fedTaxWh
+     */
+    @Element(name = "FEDTAXWH", required = false, order = 5)
+    public String getFedTaxWh() {
+        return fedTaxWh;
+    }
 
 
-	/**
-	 * @return the investExp
-	 */
-	@Element ( name = "INVESTEXP", required = false, order = 8)
-	public String getInvestExp() {
-		return investExp;
-	}
+    /**
+     * @param fedTaxWh the fedTaxWh to set
+     */
+    public void setFedTaxWh(String fedTaxWh) {
+        this.fedTaxWh = fedTaxWh;
+    }
 
 
-	/**
-	 * @param investExp the investExp to set
-	 */
-	public void setInvestExp(String investExp) {
-		this.investExp = investExp;
-	}
+    /**
+     * @return the desc
+     */
+    @Element(name = "DESCRIPTION", required = true, order = 6)
+    public String getDesc() {
+        return desc;
+    }
 
 
-	/**
-	 * @return the payerAddress
-	 */
-	@ChildAggregate(required=true, order = 9)
-	public PayerAddress getPayerAddress() {
-		return payerAddress;
-	}
+    /**
+     * @param desc the desc to set
+     */
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
 
 
-	/**
-	 * @param payerAddress the payerAddress to set
-	 */
-	public void setPayerAddress(PayerAddress payerAddress) {
-		this.payerAddress = payerAddress;
-	}
-	
-	/**
-	 * @return the payerId
-	 */
-	@Element ( name = "PAYERID", required = true, order = 10 )
-	public String getPayerId() {
-		return payerId;
-	}
+    /**
+     * @return the oidOnUstres
+     */
+    @Element(name = "OIDONUSTRES", required = false, order = 7)
+    public String getOidOnUstres() {
+        return oidOnUstres;
+    }
 
 
-	/**
-	 * @param payerId the payerId to set
-	 */
-	public void setPayerId(String payerId) {
-		this.payerId = payerId;
-	}
-	
-
-	/**
-	 * @return the recAddress
-	 */
-	@ChildAggregate(required=true, order = 11)
-	public RecAddress getRecAddress() {
-		return recAddress;
-	}
+    /**
+     * @param oidOnUstres the oidOnUstres to set
+     */
+    public void setOidOnUstres(String oidOnUstres) {
+        this.oidOnUstres = oidOnUstres;
+    }
 
 
-	/**
-	 * @param recAddress the recAddress to set
-	 */
-	public void setRecAddress(RecAddress recAddress) {
-		this.recAddress = recAddress;
-	}
-
-	/**
-	 * @return the recId
-	 */
-	@Element ( name = "RECID", required = true, order = 12 )
-	public String getRecId() {
-		return recId;
-	}
+    /**
+     * @return the investExp
+     */
+    @Element(name = "INVESTEXP", required = false, order = 8)
+    public String getInvestExp() {
+        return investExp;
+    }
 
 
-	/**
-	 * @param recId the recId to set
-	 */
-	public void setRecId(String recId) {
-		this.recId = recId;
-	}
+    /**
+     * @param investExp the investExp to set
+     */
+    public void setInvestExp(String investExp) {
+        this.investExp = investExp;
+    }
 
 
-	/**
-	 * @return the recAcct
-	 */
-	@Element ( name = "RECACCT", required = true, order = 13 )
-	public String getRecAcct() {
-		return recAcct;
-	}
+    /**
+     * @return the payerAddress
+     */
+    @ChildAggregate(required = true, order = 9)
+    public PayerAddress getPayerAddress() {
+        return payerAddress;
+    }
 
 
-	/**
-	 * @param recAcct the recAcct to set
-	 */
-	public void setRecAcct(String recAcct) {
-		this.recAcct = recAcct;
-	}
+    /**
+     * @param payerAddress the payerAddress to set
+     */
+    public void setPayerAddress(PayerAddress payerAddress) {
+        this.payerAddress = payerAddress;
+    }
+
+    /**
+     * @return the payerId
+     */
+    @Element(name = "PAYERID", required = true, order = 10)
+    public String getPayerId() {
+        return payerId;
+    }
+
+
+    /**
+     * @param payerId the payerId to set
+     */
+    public void setPayerId(String payerId) {
+        this.payerId = payerId;
+    }
+
+
+    /**
+     * @return the recAddress
+     */
+    @ChildAggregate(required = true, order = 11)
+    public RecAddress getRecAddress() {
+        return recAddress;
+    }
+
+
+    /**
+     * @param recAddress the recAddress to set
+     */
+    public void setRecAddress(RecAddress recAddress) {
+        this.recAddress = recAddress;
+    }
+
+    /**
+     * @return the recId
+     */
+    @Element(name = "RECID", required = true, order = 12)
+    public String getRecId() {
+        return recId;
+    }
+
+
+    /**
+     * @param recId the recId to set
+     */
+    public void setRecId(String recId) {
+        this.recId = recId;
+    }
+
+
+    /**
+     * @return the recAcct
+     */
+    @Element(name = "RECACCT", required = true, order = 13)
+    public String getRecAcct() {
+        return recAcct;
+    }
+
+
+    /**
+     * @param recAcct the recAcct to set
+     */
+    public void setRecAcct(String recAcct) {
+        this.recAcct = recAcct;
+    }
+
+    @Override
+    public String toString() {
+        return "Tax1099OID{" +
+                "srvrtId='" + srvrtId + '\'' +
+                ", taxYear='" + taxYear + '\'' +
+                ", originalDisc='" + originalDisc + '\'' +
+                ", otherPerInt='" + otherPerInt + '\'' +
+                ", erlWithPen='" + erlWithPen + '\'' +
+                ", fedTaxWh='" + fedTaxWh + '\'' +
+                ", desc='" + desc + '\'' +
+                ", oidOnUstres='" + oidOnUstres + '\'' +
+                ", investExp='" + investExp + '\'' +
+                ", payerAddress=" + payerAddress +
+                ", payerId='" + payerId + '\'' +
+                ", recAddress=" + recAddress +
+                ", recId='" + recId + '\'' +
+                ", recAcct='" + recAcct + '\'' +
+                "}";
+    }
 }

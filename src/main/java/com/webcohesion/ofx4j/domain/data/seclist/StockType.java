@@ -18,27 +18,27 @@ package com.webcohesion.ofx4j.domain.data.seclist;
 
 /**
  * The type of debt.
- * @see "Section 13.8.5.6, OFX Spec"
  *
  * @author Jon Perlow
+ * @see "Section 13.8.5.6, OFX Spec"
  */
 public enum StockType {
-  COMMON,
-  PREFERRED,
-  CONVERTIBLE,
-  OTHER;
+    COMMON,
+    PREFERRED,
+    CONVERTIBLE,
+    OTHER;
 
-  public static StockType fromOfx(String ofxVal) {
-    if ("COMMON".equals(ofxVal)) {
-      return COMMON;
-    } else if ("PREFERRED".equals(ofxVal)) {
-      return PREFERRED;
-    } else if ("CONVERTIBLE".equals(ofxVal)) {
-      return CONVERTIBLE;
-    } else if ("OTHER".equals(ofxVal)) {
-      return OTHER;
-    } else {
-      return null;
+    public static StockType fromOfx(String ofxVal) {
+        if ("COMMON".equals(ofxVal)) {
+            return COMMON;
+        } else if ("PREFERRED".equals(ofxVal)) {
+            return PREFERRED;
+        } else if ("CONVERTIBLE".equals(ofxVal)) {
+            return CONVERTIBLE;
+        } else if ("OTHER".equals(ofxVal)) {
+            return OTHER;
+        } else {
+            return null;
+        }
     }
-  }
 }

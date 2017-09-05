@@ -21,25 +21,33 @@ import com.webcohesion.ofx4j.meta.Element;
 
 /**
  * Client Enrollment option, contains indicator as to whether the account number is required as part of enrollment
+ *
  * @author Scott Priddy
  * @see "Section 8.8 OFX Spec"
  */
-@Aggregate( "CLIENTENROLL" )
+@Aggregate("CLIENTENROLL")
 public class ClientEnrollment {
 
-  private Boolean accountRequired;
+    private Boolean accountRequired;
 
-  /**
-   * Y if account number is required as part of enrollment
-   * @return Boolean
-   */
-  @Element( name = "ACCTREQUIRED", required = true, order = 0)
-  public Boolean getAccountRequired() {
-    return accountRequired;
-  }
+    /**
+     * Y if account number is required as part of enrollment
+     *
+     * @return Boolean
+     */
+    @Element(name = "ACCTREQUIRED", required = true, order = 0)
+    public Boolean getAccountRequired() {
+        return accountRequired;
+    }
 
-  public void setAccountRequired(Boolean accountRequired) {
-    this.accountRequired = accountRequired;
-  }
+    public void setAccountRequired(Boolean accountRequired) {
+        this.accountRequired = accountRequired;
+    }
 
+    @Override
+    public String toString() {
+        return "ClientEnrollment{" +
+                "accountRequired=" + accountRequired +
+                "}";
+    }
 }

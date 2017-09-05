@@ -21,70 +21,80 @@ import com.webcohesion.ofx4j.meta.Element;
 
 /**
  * Transaction for buying options.
- * @see "Section 13.9.2.4.4, OFX Spec"
  *
  * @author Jon Perlow
+ * @see "Section 13.9.2.4.4, OFX Spec"
  */
-@Aggregate( "BUYOPT" )
+@Aggregate("BUYOPT")
 public class BuyOptionTransaction extends BaseBuyInvestmentTransaction {
 
-  private String optionBuyType;
-  private Integer sharesPerContact;
+    private String optionBuyType;
+    private Integer sharesPerContact;
 
-  public BuyOptionTransaction() {
-    super(TransactionType.BUY_OPTION);
-  }
+    public BuyOptionTransaction() {
+        super(TransactionType.BUY_OPTION);
+    }
 
-  /**
-   * Gets the type of option purchase (i.e. "BUYTOOPEN" or "BUYTOCLOSE"). This is a required field
-   * according to the OFX spec.
-   * @see "Section 13.9.2.4.4, OFX Spec"
-   *
-   * @return the option buy type
-   */
-  @Element( name = "OPTBUYTYPE", required = true, order = 20)
-  public String getOptionBuyType() {
-    return optionBuyType;
-  }
+    /**
+     * Gets the type of option purchase (i.e. "BUYTOOPEN" or "BUYTOCLOSE"). This is a required field
+     * according to the OFX spec.
+     *
+     * @return the option buy type
+     * @see "Section 13.9.2.4.4, OFX Spec"
+     */
+    @Element(name = "OPTBUYTYPE", required = true, order = 20)
+    public String getOptionBuyType() {
+        return optionBuyType;
+    }
 
-  /**
-   * Sets the type of option purchase (i.e. "BUYTOOPEN" or "BUYTOCLOSE"). This is a required field
-   * according to the OFX spec.
-   * @see "Section 13.9.2.4.4, OFX Spec"
-   *
-   * @param optionBuyType the option buy type
-   */
-  public void setOptionBuyType(String optionBuyType) {
-    this.optionBuyType = optionBuyType;
-  }
+    /**
+     * Sets the type of option purchase (i.e. "BUYTOOPEN" or "BUYTOCLOSE"). This is a required field
+     * according to the OFX spec.
+     *
+     * @param optionBuyType the option buy type
+     * @see "Section 13.9.2.4.4, OFX Spec"
+     */
+    public void setOptionBuyType(String optionBuyType) {
+        this.optionBuyType = optionBuyType;
+    }
 
-  /**
-   * Gets the option buy type as one of the well-known types.
-   *
-   * @return the type of purchase or null if it's not known
-   */
-  public OptionBuyType getOptionBuyTypeEnum() {
-    return OptionBuyType.fromOfx(optionBuyType);
-  }
+    /**
+     * Gets the option buy type as one of the well-known types.
+     *
+     * @return the type of purchase or null if it's not known
+     */
+    public OptionBuyType getOptionBuyTypeEnum() {
+        return OptionBuyType.fromOfx(optionBuyType);
+    }
 
-  /**
-   * Gets the number of shares per contact. This is a required field according to the OFX spec.
-   * @see "Section 13.9.2.4.4, OFX Spec"
-   *
-   * @return the number of shares per contact
-   */
-  @Element( name = "SHPERCTRCT", required = true, order = 30)
-  public Integer getSharesPerContract() {
-    return sharesPerContact;
-  }
+    /**
+     * Gets the number of shares per contact. This is a required field according to the OFX spec.
+     *
+     * @return the number of shares per contact
+     * @see "Section 13.9.2.4.4, OFX Spec"
+     */
+    @Element(name = "SHPERCTRCT", required = true, order = 30)
+    public Integer getSharesPerContract() {
+        return sharesPerContact;
+    }
 
-  /**
-   * Sets the number of shares per contact. This is a required field according to the OFX spec.
-   * @see "Section 13.9.2.4.4, OFX Spec"
-   *
-   * @param sharesPerContact the number of shares per contact
-   */
-  public void setSharesPerContract(Integer sharesPerContact) {
-    this.sharesPerContact = sharesPerContact;
-  }
+    /**
+     * Sets the number of shares per contact. This is a required field according to the OFX spec.
+     *
+     * @param sharesPerContact the number of shares per contact
+     * @see "Section 13.9.2.4.4, OFX Spec"
+     */
+    public void setSharesPerContract(Integer sharesPerContact) {
+        this.sharesPerContact = sharesPerContact;
+    }
+
+    @Override
+    public String toString() {
+        String inherited = super.toString().replaceFirst("^\\w+\\{", "").replaceAll("}$", "");
+        return "BuyOptionTransaction{" +
+                (inherited.trim().isEmpty() ? "" : (inherited + ", ")) +
+                "optionBuyType='" + optionBuyType + '\'' +
+                ", sharesPerContact=" + sharesPerContact +
+                "}";
+    }
 }

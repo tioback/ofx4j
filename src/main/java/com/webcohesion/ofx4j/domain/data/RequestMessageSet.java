@@ -25,37 +25,44 @@ import java.util.List;
  */
 public abstract class RequestMessageSet implements Comparable<RequestMessageSet> {
 
-  private String version = "1";
+    private String version = "1";
 
-  public abstract MessageSetType getType();
+    public abstract MessageSetType getType();
 
-  /**
-   * The version of this request message.
-   *
-   * @return The version of this request message.
-   */
-  public String getVersion() {
-    return version;
-  }
+    /**
+     * The version of this request message.
+     *
+     * @return The version of this request message.
+     */
+    public String getVersion() {
+        return version;
+    }
 
-  /**
-   * The version of this request message.
-   *
-   * @param version The version of this request message.
-   */
-  public void setVersion(String version) {
-    this.version = version;
-  }
+    /**
+     * The version of this request message.
+     *
+     * @param version The version of this request message.
+     */
+    public void setVersion(String version) {
+        this.version = version;
+    }
 
-  /**
-   * The request messages for this request message set.
-   *
-   * @return The request messages for this request message set.
-   */
-  public abstract List<RequestMessage> getRequestMessages();
+    /**
+     * The request messages for this request message set.
+     *
+     * @return The request messages for this request message set.
+     */
+    public abstract List<RequestMessage> getRequestMessages();
 
-  // Inherited.
-  public int compareTo(RequestMessageSet o) {
-    return getType().compareTo(o.getType());
-  }
+    // Inherited.
+    public int compareTo(RequestMessageSet o) {
+        return getType().compareTo(o.getType());
+    }
+
+    @Override
+    public String toString() {
+        return "RequestMessageSet{" +
+                "version='" + version + '\'' +
+                "}";
+    }
 }

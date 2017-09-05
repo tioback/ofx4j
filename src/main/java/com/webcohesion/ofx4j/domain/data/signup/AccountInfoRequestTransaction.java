@@ -17,38 +17,47 @@
 package com.webcohesion.ofx4j.domain.data.signup;
 
 import com.webcohesion.ofx4j.domain.data.TransactionWrappedRequestMessage;
-import com.webcohesion.ofx4j.meta.ChildAggregate;
 import com.webcohesion.ofx4j.meta.Aggregate;
+import com.webcohesion.ofx4j.meta.ChildAggregate;
 
 /**
  * @author Ryan Heaton
  */
-@Aggregate ( "ACCTINFOTRNRQ" )
+@Aggregate("ACCTINFOTRNRQ")
 public class AccountInfoRequestTransaction extends TransactionWrappedRequestMessage<AccountInfoRequest> {
 
-  private AccountInfoRequest message;
+    private AccountInfoRequest message;
 
-  /**
-   * The wrapped message.
-   *
-   * @return The wrapped message.
-   */
-  @ChildAggregate ( required = true, order = 30 )
-  public AccountInfoRequest getMessage() {
-    return message;
-  }
+    /**
+     * The wrapped message.
+     *
+     * @return The wrapped message.
+     */
+    @ChildAggregate(required = true, order = 30)
+    public AccountInfoRequest getMessage() {
+        return message;
+    }
 
-  /**
-   * The wrapped message.
-   *
-   * @param message The wrapped message.
-   */
-  public void setMessage(AccountInfoRequest message) {
-    this.message = message;
-  }
+    /**
+     * The wrapped message.
+     *
+     * @param message The wrapped message.
+     */
+    public void setMessage(AccountInfoRequest message) {
+        this.message = message;
+    }
 
-  // Inherited.
-  public void setWrappedMessage(AccountInfoRequest message) {
-    setMessage(message);
-  }
+    // Inherited.
+    public void setWrappedMessage(AccountInfoRequest message) {
+        setMessage(message);
+    }
+
+    @Override
+    public String toString() {
+        String inherited = super.toString().replaceFirst("^\\w+\\{", "").replaceAll("}$", "");
+        return "AccountInfoRequestTransaction{" +
+                (inherited.trim().isEmpty() ? "" : (inherited + ", ")) +
+                "message=" + message +
+                "}";
+    }
 }

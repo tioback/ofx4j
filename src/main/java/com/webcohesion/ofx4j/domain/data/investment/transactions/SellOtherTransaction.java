@@ -20,14 +20,22 @@ import com.webcohesion.ofx4j.meta.Aggregate;
 
 /**
  * Transaction for buying other types of securities.
- * @see "Section 13.9.2.4.4, OFX Spec"
  *
  * @author Jon Perlow
+ * @see "Section 13.9.2.4.4, OFX Spec"
  */
-@Aggregate( "SELLOTHER" )
+@Aggregate("SELLOTHER")
 public class SellOtherTransaction extends BaseSellInvestmentTransaction {
 
-  public SellOtherTransaction() {
-    super(TransactionType.SELL_OTHER);
-  }
+    public SellOtherTransaction() {
+        super(TransactionType.SELL_OTHER);
+    }
+
+    @Override
+    public String toString() {
+        String inherited = super.toString().replaceFirst("^\\w+\\{", "").replaceAll("}$", "");
+        return "SellOtherTransaction{" +
+                (inherited.trim().isEmpty() ? "" : (inherited + ", ")) +
+                "}";
+    }
 }

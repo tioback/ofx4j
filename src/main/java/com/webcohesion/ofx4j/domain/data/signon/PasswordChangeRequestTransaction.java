@@ -17,38 +17,47 @@
 package com.webcohesion.ofx4j.domain.data.signon;
 
 import com.webcohesion.ofx4j.domain.data.TransactionWrappedRequestMessage;
-import com.webcohesion.ofx4j.meta.ChildAggregate;
 import com.webcohesion.ofx4j.meta.Aggregate;
+import com.webcohesion.ofx4j.meta.ChildAggregate;
 
 /**
  * @author Ryan Heaton
  */
-@Aggregate ("PINCHTRNRQ")
+@Aggregate("PINCHTRNRQ")
 public class PasswordChangeRequestTransaction extends TransactionWrappedRequestMessage<PasswordChangeRequest> {
 
-  private PasswordChangeRequest message;
+    private PasswordChangeRequest message;
 
-  /**
-   * The wrapped message.
-   *
-   * @return The wrapped message.
-   */
-  @ChildAggregate ( required = true, order = 30 )
-  public PasswordChangeRequest getMessage() {
-    return message;
-  }
+    /**
+     * The wrapped message.
+     *
+     * @return The wrapped message.
+     */
+    @ChildAggregate(required = true, order = 30)
+    public PasswordChangeRequest getMessage() {
+        return message;
+    }
 
-  /**
-   * The wrapped message.
-   *
-   * @param message The wrapped message.
-   */
-  public void setMessage(PasswordChangeRequest message) {
-    this.message = message;
-  }
+    /**
+     * The wrapped message.
+     *
+     * @param message The wrapped message.
+     */
+    public void setMessage(PasswordChangeRequest message) {
+        this.message = message;
+    }
 
-  // Inherited.
-  public void setWrappedMessage(PasswordChangeRequest message) {
-    setMessage(message);
-  }
+    // Inherited.
+    public void setWrappedMessage(PasswordChangeRequest message) {
+        setMessage(message);
+    }
+
+    @Override
+    public String toString() {
+        String inherited = super.toString().replaceFirst("^\\w+\\{", "").replaceAll("}$", "");
+        return "PasswordChangeRequestTransaction{" +
+                (inherited.trim().isEmpty() ? "" : (inherited + ", ")) +
+                "message=" + message +
+                "}";
+    }
 }

@@ -16,8 +16,8 @@
 
 package com.webcohesion.ofx4j.domain.data.profile.info;
 
-import com.webcohesion.ofx4j.domain.data.profile.VersionSpecificMessageSetInfo;
 import com.webcohesion.ofx4j.domain.data.MessageSetType;
+import com.webcohesion.ofx4j.domain.data.profile.VersionSpecificMessageSetInfo;
 import com.webcohesion.ofx4j.domain.data.profile.info.common.TransferProfile;
 import com.webcohesion.ofx4j.meta.Aggregate;
 import com.webcohesion.ofx4j.meta.ChildAggregate;
@@ -25,65 +25,79 @@ import com.webcohesion.ofx4j.meta.Element;
 
 /**
  * Interbank Funds Transfer Message Set Profile
+ *
  * @author Scott Priddy
  * @author Ryan Heaton
  * @see "Section 11.13.4 OFX Spec"
  */
-@Aggregate ( "INTERXFERMSGSETV1" )
+@Aggregate("INTERXFERMSGSETV1")
 public class InterbankTransferV1MessageSetInfo extends VersionSpecificMessageSetInfo {
 
-  private TransferProfile transferProfile;
-  private Boolean supportsBillPay;
-  private Integer cancelWindow;
-  private Double domesticInterbankTransferFee;
-  private Double internationalInterbankTransferFee;
+    private TransferProfile transferProfile;
+    private Boolean supportsBillPay;
+    private Integer cancelWindow;
+    private Double domesticInterbankTransferFee;
+    private Double internationalInterbankTransferFee;
 
-  public MessageSetType getMessageSetType() {
-    return MessageSetType.interbank_transfer;
-  }
+    public MessageSetType getMessageSetType() {
+        return MessageSetType.interbank_transfer;
+    }
 
-  @ChildAggregate( name = "XFERPROF", required = true, order = 10 )
-  public TransferProfile getTransferProfile() {
-    return transferProfile;
-  }
+    @ChildAggregate(name = "XFERPROF", required = true, order = 10)
+    public TransferProfile getTransferProfile() {
+        return transferProfile;
+    }
 
-  public void setTransferProfile(TransferProfile transferProfile) {
-    this.transferProfile = transferProfile;
-  }
+    public void setTransferProfile(TransferProfile transferProfile) {
+        this.transferProfile = transferProfile;
+    }
 
-  @Element( name = "CANBILLPAY", required = true, order = 20 )
-  public Boolean getSupportsBillPay() {
-    return supportsBillPay;
-  }
+    @Element(name = "CANBILLPAY", required = true, order = 20)
+    public Boolean getSupportsBillPay() {
+        return supportsBillPay;
+    }
 
-  public void setSupportsBillPay(Boolean supportsBillPay) {
-    this.supportsBillPay = supportsBillPay;
-  }
+    public void setSupportsBillPay(Boolean supportsBillPay) {
+        this.supportsBillPay = supportsBillPay;
+    }
 
-  @Element( name = "CANCELWND", required = true, order = 30 )
-  public Integer getCancelWindow() {
-    return cancelWindow;
-  }
+    @Element(name = "CANCELWND", required = true, order = 30)
+    public Integer getCancelWindow() {
+        return cancelWindow;
+    }
 
-  public void setCancelWindow(Integer cancelWindow) {
-    this.cancelWindow = cancelWindow;
-  }
+    public void setCancelWindow(Integer cancelWindow) {
+        this.cancelWindow = cancelWindow;
+    }
 
-  @Element( name = "DOMXFERFEE", required = true, order = 40 )
-  public Double getDomesticInterbankTransferFee() {
-    return domesticInterbankTransferFee;
-  }
+    @Element(name = "DOMXFERFEE", required = true, order = 40)
+    public Double getDomesticInterbankTransferFee() {
+        return domesticInterbankTransferFee;
+    }
 
-  public void setDomesticInterbankTransferFee(Double domesticInterbankTransferFee) {
-    this.domesticInterbankTransferFee = domesticInterbankTransferFee;
-  }
+    public void setDomesticInterbankTransferFee(Double domesticInterbankTransferFee) {
+        this.domesticInterbankTransferFee = domesticInterbankTransferFee;
+    }
 
-  @Element( name = "INTLXFERFEE", required = true, order = 50 )
-  public Double getInternationalInterbankTransferFee() {
-    return internationalInterbankTransferFee;
-  }
+    @Element(name = "INTLXFERFEE", required = true, order = 50)
+    public Double getInternationalInterbankTransferFee() {
+        return internationalInterbankTransferFee;
+    }
 
-  public void setInternationalInterbankTransferFee(Double internationalInterbankTransferFee) {
-    this.internationalInterbankTransferFee = internationalInterbankTransferFee;
-  }
+    public void setInternationalInterbankTransferFee(Double internationalInterbankTransferFee) {
+        this.internationalInterbankTransferFee = internationalInterbankTransferFee;
+    }
+
+    @Override
+    public String toString() {
+        String inherited = super.toString().replaceFirst("^\\w+\\{", "").replaceAll("}$", "");
+        return "InterbankTransferV1MessageSetInfo{" +
+                (inherited.trim().isEmpty() ? "" : (inherited + ", ")) +
+                "transferProfile=" + transferProfile +
+                ", supportsBillPay=" + supportsBillPay +
+                ", cancelWindow=" + cancelWindow +
+                ", domesticInterbankTransferFee=" + domesticInterbankTransferFee +
+                ", internationalInterbankTransferFee=" + internationalInterbankTransferFee +
+                "}";
+    }
 }

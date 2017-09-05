@@ -15,11 +15,11 @@
  */
 package com.webcohesion.ofx4j.domain.data.tax1099;
 
-import java.util.List;
-
 import com.webcohesion.ofx4j.domain.data.common.T1099Response;
 import com.webcohesion.ofx4j.meta.Aggregate;
 import com.webcohesion.ofx4j.meta.ChildAggregate;
+
+import java.util.List;
 
 /**
  * @author Aparna Gawali
@@ -28,117 +28,126 @@ import com.webcohesion.ofx4j.meta.ChildAggregate;
 @Aggregate("TAX1099RS")
 public class Tax1099Response extends T1099Response {
 
-	// private Tax1099DIV tax1099div;
-	private List<Tax1099DIV> lstTax1099DIV;
-	
-	private List<Tax1099INT> lstTax1099INT;
-	
-	private List<Tax1099R> lstTax1099R;
-	
-	private List<Tax1099B> lstTax1099B;
-	
-	private List<Tax1099MISC> lstTax1099MISC;
-	
-	private List<Tax1099OID> lstTax1099OID;
+    // private Tax1099DIV tax1099div;
+    private List<Tax1099DIV> lstTax1099DIV;
 
-	/**
-	 * @return the lstTax1099DIV
-	 */
-	@ChildAggregate(required = false, order = 0)
-	public List<Tax1099DIV> getLstTax1099DIV() {
-		return lstTax1099DIV;
-	}
+    private List<Tax1099INT> lstTax1099INT;
 
-	/**
-	 * @param lstTax1099DIV
-	 *            the lstTax1099DIV to set
-	 */
-	public void setLstTax1099DIV(List<Tax1099DIV> lstTax1099DIV) {
-		this.lstTax1099DIV = lstTax1099DIV;
-	}
+    private List<Tax1099R> lstTax1099R;
 
-	
+    private List<Tax1099B> lstTax1099B;
 
-	public String getResponseMessageName() {
-		return "1099 Tax details";
-	}
+    private List<Tax1099MISC> lstTax1099MISC;
 
-	/**
-	 * @return the lstTax1099INT
-	 */
-	@ChildAggregate(required = false, order = 1)
-	public List<Tax1099INT> getLstTax1099INT() {
-		return lstTax1099INT;
-	}
+    private List<Tax1099OID> lstTax1099OID;
 
-	/**
-	 * @param lstTax1099INT the lstTax1099INT to set
-	 */
-	public void setLstTax1099INT(List<Tax1099INT> lstTax1099INT) {
-		this.lstTax1099INT = lstTax1099INT;
-	}
+    /**
+     * @return the lstTax1099DIV
+     */
+    @ChildAggregate(required = false, order = 0)
+    public List<Tax1099DIV> getLstTax1099DIV() {
+        return lstTax1099DIV;
+    }
 
-	/**
-	 * @return the lstTax1099R
-	 */
-	@ChildAggregate(required = false, order = 2)
-	public List<Tax1099R> getLstTax1099R() {
-		return lstTax1099R;
-	}
+    /**
+     * @param lstTax1099DIV the lstTax1099DIV to set
+     */
+    public void setLstTax1099DIV(List<Tax1099DIV> lstTax1099DIV) {
+        this.lstTax1099DIV = lstTax1099DIV;
+    }
 
-	/**
-	 * @param lstTax1099R the lstTax1099R to set
-	 */
-	public void setLstTax1099R(List<Tax1099R> lstTax1099R) {
-		this.lstTax1099R = lstTax1099R;
-	}
 
-	/**
-	 * @return the lstTax1099B
-	 */
-	@ChildAggregate(required = false, order = 3)
-	public List<Tax1099B> getLstTax1099B() {
-		return lstTax1099B;
-	}
+    public String getResponseMessageName() {
+        return "1099 Tax details";
+    }
 
-	/**
-	 * @param lstTax1099B the lstTax1099B to set
-	 */
-	public void setLstTax1099B(List<Tax1099B> lstTax1099B) {
-		this.lstTax1099B = lstTax1099B;
-	}
+    /**
+     * @return the lstTax1099INT
+     */
+    @ChildAggregate(required = false, order = 1)
+    public List<Tax1099INT> getLstTax1099INT() {
+        return lstTax1099INT;
+    }
 
-	/**
-	 * @return the lstTax1099MISC
-	 */
-	@ChildAggregate(required = false, order = 4)
-	public List<Tax1099MISC> getLstTax1099MISC() {
-		return lstTax1099MISC;
-	}
+    /**
+     * @param lstTax1099INT the lstTax1099INT to set
+     */
+    public void setLstTax1099INT(List<Tax1099INT> lstTax1099INT) {
+        this.lstTax1099INT = lstTax1099INT;
+    }
 
-	/**
-	 * @param lstTax1099MISC the lstTax1099MISC to set
-	 */
-	public void setLstTax1099MISC(List<Tax1099MISC> lstTax1099MISC) {
-		this.lstTax1099MISC = lstTax1099MISC;
-	}
+    /**
+     * @return the lstTax1099R
+     */
+    @ChildAggregate(required = false, order = 2)
+    public List<Tax1099R> getLstTax1099R() {
+        return lstTax1099R;
+    }
 
-	/**
-	 * @return the lstTax1099OID
-	 */
-	@ChildAggregate(required = false, order =5)
-	public List<Tax1099OID> getLstTax1099OID() {
-		return lstTax1099OID;
-	}
+    /**
+     * @param lstTax1099R the lstTax1099R to set
+     */
+    public void setLstTax1099R(List<Tax1099R> lstTax1099R) {
+        this.lstTax1099R = lstTax1099R;
+    }
 
-	/**
-	 * @param lstTax1099OID the lstTax1099OID to set
-	 */
-	public void setLstTax1099OID(List<Tax1099OID> lstTax1099OID) {
-		this.lstTax1099OID = lstTax1099OID;
-	}
-	
-	
-	
+    /**
+     * @return the lstTax1099B
+     */
+    @ChildAggregate(required = false, order = 3)
+    public List<Tax1099B> getLstTax1099B() {
+        return lstTax1099B;
+    }
 
+    /**
+     * @param lstTax1099B the lstTax1099B to set
+     */
+    public void setLstTax1099B(List<Tax1099B> lstTax1099B) {
+        this.lstTax1099B = lstTax1099B;
+    }
+
+    /**
+     * @return the lstTax1099MISC
+     */
+    @ChildAggregate(required = false, order = 4)
+    public List<Tax1099MISC> getLstTax1099MISC() {
+        return lstTax1099MISC;
+    }
+
+    /**
+     * @param lstTax1099MISC the lstTax1099MISC to set
+     */
+    public void setLstTax1099MISC(List<Tax1099MISC> lstTax1099MISC) {
+        this.lstTax1099MISC = lstTax1099MISC;
+    }
+
+    /**
+     * @return the lstTax1099OID
+     */
+    @ChildAggregate(required = false, order = 5)
+    public List<Tax1099OID> getLstTax1099OID() {
+        return lstTax1099OID;
+    }
+
+    /**
+     * @param lstTax1099OID the lstTax1099OID to set
+     */
+    public void setLstTax1099OID(List<Tax1099OID> lstTax1099OID) {
+        this.lstTax1099OID = lstTax1099OID;
+    }
+
+
+    @Override
+    public String toString() {
+        String inherited = super.toString().replaceFirst("^\\w+\\{", "").replaceAll("}$", "");
+        return "Tax1099Response{" +
+                (inherited.trim().isEmpty() ? "" : (inherited + ", ")) +
+                "lstTax1099DIV=" + lstTax1099DIV +
+                ", lstTax1099INT=" + lstTax1099INT +
+                ", lstTax1099R=" + lstTax1099R +
+                ", lstTax1099B=" + lstTax1099B +
+                ", lstTax1099MISC=" + lstTax1099MISC +
+                ", lstTax1099OID=" + lstTax1099OID +
+                "}";
+    }
 }

@@ -21,73 +21,83 @@ import com.webcohesion.ofx4j.meta.Element;
 
 /**
  * Transaction for buying mutual funds.
- * @see "Section 13.9.2.4.4, OFX Spec"
  *
  * @author Jon Perlow
+ * @see "Section 13.9.2.4.4, OFX Spec"
  */
-@Aggregate( "BUYMF" )
+@Aggregate("BUYMF")
 public class BuyMutualFundTransaction extends BaseBuyInvestmentTransaction {
 
-  private String buyType;
-  private String relatedTransactionId;
+    private String buyType;
+    private String relatedTransactionId;
 
-  public BuyMutualFundTransaction() {
-    super(TransactionType.BUY_MUTUAL_FUND);
-  }
+    public BuyMutualFundTransaction() {
+        super(TransactionType.BUY_MUTUAL_FUND);
+    }
 
 
-  /**
-   * Gets the type of purchase (i.e. "BUY" or "BUYTOCOVER"). This is a required field according to
-   * the OFX spec.
-   * @see "Section 13.9.2.4.4, OFX Spec"
-   *
-   * @return the buy type
-   */
-  @Element( name = "BUYTYPE", required = true, order = 20)
-  public String getBuyType() {
-    return buyType;
-  }
+    /**
+     * Gets the type of purchase (i.e. "BUY" or "BUYTOCOVER"). This is a required field according to
+     * the OFX spec.
+     *
+     * @return the buy type
+     * @see "Section 13.9.2.4.4, OFX Spec"
+     */
+    @Element(name = "BUYTYPE", required = true, order = 20)
+    public String getBuyType() {
+        return buyType;
+    }
 
-  /**
-   * Sets the type of purchase (i.e. "BUY" or "BUYTOCOVER"). This is a required field according to
-   * the OFX spec.
-   * @see "Section 13.9.2.4.4, OFX Spec"
-   *
-   * @param buyType the buy type
-   */
-  public void setBuyType(String buyType) {
-    this.buyType = buyType;
-  }
+    /**
+     * Sets the type of purchase (i.e. "BUY" or "BUYTOCOVER"). This is a required field according to
+     * the OFX spec.
+     *
+     * @param buyType the buy type
+     * @see "Section 13.9.2.4.4, OFX Spec"
+     */
+    public void setBuyType(String buyType) {
+        this.buyType = buyType;
+    }
 
-  /**
-   * Gets the buy type as one of the well-known types.
-   *
-   * @return the type of purchase or null if it's not known
-   */
-  public BuyType getBuyTypeEnum() {
-    return BuyType.fromOfx(buyType);
-  }
+    /**
+     * Gets the buy type as one of the well-known types.
+     *
+     * @return the type of purchase or null if it's not known
+     */
+    public BuyType getBuyTypeEnum() {
+        return BuyType.fromOfx(buyType);
+    }
 
-  /**
-   * Gets any related transaction id for a mutual fund purchase (e.g. for a mutual fund exchange).
-   * This is an optional field according to the OFX spec.
-   * @see "Section 13.9.2.4.4, OFX Spec"
-   *
-   * @return the related transaction id
-   */
-  @Element( name = "RELFITID", order = 30)
-  public String getRelatedTransactionId() {
-    return relatedTransactionId;
-  }
+    /**
+     * Gets any related transaction id for a mutual fund purchase (e.g. for a mutual fund exchange).
+     * This is an optional field according to the OFX spec.
+     *
+     * @return the related transaction id
+     * @see "Section 13.9.2.4.4, OFX Spec"
+     */
+    @Element(name = "RELFITID", order = 30)
+    public String getRelatedTransactionId() {
+        return relatedTransactionId;
+    }
 
-  /**
-   * Sets any related transaction id for a mutual fund purchase (e.g. for a mutual fund exchange).
-   * This is an optional field according to the OFX spec.
-   * @see "Section 13.9.2.4.4, OFX Spec"
-   *
-   * @param relatedTransactionId the related transaction id
-   */
-  public void setRelatedTransactionId(String relatedTransactionId) {
-    this.relatedTransactionId = relatedTransactionId;
-  }
+    /**
+     * Sets any related transaction id for a mutual fund purchase (e.g. for a mutual fund exchange).
+     * This is an optional field according to the OFX spec.
+     *
+     * @param relatedTransactionId the related transaction id
+     * @see "Section 13.9.2.4.4, OFX Spec"
+     */
+    public void setRelatedTransactionId(String relatedTransactionId) {
+        this.relatedTransactionId = relatedTransactionId;
+    }
+
+    @Override
+    public String toString() {
+        String inherited = super.toString().replaceFirst("^\\w+\\{", "").replaceAll("}$", "");
+        return "BuyMutualFundTransaction{" +
+                (inherited.trim().isEmpty() ? "" : (inherited + ", ")) +
+                "buyType='" + buyType + '\'' +
+                ", relatedTransactionId='" + relatedTransactionId + '\'' +
+                "}";
+    }
 }

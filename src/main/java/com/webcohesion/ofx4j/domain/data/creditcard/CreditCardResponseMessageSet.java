@@ -16,75 +16,84 @@
 
 package com.webcohesion.ofx4j.domain.data.creditcard;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 import com.webcohesion.ofx4j.domain.data.MessageSetType;
 import com.webcohesion.ofx4j.domain.data.ResponseMessage;
 import com.webcohesion.ofx4j.domain.data.ResponseMessageSet;
 import com.webcohesion.ofx4j.meta.Aggregate;
 import com.webcohesion.ofx4j.meta.ChildAggregate;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 /**
  * @author Ryan Heaton
  */
-@Aggregate ( "CREDITCARDMSGSRSV1" )
+@Aggregate("CREDITCARDMSGSRSV1")
 public class CreditCardResponseMessageSet extends ResponseMessageSet {
 
-  private List<CreditCardStatementResponseTransaction> statementResponses;
+    private List<CreditCardStatementResponseTransaction> statementResponses;
 
-  public MessageSetType getType() {
-    return MessageSetType.creditcard;
-  }
+    public MessageSetType getType() {
+        return MessageSetType.creditcard;
+    }
 
-  /**
-   * The statement response list.
-   *
-   * Most OFX files have a single statement response, except MT2OFX
-   * which outputs OFX with multiple statement responses
-   * in a single banking response message set.
-   *
-   * @return The statement response list.
-   */
-  @ChildAggregate ( order = 0 )
-  public List<CreditCardStatementResponseTransaction> getStatementResponses() {
-    return statementResponses;
-  }
-
-
-  /**
-   * The statement reponse list.
-   *
-   * @param statementResponses The statement response list.
-   */
-  public void setStatementResponses(List<CreditCardStatementResponseTransaction> statementResponses) {
-    this.statementResponses = statementResponses;
-  }
+    /**
+     * The statement response list.
+     * <p>
+     * Most OFX files have a single statement response, except MT2OFX
+     * which outputs OFX with multiple statement responses
+     * in a single banking response message set.
+     *
+     * @return The statement response list.
+     */
+    @ChildAggregate(order = 0)
+    public List<CreditCardStatementResponseTransaction> getStatementResponses() {
+        return statementResponses;
+    }
 
 
-  /**
-   * The first statement response.
-   *
-   * @return the first bank statement response.
-   * @deprecated Use getStatementResponses() because sometimes there are multiple responses
-   */
-  public CreditCardStatementResponseTransaction getStatementResponse() {
-    return statementResponses == null || statementResponses.isEmpty() ? null : statementResponses.get(0);
-  }
-
-  /**
-   * The statement response.
-   *
-   * @param statementResponse The statement response.
-   */
-  public void setStatementResponse(CreditCardStatementResponseTransaction statementResponse) {
-    this.statementResponses = Collections.singletonList(statementResponse);
-  }
+    /**
+     * The statement reponse list.
+     *
+     * @param statementResponses The statement response list.
+     */
+    public void setStatementResponses(List<CreditCardStatementResponseTransaction> statementResponses) {
+        this.statementResponses = statementResponses;
+    }
 
 
-  // Inherited.
-  public List<ResponseMessage> getResponseMessages() {
-    return new ArrayList<ResponseMessage>(statementResponses);
-  }
+    /**
+     * The first statement response.
+     *
+     * @return the first bank statement response.
+     * @deprecated Use getStatementResponses() because sometimes there are multiple responses
+     */
+    public CreditCardStatementResponseTransaction getStatementResponse() {
+        return statementResponses == null || statementResponses.isEmpty() ? null : statementResponses.get(0);
+    }
+
+    /**
+     * The statement response.
+     *
+     * @param statementResponse The statement response.
+     */
+    public void setStatementResponse(CreditCardStatementResponseTransaction statementResponse) {
+        this.statementResponses = Collections.singletonList(statementResponse);
+    }
+
+
+    // Inherited.
+    public List<ResponseMessage> getResponseMessages() {
+        return new ArrayList<ResponseMessage>(statementResponses);
+    }
+
+    @Override
+    public String toString() {
+        String inherited = super.toString().replaceFirst("^\\w+\\{", "").replaceAll("}$", "");
+        return "CreditCardResponseMessageSet{" +
+                (inherited.trim().isEmpty() ? "" : (inherited + ", ")) +
+                "statementResponses=" + statementResponses +
+                '}';
+    }
 }

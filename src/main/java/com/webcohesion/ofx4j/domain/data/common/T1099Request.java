@@ -25,6 +25,8 @@ import com.webcohesion.ofx4j.meta.Aggregate;
  */
 @Aggregate ( "STMTRQ" )
 public class T1099Request extends RequestMessage {
-
-  
+    @Override
+    public String toString() {
+        return "T1099Request{}";
+    }
 }

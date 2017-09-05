@@ -21,39 +21,48 @@ import com.webcohesion.ofx4j.meta.Element;
 
 /**
  * Transaction for buying debt (i.e. bonds, CDs, etc.,).
- * @see "Section 13.9.2.4.4, OFX Spec"
  *
  * @author Jon Perlow
+ * @see "Section 13.9.2.4.4, OFX Spec"
  */
-@Aggregate( "BUYDEBT" )
+@Aggregate("BUYDEBT")
 public class BuyDebtTransaction extends BaseBuyInvestmentTransaction {
 
-  private Double accruedInterest;
+    private Double accruedInterest;
 
-  public BuyDebtTransaction() {
-    super(TransactionType.BUY_DEBT);
-  }
+    public BuyDebtTransaction() {
+        super(TransactionType.BUY_DEBT);
+    }
 
-  /**
-   * Gets the amount of accrued interest on the debt. This is an optional field according to the
-   * OFX spec.
-   * @see "Section 13.9.2.4.4, OFX Spec"
-   *
-   * @return the amount of accrued interest
-   */
-  @Element( name = "ACCRDINT", order = 20)
-  public Double getAccruedInterest() {
-    return accruedInterest;
-  }
+    /**
+     * Gets the amount of accrued interest on the debt. This is an optional field according to the
+     * OFX spec.
+     *
+     * @return the amount of accrued interest
+     * @see "Section 13.9.2.4.4, OFX Spec"
+     */
+    @Element(name = "ACCRDINT", order = 20)
+    public Double getAccruedInterest() {
+        return accruedInterest;
+    }
 
-  /**
-   * Sets the amount of accrued interest on the debt. This is an optional field according to the
-   * OFX spec.
-   * @see "Section 13.9.2.4.4, OFX Spec"
-   *
-   * @param accruedInterest the amount of accrued interest
-   */
-  public void setAccruedInterest(Double accruedInterest) {
-    this.accruedInterest = accruedInterest;
-  }
+    /**
+     * Sets the amount of accrued interest on the debt. This is an optional field according to the
+     * OFX spec.
+     *
+     * @param accruedInterest the amount of accrued interest
+     * @see "Section 13.9.2.4.4, OFX Spec"
+     */
+    public void setAccruedInterest(Double accruedInterest) {
+        this.accruedInterest = accruedInterest;
+    }
+
+    @Override
+    public String toString() {
+        String inherited = super.toString().replaceFirst("^\\w+\\{", "").replaceAll("}$", "");
+        return "BuyDebtTransaction{" +
+                (inherited.trim().isEmpty() ? "" : (inherited + ", ")) +
+                "accruedInterest=" + accruedInterest +
+                "}";
+    }
 }

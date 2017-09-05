@@ -21,48 +21,57 @@ import com.webcohesion.ofx4j.meta.Element;
 
 /**
  * Transaction for buying stock.
- * @see "Section 13.9.2.4.4, OFX Spec"
  *
  * @author Jon Perlow
+ * @see "Section 13.9.2.4.4, OFX Spec"
  */
-@Aggregate( "BUYSTOCK" )
+@Aggregate("BUYSTOCK")
 public class BuyStockTransaction extends BaseBuyInvestmentTransaction {
 
-  private String buyType;
+    private String buyType;
 
-  public BuyStockTransaction() {
-    super(TransactionType.BUY_STOCK);
-  }
+    public BuyStockTransaction() {
+        super(TransactionType.BUY_STOCK);
+    }
 
-  /**
-   * Gets the type of stock purchase (i.e. "BUY" or "BUYTOCOVER"). This is a required field
-   * according to the OFX spec.
-   * @see "Section 13.9.2.4.4, OFX Spec"
-   *
-   * @return the buy type
-   */
-  @Element( name = "BUYTYPE", required = true, order = 20)
-  public String getBuyType() {
-    return buyType;
-  }
+    /**
+     * Gets the type of stock purchase (i.e. "BUY" or "BUYTOCOVER"). This is a required field
+     * according to the OFX spec.
+     *
+     * @return the buy type
+     * @see "Section 13.9.2.4.4, OFX Spec"
+     */
+    @Element(name = "BUYTYPE", required = true, order = 20)
+    public String getBuyType() {
+        return buyType;
+    }
 
-  /**
-   * Sets the type of stock purchase (i.e. "BUY" or "BUYTOCOVER"). This is a required field
-   * according to the OFX spec.
-   * @see "Section 13.9.2.4.4, OFX Spec"
-   *
-   * @param buyType the buy type
-   */
-  public void setBuyType(String buyType) {
-    this.buyType = buyType;
-  }
+    /**
+     * Sets the type of stock purchase (i.e. "BUY" or "BUYTOCOVER"). This is a required field
+     * according to the OFX spec.
+     *
+     * @param buyType the buy type
+     * @see "Section 13.9.2.4.4, OFX Spec"
+     */
+    public void setBuyType(String buyType) {
+        this.buyType = buyType;
+    }
 
-  /**
-   * Gets the buy type as one of the well-known types.
-   *
-   * @return the type of purchase or null if it's not well known
-   */
-  public BuyType getBuyTypeEnum() {
-    return BuyType.fromOfx(buyType);
-  }
+    /**
+     * Gets the buy type as one of the well-known types.
+     *
+     * @return the type of purchase or null if it's not well known
+     */
+    public BuyType getBuyTypeEnum() {
+        return BuyType.fromOfx(buyType);
+    }
+
+    @Override
+    public String toString() {
+        String inherited = super.toString().replaceFirst("^\\w+\\{", "").replaceAll("}$", "");
+        return "BuyStockTransaction{" +
+                (inherited.trim().isEmpty() ? "" : (inherited + ", ")) +
+                "buyType='" + buyType + '\'' +
+                "}";
+    }
 }

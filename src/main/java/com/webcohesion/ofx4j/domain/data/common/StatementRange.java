@@ -87,4 +87,13 @@ public class StatementRange {
   public void setIncludeTransactions(Boolean includeTransactions) {
     this.includeTransactions = includeTransactions;
   }
+
+  @Override
+  public String toString() {
+    return "StatementRange{" +
+            "start=" + start +
+            ", end=" + end +
+            ", includeTransactions=" + includeTransactions +
+            '}';
+  }
 }

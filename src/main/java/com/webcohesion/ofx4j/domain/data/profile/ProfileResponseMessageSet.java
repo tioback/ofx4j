@@ -17,54 +17,63 @@
 package com.webcohesion.ofx4j.domain.data.profile;
 
 import com.webcohesion.ofx4j.domain.data.MessageSetType;
-import com.webcohesion.ofx4j.domain.data.ResponseMessageSet;
 import com.webcohesion.ofx4j.domain.data.ResponseMessage;
-import com.webcohesion.ofx4j.meta.ChildAggregate;
+import com.webcohesion.ofx4j.domain.data.ResponseMessageSet;
 import com.webcohesion.ofx4j.meta.Aggregate;
+import com.webcohesion.ofx4j.meta.ChildAggregate;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Ryan Heaton
  * @see "Section 7 OFX Spec"
  */
-@Aggregate ("PROFMSGSRSV1")
+@Aggregate("PROFMSGSRSV1")
 public class ProfileResponseMessageSet extends ResponseMessageSet {
 
-  private ProfileResponseTransaction profileResponse;
+    private ProfileResponseTransaction profileResponse;
 
-  public MessageSetType getType() {
-    return MessageSetType.profile;
-  }
-
-  /**
-   * The profile response.
-   *
-   * @return The profile response.
-   */
-  @ChildAggregate ( required = true, order = 0 )
-  public ProfileResponseTransaction getProfileResponse() {
-    return profileResponse;
-  }
-
-  /**
-   * The profile response.
-   *
-   * @param profileResponse The profile response.
-   */
-  public void setProfileResponse(ProfileResponseTransaction profileResponse) {
-    this.profileResponse = profileResponse;
-  }
-
-  // Inherited.
-  public List<ResponseMessage> getResponseMessages() {
-    ArrayList<ResponseMessage> messages = new ArrayList<ResponseMessage>();
-
-    if (getProfileResponse() != null) {
-      messages.add(getProfileResponse());
+    public MessageSetType getType() {
+        return MessageSetType.profile;
     }
 
-    return messages;
-  }
+    /**
+     * The profile response.
+     *
+     * @return The profile response.
+     */
+    @ChildAggregate(required = true, order = 0)
+    public ProfileResponseTransaction getProfileResponse() {
+        return profileResponse;
+    }
+
+    /**
+     * The profile response.
+     *
+     * @param profileResponse The profile response.
+     */
+    public void setProfileResponse(ProfileResponseTransaction profileResponse) {
+        this.profileResponse = profileResponse;
+    }
+
+    // Inherited.
+    public List<ResponseMessage> getResponseMessages() {
+        ArrayList<ResponseMessage> messages = new ArrayList<ResponseMessage>();
+
+        if (getProfileResponse() != null) {
+            messages.add(getProfileResponse());
+        }
+
+        return messages;
+    }
+
+    @Override
+    public String toString() {
+        String inherited = super.toString().replaceFirst("^\\w+\\{", "").replaceAll("}$", "");
+        return "ProfileResponseMessageSet{" +
+                (inherited.trim().isEmpty() ? "" : (inherited + ", ")) +
+                "profileResponse=" + profileResponse +
+                "}";
+    }
 }

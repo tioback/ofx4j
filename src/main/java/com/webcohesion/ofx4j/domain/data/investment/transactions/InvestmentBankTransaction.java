@@ -24,60 +24,70 @@ import com.webcohesion.ofx4j.meta.Element;
 
 /**
  * Bank transactions that are part of an investment account statement. Wraps a {@link Transaction}.
- * @see "Section 13.9.2.3, OFX Spec"
  *
  * @author Jon Perlow
+ * @see "Section 13.9.2.3, OFX Spec"
  */
-@Aggregate( "INVBANKTRAN" )
+@Aggregate("INVBANKTRAN")
 public class InvestmentBankTransaction {
 
-  private Transaction transaction;
-  private String subAccountFund;
+    private Transaction transaction;
+    private String subAccountFund;
 
-  /**
-   * Gets the wrapped transaction aggregate.
-   * @return the wrapped transaction
-   */
-  @ChildAggregate( order = 10 )
-  public Transaction getTransaction() {
-    return transaction;
-  }
+    /**
+     * Gets the wrapped transaction aggregate.
+     *
+     * @return the wrapped transaction
+     */
+    @ChildAggregate(order = 10)
+    public Transaction getTransaction() {
+        return transaction;
+    }
 
-  /**
-   * Sets the wrapped transaction aggregate.
-   * @param transaction the wrapped transaction
-   */
-  public void setTransaction(Transaction transaction) {
-    this.transaction = transaction;
-  }
+    /**
+     * Sets the wrapped transaction aggregate.
+     *
+     * @param transaction the wrapped transaction
+     */
+    public void setTransaction(Transaction transaction) {
+        this.transaction = transaction;
+    }
 
-  /**
-   * Gets the sub account type that the security is from (e.g. CASH, MARGIN, SHORT, OTHER).
-   * @see "Section 13.9.2.4.2, OFX Spec"
-   *
-   * @return the sub account fund for the transaction
-   */
-  @Element( name = "SUBACCTFUND", required = true, order = 20)
-  public String getSubAccountFund() {
-    return subAccountFund;
-  }
+    /**
+     * Gets the sub account type that the security is from (e.g. CASH, MARGIN, SHORT, OTHER).
+     *
+     * @return the sub account fund for the transaction
+     * @see "Section 13.9.2.4.2, OFX Spec"
+     */
+    @Element(name = "SUBACCTFUND", required = true, order = 20)
+    public String getSubAccountFund() {
+        return subAccountFund;
+    }
 
-  /**
-   * Sets the sub account type that the security is from (e.g. CASH, MARGIN, SHORT, OTHER).
-   * @see "Section 13.9.2.4.2, OFX Spec"
-   *
-   * @param subAccountFund the sub account fund for the transaction
-   */
-  public void setSubAccountFund(String subAccountFund) {
-    this.subAccountFund = subAccountFund;
-  }
+    /**
+     * Sets the sub account type that the security is from (e.g. CASH, MARGIN, SHORT, OTHER).
+     *
+     * @param subAccountFund the sub account fund for the transaction
+     * @see "Section 13.9.2.4.2, OFX Spec"
+     */
+    public void setSubAccountFund(String subAccountFund) {
+        this.subAccountFund = subAccountFund;
+    }
 
-  /**
-   * Gets the result of getSubAccountFund as one of the well-known types.
-   *
-   * @return the type of null if it wasn't one of the well known types
-   */
-  public SubAccountType getSubAccountFundEnum() {
-    return SubAccountType.fromOfx(getSubAccountFund());
-  }
+    /**
+     * Gets the result of getSubAccountFund as one of the well-known types.
+     *
+     * @return the type of null if it wasn't one of the well known types
+     */
+    public SubAccountType getSubAccountFundEnum() {
+        return SubAccountType.fromOfx(getSubAccountFund());
+    }
+
+    @Override
+    public String toString() {
+        return "InvestmentBankTransaction{" +
+                "transaction=" + transaction +
+                ", subAccountFund='" + subAccountFund + '\'' +
+                "}";
+    }
 }

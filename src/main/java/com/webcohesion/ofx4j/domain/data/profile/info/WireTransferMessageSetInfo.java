@@ -23,17 +23,26 @@ import com.webcohesion.ofx4j.meta.ChildAggregate;
 /**
  * @author Ryan Heaton
  */
-@Aggregate ( "WIREXFERMSGSET" )
+@Aggregate("WIREXFERMSGSET")
 public class WireTransferMessageSetInfo extends AbstractMessageSetInfo {
 
-  private WireTransferV1MessageSetInfo version1Info;
+    private WireTransferV1MessageSetInfo version1Info;
 
-  @ChildAggregate ( order = 0 )
-  public WireTransferV1MessageSetInfo getVersion1Info() {
-    return version1Info;
-  }
+    @ChildAggregate(order = 0)
+    public WireTransferV1MessageSetInfo getVersion1Info() {
+        return version1Info;
+    }
 
-  public void setVersion1Info(WireTransferV1MessageSetInfo version1Info) {
-    this.version1Info = version1Info;
-  }
+    public void setVersion1Info(WireTransferV1MessageSetInfo version1Info) {
+        this.version1Info = version1Info;
+    }
+
+    @Override
+    public String toString() {
+        String inherited = super.toString().replaceFirst("^\\w+\\{", "").replaceAll("}$", "");
+        return "WireTransferMessageSetInfo{" +
+                (inherited.trim().isEmpty() ? "" : (inherited + ", ")) +
+                "version1Info=" + version1Info +
+                "}";
+    }
 }

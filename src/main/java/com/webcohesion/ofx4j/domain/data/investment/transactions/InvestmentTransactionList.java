@@ -25,92 +25,102 @@ import java.util.List;
 
 /**
  * The transaction list aggregate.
- * @see "Section 13.9.1.2, OFX Spec"
  *
  * @author Jon Perlow
+ * @see "Section 13.9.1.2, OFX Spec"
  */
-@Aggregate( "INVTRANLIST" )
+@Aggregate("INVTRANLIST")
 public class InvestmentTransactionList {
-  private Date start;
-  private Date end;
-  private List<BaseInvestmentTransaction> transactions;
-  private List<InvestmentBankTransaction> bankTransactions;
+    private Date start;
+    private Date end;
+    private List<BaseInvestmentTransaction> transactions;
+    private List<InvestmentBankTransaction> bankTransactions;
 
-  /**
-   * Gets the start date. This is a required field according to the OFX spec.
-   *
-   * @return The start date
-   */
-  @Element( name = "DTSTART", required = true, order = 0)
-  public Date getStart() {
-    return start;
-  }
+    /**
+     * Gets the start date. This is a required field according to the OFX spec.
+     *
+     * @return The start date
+     */
+    @Element(name = "DTSTART", required = true, order = 0)
+    public Date getStart() {
+        return start;
+    }
 
-  /**
-   * Sets the start date. This is a required field according to the OFX spec.
-   *
-   * @param start The start date
-   */
-  public void setStart(Date start) {
-    this.start = start;
-  }
+    /**
+     * Sets the start date. This is a required field according to the OFX spec.
+     *
+     * @param start The start date
+     */
+    public void setStart(Date start) {
+        this.start = start;
+    }
 
-  /**
-   * Gets the end date. This is a required field according to the OFX spec.
-   *
-   * @return he end date
-   */
-  @Element( name = "DTEND", required = true, order = 10 )
-  public Date getEnd() {
-    return end;
-  }
+    /**
+     * Gets the end date. This is a required field according to the OFX spec.
+     *
+     * @return he end date
+     */
+    @Element(name = "DTEND", required = true, order = 10)
+    public Date getEnd() {
+        return end;
+    }
 
-  /**
-   * Sets the end date. This is a required field according to the OFX spec.
-   *
-   * @param end the end date
-   */
-  public void setEnd(Date end) {
-    this.end = end;
-  }
+    /**
+     * Sets the end date. This is a required field according to the OFX spec.
+     *
+     * @param end the end date
+     */
+    public void setEnd(Date end) {
+        this.end = end;
+    }
 
-  /**
-   * Gets the investment transaction list. This is a heterogenous list of different types of
-   * transactions returned in the order the brokerage provides them.
-   *
-   * @return the investment transaction list
-   */
-  @ChildAggregate( order = 20 )
-  public List<BaseInvestmentTransaction> getInvestmentTransactions() {
-    return transactions;
-  }
+    /**
+     * Gets the investment transaction list. This is a heterogenous list of different types of
+     * transactions returned in the order the brokerage provides them.
+     *
+     * @return the investment transaction list
+     */
+    @ChildAggregate(order = 20)
+    public List<BaseInvestmentTransaction> getInvestmentTransactions() {
+        return transactions;
+    }
 
-  /**
-   * Sets the investment transaction list. This is a heterogenous list of different types of
-   * transactions returned in the order the brokerage provides them.
-   *
-   * @param transactions the investment transaction list
-   */
-  public void setInvestmentTransactions(List<BaseInvestmentTransaction> transactions) {
-    this.transactions = transactions;
-  }
+    /**
+     * Sets the investment transaction list. This is a heterogenous list of different types of
+     * transactions returned in the order the brokerage provides them.
+     *
+     * @param transactions the investment transaction list
+     */
+    public void setInvestmentTransactions(List<BaseInvestmentTransaction> transactions) {
+        this.transactions = transactions;
+    }
 
-  /**
-   * Gets the bank transaction list.
-   *
-   * @return the bank transaction list
-   */
-  @ChildAggregate( order = 30 )
-  public List<InvestmentBankTransaction> getBankTransactions() {
-    return bankTransactions;
-  }
+    /**
+     * Gets the bank transaction list.
+     *
+     * @return the bank transaction list
+     */
+    @ChildAggregate(order = 30)
+    public List<InvestmentBankTransaction> getBankTransactions() {
+        return bankTransactions;
+    }
 
-  /**
-   * Sets the bank transaction list.
-   *
-   * @param bankTransactions the bank transaction list
-   */
-  public void setBankTransactions(List<InvestmentBankTransaction> bankTransactions) {
-    this.bankTransactions = bankTransactions;
-  }
+    /**
+     * Sets the bank transaction list.
+     *
+     * @param bankTransactions the bank transaction list
+     */
+    public void setBankTransactions(List<InvestmentBankTransaction> bankTransactions) {
+        this.bankTransactions = bankTransactions;
+    }
+
+    @Override
+    public String toString() {
+        return "InvestmentTransactionList{" +
+                "start=" + start +
+                ", end=" + end +
+                ", transactions=" + transactions +
+                ", bankTransactions=" + bankTransactions +
+                "}";
+    }
 }

@@ -21,48 +21,57 @@ import com.webcohesion.ofx4j.meta.Element;
 
 /**
  * Transaction for selling stock.
- * @see "Section 13.9.2.4.4, OFX Spec"
  *
  * @author Jon Perlow
+ * @see "Section 13.9.2.4.4, OFX Spec"
  */
-@Aggregate( "SELLSTOCK" )
+@Aggregate("SELLSTOCK")
 public class SellStockTransaction extends BaseSellInvestmentTransaction {
 
-  private String sellType;
+    private String sellType;
 
-  public SellStockTransaction() {
-    super(TransactionType.SELL_STOCK);
-  }
+    public SellStockTransaction() {
+        super(TransactionType.SELL_STOCK);
+    }
 
-  /**
-   * Gets the type of stock sale (i.e. "SELL" or "SELLSHORT"). This is a required field
-   * according to the OFX spec.
-   * @see "Section 13.9.2.4.4, OFX Spec"
-   *
-   * @return the sell type
-   */
-  @Element( name = "SELLTYPE", required = true, order = 20)
-  public String getSellType() {
-    return sellType;
-  }
+    /**
+     * Gets the type of stock sale (i.e. "SELL" or "SELLSHORT"). This is a required field
+     * according to the OFX spec.
+     *
+     * @return the sell type
+     * @see "Section 13.9.2.4.4, OFX Spec"
+     */
+    @Element(name = "SELLTYPE", required = true, order = 20)
+    public String getSellType() {
+        return sellType;
+    }
 
-  /**
-   * Sets the type of stock sale (i.e. "SELL" or "SELLSHORT"). This is a required field
-   * according to the OFX spec.
-   * @see "Section 13.9.2.4.4, OFX Spec"
-   *
-   * @param sellType the sell type
-   */
-  public void setSellType(String sellType) {
-    this.sellType = sellType;
-  }
+    /**
+     * Sets the type of stock sale (i.e. "SELL" or "SELLSHORT"). This is a required field
+     * according to the OFX spec.
+     *
+     * @param sellType the sell type
+     * @see "Section 13.9.2.4.4, OFX Spec"
+     */
+    public void setSellType(String sellType) {
+        this.sellType = sellType;
+    }
 
-  /**
-   * Gets the sell type as one of the well-known types.
-   *
-   * @return the type of sale or null if it's not known
-   */
-  public SellType getSellTypeEnum() {
-    return SellType.fromOfx(sellType);
-  }
+    /**
+     * Gets the sell type as one of the well-known types.
+     *
+     * @return the type of sale or null if it's not known
+     */
+    public SellType getSellTypeEnum() {
+        return SellType.fromOfx(sellType);
+    }
+
+    @Override
+    public String toString() {
+        String inherited = super.toString().replaceFirst("^\\w+\\{", "").replaceAll("}$", "");
+        return "SellStockTransaction{" +
+                (inherited.trim().isEmpty() ? "" : (inherited + ", ")) +
+                "sellType='" + sellType + '\'' +
+                "}";
+    }
 }

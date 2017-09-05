@@ -158,4 +158,16 @@ public class BalanceRecord {
   public void setCurrency(Currency currency) {
     this.currency = currency;
   }
+
+  @Override
+  public String toString() {
+    return "BalanceRecord{" +
+            "name='" + name + '\'' +
+            ", description='" + description + '\'' +
+            ", type=" + type +
+            ", value='" + value + '\'' +
+            ", timestamp=" + timestamp +
+            ", currency=" + currency +
+            '}';
+  }
 }

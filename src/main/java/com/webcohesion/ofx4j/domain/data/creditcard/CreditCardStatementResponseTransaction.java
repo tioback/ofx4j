@@ -23,32 +23,41 @@ import com.webcohesion.ofx4j.meta.ChildAggregate;
 /**
  * @author Ryan Heaton
  */
-@Aggregate ( "CCSTMTTRNRS")
+@Aggregate("CCSTMTTRNRS")
 public class CreditCardStatementResponseTransaction extends TransactionWrappedResponseMessage<CreditCardStatementResponse> {
 
-  private CreditCardStatementResponse message;
+    private CreditCardStatementResponse message;
 
-  /**
-   * The message.
-   *
-   * @return The message.
-   */
-  @ChildAggregate( required = true, order = 30 )
-  public CreditCardStatementResponse getMessage() {
-    return message;
-  }
+    /**
+     * The message.
+     *
+     * @return The message.
+     */
+    @ChildAggregate(required = true, order = 30)
+    public CreditCardStatementResponse getMessage() {
+        return message;
+    }
 
-  /**
-   * The message.
-   *
-   * @param message The message.
-   */
-  public void setMessage(CreditCardStatementResponse message) {
-    this.message = message;
-  }
+    /**
+     * The message.
+     *
+     * @param message The message.
+     */
+    public void setMessage(CreditCardStatementResponse message) {
+        this.message = message;
+    }
 
-  // Inherited.
-  public CreditCardStatementResponse getWrappedMessage() {
-    return getMessage();
-  }
+    // Inherited.
+    public CreditCardStatementResponse getWrappedMessage() {
+        return getMessage();
+    }
+
+    @Override
+    public String toString() {
+        String inherited = super.toString().replaceFirst("^\\w+\\{", "").replaceAll("}$", "");
+        return "CreditCardStatementResponseTransaction{" +
+                (inherited.trim().isEmpty() ? "" : (inherited + ", ")) +
+                "message=" + message +
+                '}';
+    }
 }

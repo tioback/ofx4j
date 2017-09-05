@@ -16,32 +16,40 @@
 
 package com.webcohesion.ofx4j.domain.data.profile.info;
 
-import com.webcohesion.ofx4j.domain.data.profile.VersionSpecificMessageSetInfo;
 import com.webcohesion.ofx4j.domain.data.MessageSetType;
+import com.webcohesion.ofx4j.domain.data.profile.VersionSpecificMessageSetInfo;
 import com.webcohesion.ofx4j.meta.Aggregate;
 import com.webcohesion.ofx4j.meta.Element;
 
 /**
- * @see "Section 13.7.2.1, OFX Spec"
- *
  * @author Jon Perlow
  * @author Ryan Heaton
+ * @see "Section 13.7.2.1, OFX Spec"
  */
-@Aggregate ( "SECLISTMSGSETV1" )
+@Aggregate("SECLISTMSGSETV1")
 public class SecurityListV1MessageSetInfo extends VersionSpecificMessageSetInfo {
 
-  private Boolean supportsSecurityListDownload;
+    private Boolean supportsSecurityListDownload;
 
-  public MessageSetType getMessageSetType() {
-    return MessageSetType.investment_security;
-  }
+    public MessageSetType getMessageSetType() {
+        return MessageSetType.investment_security;
+    }
 
-  @Element( name = "SECLISTRQDNLD", required=true, order = 10)
-  public Boolean getSupportsSecurityListDownload() {
-    return supportsSecurityListDownload;
-  }
+    @Element(name = "SECLISTRQDNLD", required = true, order = 10)
+    public Boolean getSupportsSecurityListDownload() {
+        return supportsSecurityListDownload;
+    }
 
-  public void setSupportsSecurityListDownload(Boolean supportsSecurityListDownload) {
-    this.supportsSecurityListDownload = supportsSecurityListDownload;
-  }
+    public void setSupportsSecurityListDownload(Boolean supportsSecurityListDownload) {
+        this.supportsSecurityListDownload = supportsSecurityListDownload;
+    }
+
+    @Override
+    public String toString() {
+        String inherited = super.toString().replaceFirst("^\\w+\\{", "").replaceAll("}$", "");
+        return "SecurityListV1MessageSetInfo{" +
+                (inherited.trim().isEmpty() ? "" : (inherited + ", ")) +
+                "supportsSecurityListDownload=" + supportsSecurityListDownload +
+                "}";
+    }
 }

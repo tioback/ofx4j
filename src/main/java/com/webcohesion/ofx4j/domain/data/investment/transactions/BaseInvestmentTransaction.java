@@ -29,91 +29,98 @@ import java.util.Date;
  */
 public abstract class BaseInvestmentTransaction {
 
-  private final TransactionType transactionType;
+    private final TransactionType transactionType;
 
-  BaseInvestmentTransaction(TransactionType transactionType) {
-    this.transactionType = transactionType;
-  }
+    BaseInvestmentTransaction(TransactionType transactionType) {
+        this.transactionType = transactionType;
+    }
 
-  /**
-   * Gets the type of transaction.
-   *
-   * @return the type of transaction
-   */
-  public TransactionType getTransactionType() {
-    return transactionType;
-  }
+    /**
+     * Gets the type of transaction.
+     *
+     * @return the type of transaction
+     */
+    public TransactionType getTransactionType() {
+        return transactionType;
+    }
 
-  /**
-   * Gets the {@link InvestmentTransaction} aggregate.
-   *
-   * @return the {@link InvestmentTransaction} aggregate
-   */
-  public abstract InvestmentTransaction getInvestmentTransaction();
+    /**
+     * Gets the {@link InvestmentTransaction} aggregate.
+     *
+     * @return the {@link InvestmentTransaction} aggregate
+     */
+    public abstract InvestmentTransaction getInvestmentTransaction();
 
-  /**
-   * Gets the unique financial institution assigned transaction id. This is a
-   * required field according to the OFX spec.
-   * @see "Section 13.9.2.4.1, OFX Spec"
-   *
-   * @return the financial institution asssigned transaction id
-   */
-  public String getTransactionId() {
-    return getInvestmentTransaction().getTransactionId();
-  }
+    /**
+     * Gets the unique financial institution assigned transaction id. This is a
+     * required field according to the OFX spec.
+     *
+     * @return the financial institution asssigned transaction id
+     * @see "Section 13.9.2.4.1, OFX Spec"
+     */
+    public String getTransactionId() {
+        return getInvestmentTransaction().getTransactionId();
+    }
 
-  /**
-   * Gets the server assigned transaction id. This is an optional field
-   * according to the OFX spec.
-   * @see "Section 13.9.2.4.1, OFX Spec"
-   *
-   * @return the server assigned transaction id
-   */
-  public String getServerId() {
-    return getInvestmentTransaction().getServerId();
-  }
+    /**
+     * Gets the server assigned transaction id. This is an optional field
+     * according to the OFX spec.
+     *
+     * @return the server assigned transaction id
+     * @see "Section 13.9.2.4.1, OFX Spec"
+     */
+    public String getServerId() {
+        return getInvestmentTransaction().getServerId();
+    }
 
-  /**
-   * Gets the trade date of the transaction. For stock splits, this is the
-   * day of record. This is a required field according to the OFX spec.
-   * @see "Section 13.9.2.4.1, OFX Spec"
-   *
-   * @return the trade date
-   */
-  public Date getTradeDate() {
-    return getInvestmentTransaction().getTradeDate();
-  }
+    /**
+     * Gets the trade date of the transaction. For stock splits, this is the
+     * day of record. This is a required field according to the OFX spec.
+     *
+     * @return the trade date
+     * @see "Section 13.9.2.4.1, OFX Spec"
+     */
+    public Date getTradeDate() {
+        return getInvestmentTransaction().getTradeDate();
+    }
 
-  /**
-   * Gets the settlement date of the transaction. For stock splits, this is the
-   * day of of execution. This is an optional field according to the OFX spec.
-   * @see "Section 13.9.2.4.1, OFX Spec"
-   *
-   * @return the trade date
-   */
-  public Date getSettlementDate() {
-    return getInvestmentTransaction().getSettlementDate();
-  }
+    /**
+     * Gets the settlement date of the transaction. For stock splits, this is the
+     * day of of execution. This is an optional field according to the OFX spec.
+     *
+     * @return the trade date
+     * @see "Section 13.9.2.4.1, OFX Spec"
+     */
+    public Date getSettlementDate() {
+        return getInvestmentTransaction().getSettlementDate();
+    }
 
-  /**
-   * For a reveral transaction, gets the financial institution assigned
-   * transaction id for the transaction being revesed.
-   * @see "Section 13.9.2.4.1, OFX Spec"
-   *
-   * @return the transaction id of the transaction being reversed
-   */
-  public String getReversalTransactionId() {
-    return getInvestmentTransaction().getReversalTransactionId();
-  }
+    /**
+     * For a reveral transaction, gets the financial institution assigned
+     * transaction id for the transaction being revesed.
+     *
+     * @return the transaction id of the transaction being reversed
+     * @see "Section 13.9.2.4.1, OFX Spec"
+     */
+    public String getReversalTransactionId() {
+        return getInvestmentTransaction().getReversalTransactionId();
+    }
 
-  /**
-   * Gets the memo associated with the transaction. This is an optional field
-   * according to the OFX spec.
-   * @see "Section 13.9.2.4.1, OFX Spec"
-   *
-   * @return the memo
-   */
-  public String getMemo() {
-    return getInvestmentTransaction().getMemo();
-  }
+    /**
+     * Gets the memo associated with the transaction. This is an optional field
+     * according to the OFX spec.
+     *
+     * @return the memo
+     * @see "Section 13.9.2.4.1, OFX Spec"
+     */
+    public String getMemo() {
+        return getInvestmentTransaction().getMemo();
+    }
+
+    @Override
+    public String toString() {
+        return "BaseInvestmentTransaction{" +
+                "transactionType=" + transactionType +
+                "}";
+    }
 }

@@ -17,51 +17,60 @@
 package com.webcohesion.ofx4j.domain.data.creditcard;
 
 import com.webcohesion.ofx4j.domain.data.MessageSetType;
-import com.webcohesion.ofx4j.domain.data.RequestMessageSet;
 import com.webcohesion.ofx4j.domain.data.RequestMessage;
+import com.webcohesion.ofx4j.domain.data.RequestMessageSet;
 import com.webcohesion.ofx4j.meta.Aggregate;
 import com.webcohesion.ofx4j.meta.ChildAggregate;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Ryan Heaton
  */
-@Aggregate ( "CREDITCARDMSGSRQV1" )
+@Aggregate("CREDITCARDMSGSRQV1")
 public class CreditCardRequestMessageSet extends RequestMessageSet {
 
-  private CreditCardStatementRequestTransaction statementRequest;
+    private CreditCardStatementRequestTransaction statementRequest;
 
-  public MessageSetType getType() {
-    return MessageSetType.creditcard;
-  }
-
-  /**
-   * The request.
-   *
-   * @return The request.
-   */
-  @ChildAggregate (order = 0)
-  public CreditCardStatementRequestTransaction getStatementRequest() {
-    return statementRequest;
-  }
-
-  /**
-   * The request.
-   *
-   * @param statementRequest The request.
-   */
-  public void setStatementRequest(CreditCardStatementRequestTransaction statementRequest) {
-    this.statementRequest = statementRequest;
-  }
-
-  // Inherited.
-  public List<RequestMessage> getRequestMessages() {
-    ArrayList<RequestMessage> requestMessages = new ArrayList<RequestMessage>();
-    if (getStatementRequest() != null) {
-      requestMessages.add(getStatementRequest());
+    public MessageSetType getType() {
+        return MessageSetType.creditcard;
     }
-    return requestMessages;
-  }
+
+    /**
+     * The request.
+     *
+     * @return The request.
+     */
+    @ChildAggregate(order = 0)
+    public CreditCardStatementRequestTransaction getStatementRequest() {
+        return statementRequest;
+    }
+
+    /**
+     * The request.
+     *
+     * @param statementRequest The request.
+     */
+    public void setStatementRequest(CreditCardStatementRequestTransaction statementRequest) {
+        this.statementRequest = statementRequest;
+    }
+
+    // Inherited.
+    public List<RequestMessage> getRequestMessages() {
+        ArrayList<RequestMessage> requestMessages = new ArrayList<RequestMessage>();
+        if (getStatementRequest() != null) {
+            requestMessages.add(getStatementRequest());
+        }
+        return requestMessages;
+    }
+
+    @Override
+    public String toString() {
+        String inherited = super.toString().replaceFirst("^\\w+\\{", "").replaceAll("}$", "");
+        return "CreditCardRequestMessageSet{" +
+                (inherited.trim().isEmpty() ? "" : (inherited + ", ")) +
+                "statementRequest=" + statementRequest +
+                '}';
+    }
 }

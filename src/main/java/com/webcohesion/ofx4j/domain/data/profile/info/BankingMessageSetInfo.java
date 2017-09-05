@@ -36,4 +36,13 @@ public class BankingMessageSetInfo extends AbstractMessageSetInfo {
   public void setVersion1Info(BankingV1MessageSetInfo version1Info) {
     this.version1Info = version1Info;
   }
+
+  @Override
+  public String toString() {
+    String inherited = super.toString().replaceFirst("^\\w+\\{", "").replaceAll("}$", "");
+    return "BankingMessageSetInfo{" +
+            (inherited.trim().isEmpty() ? "" : (inherited + ", ")) +
+            "version1Info=" + version1Info +
+            "}";
+  }
 }

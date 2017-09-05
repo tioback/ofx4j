@@ -20,10 +20,17 @@ import com.webcohesion.ofx4j.meta.Aggregate;
 
 /**
  * Represents a debt position.
- * @see "Section 13.9.2.6.1, OFX Spec"
  *
  * @author Jon Perlow
+ * @see "Section 13.9.2.6.1, OFX Spec"
  */
-@Aggregate( "POSDEBT" )
+@Aggregate("POSDEBT")
 public class DebtPosition extends BasePosition {
+    @Override
+    public String toString() {
+        String inherited = super.toString().replaceFirst("^\\w+\\{", "").replaceAll("}$", "");
+        return "DebtPosition{" +
+                (inherited.trim().isEmpty() ? "" : (inherited + ", ")) +
+                "}";
+    }
 }

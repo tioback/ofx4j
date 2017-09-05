@@ -16,8 +16,8 @@
 
 package com.webcohesion.ofx4j.domain.data.profile.info;
 
-import com.webcohesion.ofx4j.domain.data.profile.VersionSpecificMessageSetInfo;
 import com.webcohesion.ofx4j.domain.data.MessageSetType;
+import com.webcohesion.ofx4j.domain.data.profile.VersionSpecificMessageSetInfo;
 import com.webcohesion.ofx4j.domain.data.profile.info.signup.ClientEnrollment;
 import com.webcohesion.ofx4j.domain.data.profile.info.signup.OtherEnrollment;
 import com.webcohesion.ofx4j.domain.data.profile.info.signup.WebEnrollment;
@@ -27,7 +27,7 @@ import com.webcohesion.ofx4j.meta.Element;
 
 /**
  * Servers use the Signup Message Set Profile Information to define how enrollment should proceed.
- *
+ * <p>
  * This aggregate should contain 1 Enrollment option among <CLIENTENROLL>, <WEBENROLL>, or <OTHERENROLL>.
  * todo: review how best to enforce this constraint
  *
@@ -35,89 +35,103 @@ import com.webcohesion.ofx4j.meta.Element;
  * @author Ryan Heaton
  * @see "Section 8.8 OFX Spec"
  */
-@Aggregate ( "SIGNUPMSGSETV1" )
+@Aggregate("SIGNUPMSGSETV1")
 public class SignupV1MessageSetInfo extends VersionSpecificMessageSetInfo {
 
-  private ClientEnrollment clientEnrollment;
-  private WebEnrollment webEnrollment;
-  private OtherEnrollment otherEnrollment;
-  private Boolean supportsClientUserInfoChanges;
-  private Boolean supportsAvailableAccounts;
-  private Boolean supportsClientServiceActivationRequests;
+    private ClientEnrollment clientEnrollment;
+    private WebEnrollment webEnrollment;
+    private OtherEnrollment otherEnrollment;
+    private Boolean supportsClientUserInfoChanges;
+    private Boolean supportsAvailableAccounts;
+    private Boolean supportsClientServiceActivationRequests;
 
-  public MessageSetType getMessageSetType() {
-    return MessageSetType.signup;
-  }
+    public MessageSetType getMessageSetType() {
+        return MessageSetType.signup;
+    }
 
-  @ChildAggregate( name = "CLIENTENROLL", order = 10 )
-  public ClientEnrollment getClientEnrollment() {
-    return clientEnrollment;
-  }
+    @ChildAggregate(name = "CLIENTENROLL", order = 10)
+    public ClientEnrollment getClientEnrollment() {
+        return clientEnrollment;
+    }
 
-  public void setClientEnrollment(ClientEnrollment clientEnrollment) {
-    this.clientEnrollment = clientEnrollment;
-  }
+    public void setClientEnrollment(ClientEnrollment clientEnrollment) {
+        this.clientEnrollment = clientEnrollment;
+    }
 
-  @ChildAggregate( name = "WEBENROLL", order = 20 )
-  public WebEnrollment getWebEnrollment() {
-    return webEnrollment;
-  }
+    @ChildAggregate(name = "WEBENROLL", order = 20)
+    public WebEnrollment getWebEnrollment() {
+        return webEnrollment;
+    }
 
-  public void setWebEnrollment(WebEnrollment webEnrollment) {
-    this.webEnrollment = webEnrollment;
-  }
+    public void setWebEnrollment(WebEnrollment webEnrollment) {
+        this.webEnrollment = webEnrollment;
+    }
 
-  @ChildAggregate( name = "OTHERENROLL", order = 30 )
-  public OtherEnrollment getOtherEnrollment() {
-    return otherEnrollment;
-  }
+    @ChildAggregate(name = "OTHERENROLL", order = 30)
+    public OtherEnrollment getOtherEnrollment() {
+        return otherEnrollment;
+    }
 
-  public void setOtherEnrollment(OtherEnrollment otherEnrollment) {
-    this.otherEnrollment = otherEnrollment;
-  }
+    public void setOtherEnrollment(OtherEnrollment otherEnrollment) {
+        this.otherEnrollment = otherEnrollment;
+    }
 
-  /**
-   * Y if server supports client-based user information changes,
-   * @return Boolean
-   */
-  @Element( name = "CHGUSERINFO", required = true, order = 40)
-  public Boolean getSupportsClientUserInfoChanges() {
-    return supportsClientUserInfoChanges;
-  }
+    /**
+     * Y if server supports client-based user information changes,
+     *
+     * @return Boolean
+     */
+    @Element(name = "CHGUSERINFO", required = true, order = 40)
+    public Boolean getSupportsClientUserInfoChanges() {
+        return supportsClientUserInfoChanges;
+    }
 
-  public void setSupportsClientUserInfoChanges(Boolean supportsClientUserInfoChanges) {
-    this.supportsClientUserInfoChanges = supportsClientUserInfoChanges;
-  }
+    public void setSupportsClientUserInfoChanges(Boolean supportsClientUserInfoChanges) {
+        this.supportsClientUserInfoChanges = supportsClientUserInfoChanges;
+    }
 
-  /**
-   * Y if server can provide information on accounts with SVCSTATUS available,
-   * N means client should expect to ask user for specific account information
-   * @return Boolean
-   */
-  @Element( name = "AVAILACCTS", required = true, order = 50)
-  public Boolean getSupportsAvailableAccounts() {
-    return supportsAvailableAccounts;
-  }
+    /**
+     * Y if server can provide information on accounts with SVCSTATUS available,
+     * N means client should expect to ask user for specific account information
+     *
+     * @return Boolean
+     */
+    @Element(name = "AVAILACCTS", required = true, order = 50)
+    public Boolean getSupportsAvailableAccounts() {
+        return supportsAvailableAccounts;
+    }
 
-  public void setSupportsAvailableAccounts(Boolean supportsAvailableAccounts) {
-    this.supportsAvailableAccounts = supportsAvailableAccounts;
-  }
+    public void setSupportsAvailableAccounts(Boolean supportsAvailableAccounts) {
+        this.supportsAvailableAccounts = supportsAvailableAccounts;
+    }
 
-  /**
-   * Y if server allows clients to make service activation requests (<ACCTRQ>),
-   * N if server will only advise clients via synchronization of service additions,
-   * changes, or deletions.
-   * @return Boolean
-   */
-  @Element( name = "CLIENTACTREQ", required = true, order = 60)
-  public Boolean getSupportsClientServiceActivationRequests() {
-    return supportsClientServiceActivationRequests;
-  }
+    /**
+     * Y if server allows clients to make service activation requests (<ACCTRQ>),
+     * N if server will only advise clients via synchronization of service additions,
+     * changes, or deletions.
+     *
+     * @return Boolean
+     */
+    @Element(name = "CLIENTACTREQ", required = true, order = 60)
+    public Boolean getSupportsClientServiceActivationRequests() {
+        return supportsClientServiceActivationRequests;
+    }
 
-  public void setSupportsClientServiceActivationRequests(Boolean supportsClientServiceActivationRequests) {
-    this.supportsClientServiceActivationRequests = supportsClientServiceActivationRequests;
-  }
+    public void setSupportsClientServiceActivationRequests(Boolean supportsClientServiceActivationRequests) {
+        this.supportsClientServiceActivationRequests = supportsClientServiceActivationRequests;
+    }
 
-
-
+    @Override
+    public String toString() {
+        String inherited = super.toString().replaceFirst("^\\w+\\{", "").replaceAll("}$", "");
+        return "SignupV1MessageSetInfo{" +
+                (inherited.trim().isEmpty() ? "" : (inherited + ", ")) +
+                "clientEnrollment=" + clientEnrollment +
+                ", webEnrollment=" + webEnrollment +
+                ", otherEnrollment=" + otherEnrollment +
+                ", supportsClientUserInfoChanges=" + supportsClientUserInfoChanges +
+                ", supportsAvailableAccounts=" + supportsAvailableAccounts +
+                ", supportsClientServiceActivationRequests=" + supportsClientServiceActivationRequests +
+                "}";
+    }
 }

@@ -147,4 +147,15 @@ public class BankAccountDetails implements AccountDetails {
   public void setAccountKey(String accountKey) {
     this.accountKey = accountKey;
   }
+
+  @Override
+  public String toString() {
+    return "BankAccountDetails{" +
+            "bankId='" + bankId + '\'' +
+            ", branchId='" + branchId + '\'' +
+            ", accountNumber='" + accountNumber + '\'' +
+            ", accountType=" + accountType +
+            ", accountKey='" + accountKey + '\'' +
+            '}';
+  }
 }

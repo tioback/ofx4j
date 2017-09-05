@@ -23,17 +23,26 @@ import com.webcohesion.ofx4j.meta.ChildAggregate;
 /**
  * @author Ryan Heaton
  */
-@Aggregate ( "BILLPAYMSGSET" )
+@Aggregate("BILLPAYMSGSET")
 public class BillpayMessageSetInfo extends AbstractMessageSetInfo {
 
-  private BillpayV1MessageSetInfo version1Info;
+    private BillpayV1MessageSetInfo version1Info;
 
-  @ChildAggregate ( order = 0 )
-  public BillpayV1MessageSetInfo getVersion1Info() {
-    return version1Info;
-  }
+    @ChildAggregate(order = 0)
+    public BillpayV1MessageSetInfo getVersion1Info() {
+        return version1Info;
+    }
 
-  public void setVersion1Info(BillpayV1MessageSetInfo version1Info) {
-    this.version1Info = version1Info;
-  }
+    public void setVersion1Info(BillpayV1MessageSetInfo version1Info) {
+        this.version1Info = version1Info;
+    }
+
+    @Override
+    public String toString() {
+        String inherited = super.toString().replaceFirst("^\\w+\\{", "").replaceAll("}$", "");
+        return "BillpayMessageSetInfo{" +
+                (inherited.trim().isEmpty() ? "" : (inherited + ", ")) +
+                "version1Info=" + version1Info +
+                "}";
+    }
 }

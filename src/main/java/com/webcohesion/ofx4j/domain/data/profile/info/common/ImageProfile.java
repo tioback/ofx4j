@@ -21,32 +21,39 @@ import com.webcohesion.ofx4j.meta.Element;
 
 /**
  * Image Profile
+ *
  * @author Scott Priddy
  * @see "Section 3.1.6.2 OFX Spec"
  */
-@Aggregate( "IMAGEPROF" )
+@Aggregate("IMAGEPROF")
 public class ImageProfile {
 
-  private Boolean closingImageAvailable;
-  private Boolean transactionImageAvailable;
+    private Boolean closingImageAvailable;
+    private Boolean transactionImageAvailable;
 
-  @Element( name = "CLOSINGIMGAVAIL", required = true, order = 10 )
-  public Boolean getClosingImageAvailable() {
-    return closingImageAvailable;
-  }
+    @Element(name = "CLOSINGIMGAVAIL", required = true, order = 10)
+    public Boolean getClosingImageAvailable() {
+        return closingImageAvailable;
+    }
 
-  public void setClosingImageAvailable(Boolean closingImageAvailable) {
-    this.closingImageAvailable = closingImageAvailable;
-  }
+    public void setClosingImageAvailable(Boolean closingImageAvailable) {
+        this.closingImageAvailable = closingImageAvailable;
+    }
 
-  @Element( name = "TRANIMGAVAIL", required = true, order = 20 )
-  public Boolean getTransactionImageAvailable() {
-    return transactionImageAvailable;
-  }
+    @Element(name = "TRANIMGAVAIL", required = true, order = 20)
+    public Boolean getTransactionImageAvailable() {
+        return transactionImageAvailable;
+    }
 
-  public void setTransactionImageAvailable(Boolean transactionImageAvailable) {
-    this.transactionImageAvailable = transactionImageAvailable;
-  }
+    public void setTransactionImageAvailable(Boolean transactionImageAvailable) {
+        this.transactionImageAvailable = transactionImageAvailable;
+    }
 
-
+    @Override
+    public String toString() {
+        return "ImageProfile{" +
+                "closingImageAvailable=" + closingImageAvailable +
+                ", transactionImageAvailable=" + transactionImageAvailable +
+                "}";
+    }
 }

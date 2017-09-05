@@ -23,32 +23,40 @@ import com.webcohesion.ofx4j.meta.ChildAggregate;
 /**
  * @author Ryan Heaton
  */
-@Aggregate ("CCSTMTRS")
+@Aggregate("CCSTMTRS")
 public class CreditCardStatementResponse extends StatementResponse {
 
-  private CreditCardAccountDetails account;
+    private CreditCardAccountDetails account;
 
-  public String getResponseMessageName() {
-    return "credit card statement";
-  }
+    public String getResponseMessageName() {
+        return "credit card statement";
+    }
 
-  /**
-   * The account for the statement.
-   *
-   * @return The account for the statement.
-   */
-  @ChildAggregate ( name ="CCACCTFROM", order = 10)
-  public CreditCardAccountDetails getAccount() {
-    return account;
-  }
+    /**
+     * The account for the statement.
+     *
+     * @return The account for the statement.
+     */
+    @ChildAggregate(name = "CCACCTFROM", order = 10)
+    public CreditCardAccountDetails getAccount() {
+        return account;
+    }
 
-  /**
-   * The account for the statement.
-   *
-   * @param account The account for the statement.
-   */
-  public void setAccount(CreditCardAccountDetails account) {
-    this.account = account;
-  }
+    /**
+     * The account for the statement.
+     *
+     * @param account The account for the statement.
+     */
+    public void setAccount(CreditCardAccountDetails account) {
+        this.account = account;
+    }
 
+    @Override
+    public String toString() {
+        String inherited = super.toString().replaceFirst("^\\w+\\{", "").replaceAll("}$", "");
+        return "CreditCardStatementResponse{" +
+                (inherited.trim().isEmpty() ? "" : (inherited + ", ")) +
+                "account=" + account +
+                '}';
+    }
 }

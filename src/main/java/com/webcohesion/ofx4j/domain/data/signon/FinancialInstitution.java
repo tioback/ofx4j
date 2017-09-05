@@ -22,47 +22,55 @@ import com.webcohesion.ofx4j.meta.Element;
 /**
  * @author Ryan Heaton
  */
-@Aggregate ( "FI" )
+@Aggregate("FI")
 public class FinancialInstitution {
 
-  private String id;
-  private String organization;
+    private String id;
+    private String organization;
 
-  /**
-   * Financial institution id.
-   *
-   * @return Financial institution id.
-   */
-  @Element ( name = "FID", order = 10 )
-  public String getId() {
-    return id;
-  }
+    /**
+     * Financial institution id.
+     *
+     * @return Financial institution id.
+     */
+    @Element(name = "FID", order = 10)
+    public String getId() {
+        return id;
+    }
 
-  /**
-   * Financial institution id.
-   *
-   * @param id Financial institution id.
-   */
-  public void setId(String id) {
-    this.id = id;
-  }
+    /**
+     * Financial institution id.
+     *
+     * @param id Financial institution id.
+     */
+    public void setId(String id) {
+        this.id = id;
+    }
 
-  /**
-   * The organization.
-   *
-   * @return The organization.
-   */
-  @Element ( name = "ORG", required = true, order = 0 )
-  public String getOrganization() {
-    return organization;
-  }
+    /**
+     * The organization.
+     *
+     * @return The organization.
+     */
+    @Element(name = "ORG", required = true, order = 0)
+    public String getOrganization() {
+        return organization;
+    }
 
-  /**
-   * The organization.
-   *
-   * @param organization The organization.
-   */
-  public void setOrganization(String organization) {
-    this.organization = organization;
-  }
+    /**
+     * The organization.
+     *
+     * @param organization The organization.
+     */
+    public void setOrganization(String organization) {
+        this.organization = organization;
+    }
+
+    @Override
+    public String toString() {
+        return "FinancialInstitution{" +
+                "id='" + id + '\'' +
+                ", organization='" + organization + '\'' +
+                "}";
+    }
 }

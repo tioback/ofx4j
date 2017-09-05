@@ -23,17 +23,26 @@ import com.webcohesion.ofx4j.meta.ChildAggregate;
 /**
  * @author Ryan Heaton
  */
-@Aggregate ( "INTERXFERMSGSET" )
+@Aggregate("INTERXFERMSGSET")
 public class InterbankTransferMessageSetInfo extends AbstractMessageSetInfo {
 
-  private InterbankTransferV1MessageSetInfo version1Info;
+    private InterbankTransferV1MessageSetInfo version1Info;
 
-  @ChildAggregate ( order = 0 )
-  public InterbankTransferV1MessageSetInfo getVersion1Info() {
-    return version1Info;
-  }
+    @ChildAggregate(order = 0)
+    public InterbankTransferV1MessageSetInfo getVersion1Info() {
+        return version1Info;
+    }
 
-  public void setVersion1Info(InterbankTransferV1MessageSetInfo version1Info) {
-    this.version1Info = version1Info;
-  }
+    public void setVersion1Info(InterbankTransferV1MessageSetInfo version1Info) {
+        this.version1Info = version1Info;
+    }
+
+    @Override
+    public String toString() {
+        String inherited = super.toString().replaceFirst("^\\w+\\{", "").replaceAll("}$", "");
+        return "InterbankTransferMessageSetInfo{" +
+                (inherited.trim().isEmpty() ? "" : (inherited + ", ")) +
+                "version1Info=" + version1Info +
+                "}";
+    }
 }

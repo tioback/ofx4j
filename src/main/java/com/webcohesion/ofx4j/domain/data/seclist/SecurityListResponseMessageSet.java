@@ -28,50 +28,60 @@ import java.util.List;
 /**
  * @author Jon Perlow
  */
-@Aggregate( "SECLISTMSGSRSV1" )
+@Aggregate("SECLISTMSGSRSV1")
 public class SecurityListResponseMessageSet extends ResponseMessageSet {
 
-  private SecurityListResponseTransaction securityListResponse;
-  private SecurityList securityList;
+    private SecurityListResponseTransaction securityListResponse;
+    private SecurityList securityList;
 
-  public MessageSetType getType() {
-    return MessageSetType.investment_security;
-  }
+    public MessageSetType getType() {
+        return MessageSetType.investment_security;
+    }
 
-  /**
-   * The security list response list transaction.
-   *
-   * Most OFX files have a single security response.
-   *
-   * @return The security list response list.
-   */
-  @ChildAggregate( order = 0 )
-  public SecurityListResponseTransaction getSecurityListResponse() {
-    return securityListResponse;
-  }
+    /**
+     * The security list response list transaction.
+     * <p>
+     * Most OFX files have a single security response.
+     *
+     * @return The security list response list.
+     */
+    @ChildAggregate(order = 0)
+    public SecurityListResponseTransaction getSecurityListResponse() {
+        return securityListResponse;
+    }
 
-  /**
-   * The security list response.
-   *
-   * @param securityListResponse The security list response.
-   */
-  public void setSecurityListResponse(SecurityListResponseTransaction securityListResponse) {
-    this.securityListResponse = securityListResponse;
-  }
+    /**
+     * The security list response.
+     *
+     * @param securityListResponse The security list response.
+     */
+    public void setSecurityListResponse(SecurityListResponseTransaction securityListResponse) {
+        this.securityListResponse = securityListResponse;
+    }
 
-  @ChildAggregate( order = 10 )
-  public SecurityList getSecurityList() {
-    return securityList;
-  }
+    @ChildAggregate(order = 10)
+    public SecurityList getSecurityList() {
+        return securityList;
+    }
 
-  public void setSecurityList(SecurityList securityList) {
-    this.securityList = securityList;
-  }
+    public void setSecurityList(SecurityList securityList) {
+        this.securityList = securityList;
+    }
 
-  // Inherited.
-  public List<ResponseMessage> getResponseMessages() {
-    ArrayList<ResponseMessage> ret = new ArrayList<ResponseMessage>();
-    ret.add(securityListResponse);
-    return ret;
-  }
+    // Inherited.
+    public List<ResponseMessage> getResponseMessages() {
+        ArrayList<ResponseMessage> ret = new ArrayList<ResponseMessage>();
+        ret.add(securityListResponse);
+        return ret;
+    }
+
+    @Override
+    public String toString() {
+        String inherited = super.toString().replaceFirst("^\\w+\\{", "").replaceAll("}$", "");
+        return "SecurityListResponseMessageSet{" +
+                (inherited.trim().isEmpty() ? "" : (inherited + ", ")) +
+                "securityListResponse=" + securityListResponse +
+                ", securityList=" + securityList +
+                "}";
+    }
 }

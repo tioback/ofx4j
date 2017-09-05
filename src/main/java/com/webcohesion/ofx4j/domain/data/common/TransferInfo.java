@@ -191,4 +191,16 @@ public class TransferInfo {
   public void setDue(Date due) {
     this.due = due;
   }
+
+  @Override
+  public String toString() {
+    return "TransferInfo{" +
+            "bankAccountFrom=" + bankAccountFrom +
+            ", creditCardAccountFrom=" + creditCardAccountFrom +
+            ", bankAccountTo=" + bankAccountTo +
+            ", creditCardAccountTo=" + creditCardAccountTo +
+            ", amount=" + amount +
+            ", due=" + due +
+            '}';
+  }
 }

@@ -22,37 +22,46 @@ import com.webcohesion.ofx4j.meta.ChildAggregate;
 
 /**
  * Investment statement transaction response.
- * @see "Section 13.9.2.1, OFX Spec"
  *
  * @author Jon Perlow
+ * @see "Section 13.9.2.1, OFX Spec"
  */
-@Aggregate ( "INVSTMTTRNRS")
+@Aggregate("INVSTMTTRNRS")
 public class InvestmentStatementResponseTransaction
-    extends TransactionWrappedResponseMessage<InvestmentStatementResponse> {
+        extends TransactionWrappedResponseMessage<InvestmentStatementResponse> {
 
-  private InvestmentStatementResponse message;
+    private InvestmentStatementResponse message;
 
-  /**
-   * Gets the the statement response message.
-   *
-   * @return the statement response message.
-   */
-  @ChildAggregate( required = true, order = 30 )
-  public InvestmentStatementResponse getMessage() {
-    return message;
-  }
+    /**
+     * Gets the the statement response message.
+     *
+     * @return the statement response message.
+     */
+    @ChildAggregate(required = true, order = 30)
+    public InvestmentStatementResponse getMessage() {
+        return message;
+    }
 
-  /**
-   * Sets the the statement response message.
-   *
-   * @param message the statement response message.
-   */
-  public void setMessage(InvestmentStatementResponse message) {
-    this.message = message;
-  }
+    /**
+     * Sets the the statement response message.
+     *
+     * @param message the statement response message.
+     */
+    public void setMessage(InvestmentStatementResponse message) {
+        this.message = message;
+    }
 
-  // Inherited.
-  public InvestmentStatementResponse getWrappedMessage() {
-    return getMessage();
-  }
+    // Inherited.
+    public InvestmentStatementResponse getWrappedMessage() {
+        return getMessage();
+    }
+
+    @Override
+    public String toString() {
+        String inherited = super.toString().replaceFirst("^\\w+\\{", "").replaceAll("}$", "");
+        return "InvestmentStatementResponseTransaction{" +
+                (inherited.trim().isEmpty() ? "" : (inherited + ", ")) +
+                "message=" + message +
+                "}";
+    }
 }

@@ -16,68 +16,76 @@
 
 package com.webcohesion.ofx4j.domain.data.banking;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 import com.webcohesion.ofx4j.domain.data.MessageSetType;
 import com.webcohesion.ofx4j.domain.data.ResponseMessage;
 import com.webcohesion.ofx4j.domain.data.ResponseMessageSet;
 import com.webcohesion.ofx4j.meta.Aggregate;
 import com.webcohesion.ofx4j.meta.ChildAggregate;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 /**
  * @author Ryan Heaton
  */
-@Aggregate ( "BANKMSGSRSV1" )
+@Aggregate("BANKMSGSRSV1")
 public class BankingResponseMessageSet extends ResponseMessageSet {
 
-  private List<BankStatementResponseTransaction> statementResponses;
+    private List<BankStatementResponseTransaction> statementResponses;
 
-  public MessageSetType getType() {
-    return MessageSetType.banking;
-  }
+    public MessageSetType getType() {
+        return MessageSetType.banking;
+    }
 
-  /**
-   * The statement response list.
-   *
-   * Most OFX files have a single statement response, except MT2OFX
-   * which outputs OFX with multiple statement responses
-   * in a single banking response message set.
-   *
-   * @return The statement response list.
-   */
-  @ChildAggregate ( order = 0 )
-  public List<BankStatementResponseTransaction> getStatementResponses() {
-    return statementResponses;
-  }
+    /**
+     * The statement response list.
+     * <p>
+     * Most OFX files have a single statement response, except MT2OFX
+     * which outputs OFX with multiple statement responses
+     * in a single banking response message set.
+     *
+     * @return The statement response list.
+     */
+    @ChildAggregate(order = 0)
+    public List<BankStatementResponseTransaction> getStatementResponses() {
+        return statementResponses;
+    }
 
-  /**
-   * The statement response.
-   *
-   * @param statementResponses The statement responses.
-   */
-  public void setStatementResponses(List<BankStatementResponseTransaction> statementResponses) {
-    this.statementResponses = statementResponses;
-  }
+    /**
+     * The statement response.
+     *
+     * @param statementResponses The statement responses.
+     */
+    public void setStatementResponses(List<BankStatementResponseTransaction> statementResponses) {
+        this.statementResponses = statementResponses;
+    }
 
-  // Inherited.
-  public List<ResponseMessage> getResponseMessages() {
-    return new ArrayList<ResponseMessage>(statementResponses);
-  }
+    // Inherited.
+    public List<ResponseMessage> getResponseMessages() {
+        return new ArrayList<ResponseMessage>(statementResponses);
+    }
 
-  /**
-   * The first statement response.
-   *
-   * @return the first bank statement response.
-   * @deprecated Use getStatementResponses() because sometimes there are multiple responses
-   */
-  public BankStatementResponseTransaction getStatementResponse() {
-    return statementResponses == null || statementResponses.isEmpty() ? null : statementResponses.get(0);
-  }
+    /**
+     * The first statement response.
+     *
+     * @return the first bank statement response.
+     * @deprecated Use getStatementResponses() because sometimes there are multiple responses
+     */
+    public BankStatementResponseTransaction getStatementResponse() {
+        return statementResponses == null || statementResponses.isEmpty() ? null : statementResponses.get(0);
+    }
 
-  public void setStatementResponse(BankStatementResponseTransaction statementResponse) {
-    this.statementResponses = Collections.singletonList(statementResponse);
-  }
+    public void setStatementResponse(BankStatementResponseTransaction statementResponse) {
+        this.statementResponses = Collections.singletonList(statementResponse);
+    }
 
+    @Override
+    public String toString() {
+        String inherited = super.toString().replaceFirst("^\\w+\\{", "").replaceAll("}$", "");
+        return "BankingResponseMessageSet{" +
+                (inherited.trim().isEmpty() ? "" : (inherited + ", ")) +
+                "statementResponses=" + statementResponses +
+                "}";
+    }
 }

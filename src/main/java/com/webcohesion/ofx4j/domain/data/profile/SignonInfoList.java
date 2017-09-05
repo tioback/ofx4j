@@ -27,27 +27,34 @@ import java.util.List;
  * @author Ryan Heaton
  * @see "Section 7.2.2, OFX Spec"
  */
-@Aggregate ( "SIGNONINFOLIST" )
+@Aggregate("SIGNONINFOLIST")
 public class SignonInfoList {
 
-  private List<SignonInfo> infoList;
+    private List<SignonInfo> infoList;
 
-  /**
-   * List of sign-on information.
-   *
-   * @return List of sign-on information.
-   */
-  @ChildAggregate ( order = 0 )
-  public List<SignonInfo> getInfoList() {
-    return infoList;
-  }
+    /**
+     * List of sign-on information.
+     *
+     * @return List of sign-on information.
+     */
+    @ChildAggregate(order = 0)
+    public List<SignonInfo> getInfoList() {
+        return infoList;
+    }
 
-  /**
-   * List of sign-on information.
-   *
-   * @param infoList List of sign-on information.
-   */
-  public void setInfoList(List<SignonInfo> infoList) {
-    this.infoList = infoList;
-  }
+    /**
+     * List of sign-on information.
+     *
+     * @param infoList List of sign-on information.
+     */
+    public void setInfoList(List<SignonInfo> infoList) {
+        this.infoList = infoList;
+    }
+
+    @Override
+    public String toString() {
+        return "SignonInfoList{" +
+                "infoList=" + infoList +
+                "}";
+    }
 }

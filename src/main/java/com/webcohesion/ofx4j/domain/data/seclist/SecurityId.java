@@ -21,51 +21,59 @@ import com.webcohesion.ofx4j.meta.Element;
 
 /**
  * Identifier for a security.
- * @see "Section 13.8.1, OFX Spec"
  *
  * @author Jon Perlow
+ * @see "Section 13.8.1, OFX Spec"
  */
-@Aggregate( "SECID" )
+@Aggregate("SECID")
 public class SecurityId {
 
-  private String uniqueId;
-  private String uniqueIdType;
+    private String uniqueId;
+    private String uniqueIdType;
 
-  /**
-   * Gets the unique id for the security. This is a required field according to the OFX spec.
-   *
-   * @return the unique id
-   */
-  @Element( name = "UNIQUEID", required = true, order = 10)
-  public String getUniqueId() {
-    return uniqueId;
-  }
+    /**
+     * Gets the unique id for the security. This is a required field according to the OFX spec.
+     *
+     * @return the unique id
+     */
+    @Element(name = "UNIQUEID", required = true, order = 10)
+    public String getUniqueId() {
+        return uniqueId;
+    }
 
-  /**
-   * Sets the unique id for the security. This is a required field according to the OFX spec.
-   *
-   * @param uniqueId the unique id
-   */
-  public void setUniqueId(String uniqueId) {
-    this.uniqueId = uniqueId;
-  }
+    /**
+     * Sets the unique id for the security. This is a required field according to the OFX spec.
+     *
+     * @param uniqueId the unique id
+     */
+    public void setUniqueId(String uniqueId) {
+        this.uniqueId = uniqueId;
+    }
 
-  /**
-   * Gets the type of unique id.
-   *
-   * @return the type of unique id
-   */
-  @Element( name = "UNIQUEIDTYPE", required = true, order = 20)
-  public String getUniqueIdType() {
-    return uniqueIdType;
-  }
+    /**
+     * Gets the type of unique id.
+     *
+     * @return the type of unique id
+     */
+    @Element(name = "UNIQUEIDTYPE", required = true, order = 20)
+    public String getUniqueIdType() {
+        return uniqueIdType;
+    }
 
-  /**
-   * Sets the type of unique id.
-   *
-   * @param uniqueIdType the type of unique id
-   */
-  public void setUniqueIdType(String uniqueIdType) {
-    this.uniqueIdType = uniqueIdType;
-  }
+    /**
+     * Sets the type of unique id.
+     *
+     * @param uniqueIdType the type of unique id
+     */
+    public void setUniqueIdType(String uniqueIdType) {
+        this.uniqueIdType = uniqueIdType;
+    }
+
+    @Override
+    public String toString() {
+        return "SecurityId{" +
+                "uniqueId='" + uniqueId + '\'' +
+                ", uniqueIdType='" + uniqueIdType + '\'' +
+                "}";
+    }
 }

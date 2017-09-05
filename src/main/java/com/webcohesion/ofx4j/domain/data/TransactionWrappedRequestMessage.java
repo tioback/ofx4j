@@ -28,80 +28,90 @@ import java.util.UUID;
  */
 public abstract class TransactionWrappedRequestMessage<M extends RequestMessage> extends RequestMessage {
 
-  private String UID;
-  private String clientCookie;
-  private String transactionAuthorizationNumber;
+    private String UID;
+    private String clientCookie;
+    private String transactionAuthorizationNumber;
 
-  public TransactionWrappedRequestMessage() {
-    this.UID = UUID.randomUUID().toString();
-  }
+    public TransactionWrappedRequestMessage() {
+        this.UID = UUID.randomUUID().toString();
+    }
 
-  public TransactionWrappedRequestMessage(String UID) {
-    this.UID = UID;
-  }
+    public TransactionWrappedRequestMessage(String UID) {
+        this.UID = UID;
+    }
 
-  /**
-   * UID of this transaction.
-   *
-   * @return UID of this transaction.
-   */
-  @Element ( name = "TRNUID", required = true, order = 0 )
-  public String getUID() {
-    return UID;
-  }
+    /**
+     * UID of this transaction.
+     *
+     * @return UID of this transaction.
+     */
+    @Element(name = "TRNUID", required = true, order = 0)
+    public String getUID() {
+        return UID;
+    }
 
-  /**
-   * UID of this transaction.
-   *
-   * @param UID UID of this transaction.
-   */
-  public void setUID(String UID) {
-    this.UID = UID;
-  }
+    /**
+     * UID of this transaction.
+     *
+     * @param UID UID of this transaction.
+     */
+    public void setUID(String UID) {
+        this.UID = UID;
+    }
 
-  /**
-   * Client cookie (echoed back by the response).
-   *
-   * @return Client cookie (echoed back by the response).
-   */
-  @Element ( name = "CLTCOOKIE", order = 10 )
-  public String getClientCookie() {
-    return clientCookie;
-  }
+    /**
+     * Client cookie (echoed back by the response).
+     *
+     * @return Client cookie (echoed back by the response).
+     */
+    @Element(name = "CLTCOOKIE", order = 10)
+    public String getClientCookie() {
+        return clientCookie;
+    }
 
-  /**
-   * Client cookie (echoed back by the response).
-   *
-   * @param clientCookie Client cookie (echoed back by the response).
-   */
-  public void setClientCookie(String clientCookie) {
-    this.clientCookie = clientCookie;
-  }
+    /**
+     * Client cookie (echoed back by the response).
+     *
+     * @param clientCookie Client cookie (echoed back by the response).
+     */
+    public void setClientCookie(String clientCookie) {
+        this.clientCookie = clientCookie;
+    }
 
-  /**
-   * The transaction authorization number.
-   *
-   * @return The transaction authorization number.
-   */
-  @Element ( name = "TAN", order = 20 )
-  public String getTransactionAuthorizationNumber() {
-    return transactionAuthorizationNumber;
-  }
+    /**
+     * The transaction authorization number.
+     *
+     * @return The transaction authorization number.
+     */
+    @Element(name = "TAN", order = 20)
+    public String getTransactionAuthorizationNumber() {
+        return transactionAuthorizationNumber;
+    }
 
-  /**
-   * The transaction authorization number.
-   *
-   * @param transactionAuthorizationNumber The transaction authorization number.
-   */
-  public void setTransactionAuthorizationNumber(String transactionAuthorizationNumber) {
-    this.transactionAuthorizationNumber = transactionAuthorizationNumber;
-  }
+    /**
+     * The transaction authorization number.
+     *
+     * @param transactionAuthorizationNumber The transaction authorization number.
+     */
+    public void setTransactionAuthorizationNumber(String transactionAuthorizationNumber) {
+        this.transactionAuthorizationNumber = transactionAuthorizationNumber;
+    }
 
-  /**
-   * Set the wrapped message.
-   *
-   * @param message The wrapped message.
-   */
-  public abstract void setWrappedMessage(M message);
+    /**
+     * Set the wrapped message.
+     *
+     * @param message The wrapped message.
+     */
+    public abstract void setWrappedMessage(M message);
 
+    @Override
+    public String toString() {
+        String inherited = super.toString().replaceFirst("^\\w+\\{", "").replaceAll("}$", "");
+        return "TransactionWrappedRequestMessage{" +
+                (inherited.trim().isEmpty() ? "" : (inherited + ", ")) +
+                "UID='" + UID + '\'' +
+                ", clientCookie='" + clientCookie + '\'' +
+                ", transactionAuthorizationNumber='" + transactionAuthorizationNumber + '\'' +
+                "}";
+    }
 }

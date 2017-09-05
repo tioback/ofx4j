@@ -23,17 +23,25 @@ import com.webcohesion.ofx4j.meta.ChildAggregate;
 /**
  * @author Jon Perlow
  */
-@Aggregate( "SIGNONMSGSET" )
+@Aggregate("SIGNONMSGSET")
 public class SignOnMessageSetInfo extends AbstractMessageSetInfo {
-  private SignOnV1MessageSetInfo version1Info;
+    private SignOnV1MessageSetInfo version1Info;
 
-  @ChildAggregate( order = 0 )
-  public SignOnV1MessageSetInfo getVersion1Info() {
-    return version1Info;
-  }
+    @ChildAggregate(order = 0)
+    public SignOnV1MessageSetInfo getVersion1Info() {
+        return version1Info;
+    }
 
-  public void setVersion1Info(SignOnV1MessageSetInfo version1Info) {
-    this.version1Info = version1Info;
-  }
+    public void setVersion1Info(SignOnV1MessageSetInfo version1Info) {
+        this.version1Info = version1Info;
+    }
 
+    @Override
+    public String toString() {
+        String inherited = super.toString().replaceFirst("^\\w+\\{", "").replaceAll("}$", "");
+        return "SignOnMessageSetInfo{" +
+                (inherited.trim().isEmpty() ? "" : (inherited + ", ")) +
+                "version1Info=" + version1Info +
+                "}";
+    }
 }

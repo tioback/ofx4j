@@ -17,7 +17,6 @@ package com.webcohesion.ofx4j.domain.data.tax1099;
 
 import com.webcohesion.ofx4j.meta.Aggregate;
 import com.webcohesion.ofx4j.meta.ChildAggregate;
-
 import com.webcohesion.ofx4j.meta.Element;
 
 /**
@@ -26,137 +25,151 @@ import com.webcohesion.ofx4j.meta.Element;
  */
 
 
-@Aggregate ( "TAX1099B_V100")
-public class Tax1099B  {
-
-  
-	private String srvrtId;
-	private String taxYear;
-	private ExtDBInfo extDBInfo;
-	private PayerAddress payerAddress;
-	private String payerId;
-	private RecAddress recAddress;
-	private String recId;
-	private String recAcct;
-	
-	 
-	  @Element ( name = "SRVRTID",required = true , order = 0 )
-	  public String getSrvrtId() {
-	    return srvrtId;
-	  }
-
-	  
-	  public void setSrvrtId(String srvrtId) {
-	    this.srvrtId = srvrtId;
-	  }
-
-	 
-	  @Element ( name = "TAXYEAR", required = true, order = 1 )
-	  public String getTaxYear() {
-	    return taxYear;
-	  }
-
-	 
-	  public void setTaxYear(String taxYear) {
-	    this.taxYear = taxYear;
-	  }
-
-	/**
-	 * @return the extDBInfo
-	 */
-	@ChildAggregate(required=true, order = 2)
-	public ExtDBInfo getExtDBInfo() {
-		return extDBInfo;
-	}
+@Aggregate("TAX1099B_V100")
+public class Tax1099B {
 
 
-	/**
-	 * @param extDBInfo the extDBInfo to set
-	 */
-	public void setExtDBInfo(ExtDBInfo extDBInfo) {
-		this.extDBInfo = extDBInfo;
-	}
+    private String srvrtId;
+    private String taxYear;
+    private ExtDBInfo extDBInfo;
+    private PayerAddress payerAddress;
+    private String payerId;
+    private RecAddress recAddress;
+    private String recId;
+    private String recAcct;
 
 
-	/**
-	 * @return the payerAddress
-	 */
-	@ChildAggregate(required=true, order = 3)
-	public PayerAddress getPayerAddress() {
-		return payerAddress;
-	}
+    @Element(name = "SRVRTID", required = true, order = 0)
+    public String getSrvrtId() {
+        return srvrtId;
+    }
 
 
-	/**
-	 * @param payerAddress the payerAddress to set
-	 */
-	public void setPayerAddress(PayerAddress payerAddress) {
-		this.payerAddress = payerAddress;
-	}
-	
-	/**
-	 * @return the payerId
-	 */
-	@Element ( name = "PAYERID", required = true, order = 4 )
-	public String getPayerId() {
-		return payerId;
-	}
+    public void setSrvrtId(String srvrtId) {
+        this.srvrtId = srvrtId;
+    }
 
 
-	/**
-	 * @param payerId the payerId to set
-	 */
-	public void setPayerId(String payerId) {
-		this.payerId = payerId;
-	}
-	
-
-	/**
-	 * @return the recAddress
-	 */
-	@ChildAggregate(required=true, order = 5)
-	public RecAddress getRecAddress() {
-		return recAddress;
-	}
+    @Element(name = "TAXYEAR", required = true, order = 1)
+    public String getTaxYear() {
+        return taxYear;
+    }
 
 
-	/**
-	 * @param recAddress the recAddress to set
-	 */
-	public void setRecAddress(RecAddress recAddress) {
-		this.recAddress = recAddress;
-	}
+    public void setTaxYear(String taxYear) {
+        this.taxYear = taxYear;
+    }
 
-	/**
-	 * @return the recId
-	 */
-	@Element ( name = "RECID", required = true, order = 6 )
-	public String getRecId() {
-		return recId;
-	}
+    /**
+     * @return the extDBInfo
+     */
+    @ChildAggregate(required = true, order = 2)
+    public ExtDBInfo getExtDBInfo() {
+        return extDBInfo;
+    }
 
 
-	/**
-	 * @param recId the recId to set
-	 */
-	public void setRecId(String recId) {
-		this.recId = recId;
-	}
+    /**
+     * @param extDBInfo the extDBInfo to set
+     */
+    public void setExtDBInfo(ExtDBInfo extDBInfo) {
+        this.extDBInfo = extDBInfo;
+    }
 
 
-	/**
-	 * @return the recAcct
-	 */
-	@Element ( name = "RECACCT", required = true, order = 7 )
-	public String getRecAcct() {
-		return recAcct;
-	}
+    /**
+     * @return the payerAddress
+     */
+    @ChildAggregate(required = true, order = 3)
+    public PayerAddress getPayerAddress() {
+        return payerAddress;
+    }
 
 
-	/**
-	 * @param recAcct the recAcct to set
-	 */
-	public void setRecAcct(String recAcct) {
-		this.recAcct = recAcct;
-	}
+    /**
+     * @param payerAddress the payerAddress to set
+     */
+    public void setPayerAddress(PayerAddress payerAddress) {
+        this.payerAddress = payerAddress;
+    }
+
+    /**
+     * @return the payerId
+     */
+    @Element(name = "PAYERID", required = true, order = 4)
+    public String getPayerId() {
+        return payerId;
+    }
+
+
+    /**
+     * @param payerId the payerId to set
+     */
+    public void setPayerId(String payerId) {
+        this.payerId = payerId;
+    }
+
+
+    /**
+     * @return the recAddress
+     */
+    @ChildAggregate(required = true, order = 5)
+    public RecAddress getRecAddress() {
+        return recAddress;
+    }
+
+
+    /**
+     * @param recAddress the recAddress to set
+     */
+    public void setRecAddress(RecAddress recAddress) {
+        this.recAddress = recAddress;
+    }
+
+    /**
+     * @return the recId
+     */
+    @Element(name = "RECID", required = true, order = 6)
+    public String getRecId() {
+        return recId;
+    }
+
+
+    /**
+     * @param recId the recId to set
+     */
+    public void setRecId(String recId) {
+        this.recId = recId;
+    }
+
+
+    /**
+     * @return the recAcct
+     */
+    @Element(name = "RECACCT", required = true, order = 7)
+    public String getRecAcct() {
+        return recAcct;
+    }
+
+
+    /**
+     * @param recAcct the recAcct to set
+     */
+    public void setRecAcct(String recAcct) {
+        this.recAcct = recAcct;
+    }
+
+    @Override
+    public String toString() {
+        return "Tax1099B{" +
+                "srvrtId='" + srvrtId + '\'' +
+                ", taxYear='" + taxYear + '\'' +
+                ", extDBInfo=" + extDBInfo +
+                ", payerAddress=" + payerAddress +
+                ", payerId='" + payerId + '\'' +
+                ", recAddress=" + recAddress +
+                ", recId='" + recId + '\'' +
+                ", recAcct='" + recAcct + '\'' +
+                "}";
+    }
 }

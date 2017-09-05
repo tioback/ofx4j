@@ -23,32 +23,41 @@ import com.webcohesion.ofx4j.meta.ChildAggregate;
 /**
  * @author Ryan Heaton
  */
-@Aggregate ( "STMTTRNRS")
+@Aggregate("STMTTRNRS")
 public class BankStatementResponseTransaction extends TransactionWrappedResponseMessage<BankStatementResponse> {
 
-  private BankStatementResponse message;
+    private BankStatementResponse message;
 
-  /**
-   * The message.
-   *
-   * @return The message.
-   */
-  @ChildAggregate( required = true, order = 30 )
-  public BankStatementResponse getMessage() {
-    return message;
-  }
+    /**
+     * The message.
+     *
+     * @return The message.
+     */
+    @ChildAggregate(required = true, order = 30)
+    public BankStatementResponse getMessage() {
+        return message;
+    }
 
-  /**
-   * The message.
-   *
-   * @param message The message.
-   */
-  public void setMessage(BankStatementResponse message) {
-    this.message = message;
-  }
+    /**
+     * The message.
+     *
+     * @param message The message.
+     */
+    public void setMessage(BankStatementResponse message) {
+        this.message = message;
+    }
 
-  // Inherited.
-  public BankStatementResponse getWrappedMessage() {
-    return getMessage();
-  }
+    // Inherited.
+    public BankStatementResponse getWrappedMessage() {
+        return getMessage();
+    }
+
+    @Override
+    public String toString() {
+        String inherited = super.toString().replaceFirst("^\\w+\\{", "").replaceAll("}$", "");
+        return "BankStatementResponseTransaction{" +
+                (inherited.trim().isEmpty() ? "" : (inherited + ", ")) +
+                "message=" + message +
+                "}";
+    }
 }

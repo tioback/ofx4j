@@ -22,13 +22,21 @@ import com.webcohesion.ofx4j.meta.Aggregate;
 /**
  * Security list response. This is an empty aggregate. The actual security information is included
  * in the "SECLIST" aggregate.
- * @see "Section 13.8.3, OFX Spec"
  *
  * @author Jon Perlow
+ * @see "Section 13.8.3, OFX Spec"
  */
-@Aggregate( "SECLISTRS" )
+@Aggregate("SECLISTRS")
 public class SecurityListResponse extends ResponseMessage {
-  public String getResponseMessageName() {
-    return "security list";
-  }
+    public String getResponseMessageName() {
+        return "security list";
+    }
+
+    @Override
+    public String toString() {
+        String inherited = super.toString().replaceFirst("^\\w+\\{", "").replaceAll("}$", "");
+        return "SecurityListResponse{" +
+                (inherited.trim().isEmpty() ? "" : (inherited + ", ")) +
+                "}";
+    }
 }

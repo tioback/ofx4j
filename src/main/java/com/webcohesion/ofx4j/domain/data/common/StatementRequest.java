@@ -23,27 +23,36 @@ import com.webcohesion.ofx4j.meta.ChildAggregate;
 /**
  * @author Ryan Heaton
  */
-@Aggregate ( "STMTRQ" )
+@Aggregate("STMTRQ")
 public class StatementRequest extends RequestMessage {
 
-  private StatementRange statementRange;
+    private StatementRange statementRange;
 
-  /**
-   * The statement range.
-   *
-   * @return The statement range.
-   */
-  @ChildAggregate ( name = "INCTRAN", required = false, order = 10 )
-  public StatementRange getStatementRange() {
-    return statementRange;
-  }
+    /**
+     * The statement range.
+     *
+     * @return The statement range.
+     */
+    @ChildAggregate(name = "INCTRAN", required = false, order = 10)
+    public StatementRange getStatementRange() {
+        return statementRange;
+    }
 
-  /**
-   * The statement range.
-   *
-   * @param statementRange The statement range.
-   */
-  public void setStatementRange(StatementRange statementRange) {
-    this.statementRange = statementRange;
-  }
+    /**
+     * The statement range.
+     *
+     * @param statementRange The statement range.
+     */
+    public void setStatementRange(StatementRange statementRange) {
+        this.statementRange = statementRange;
+    }
+
+    @Override
+    public String toString() {
+        String inherited = super.toString().replaceFirst("^\\w+\\{", "").replaceAll("}$", "");
+        return "StatementRequest{" +
+                (inherited.trim().isEmpty() ? "" : (inherited + ", ")) +
+                "statementRange=" + statementRange +
+                '}';
+    }
 }

@@ -26,25 +26,33 @@ import com.webcohesion.ofx4j.meta.ChildAggregate;
 @Aggregate("CCSTMTRQ")
 public class CreditCardStatementRequest extends StatementRequest {
 
-  private CreditCardAccountDetails account;
+    private CreditCardAccountDetails account;
 
-  /**
-   * The account details.
-   *
-   * @return The account details.
-   */
-  @ChildAggregate ( name = "CCACCTFROM", required = true, order = 0 )
-  public CreditCardAccountDetails getAccount() {
-    return account;
-  }
+    /**
+     * The account details.
+     *
+     * @return The account details.
+     */
+    @ChildAggregate(name = "CCACCTFROM", required = true, order = 0)
+    public CreditCardAccountDetails getAccount() {
+        return account;
+    }
 
-  /**
-   * The account details.
-   *
-   * @param account The account details.
-   */
-  public void setAccount(CreditCardAccountDetails account) {
-    this.account = account;
-  }
+    /**
+     * The account details.
+     *
+     * @param account The account details.
+     */
+    public void setAccount(CreditCardAccountDetails account) {
+        this.account = account;
+    }
 
+    @Override
+    public String toString() {
+        String inherited = super.toString().replaceFirst("^\\w+\\{", "").replaceAll("}$", "");
+        return "CreditCardStatementRequest{" +
+                (inherited.trim().isEmpty() ? "" : (inherited + ", ")) +
+                "account=" + account +
+                '}';
+    }
 }

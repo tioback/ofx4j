@@ -29,29 +29,38 @@ import com.webcohesion.ofx4j.meta.ChildAggregate;
  */
 public class BaseOtherInvestmentTransaction extends BaseInvestmentTransaction {
 
-  private InvestmentTransaction investmentTransaction;
+    private InvestmentTransaction investmentTransaction;
 
-  BaseOtherInvestmentTransaction(TransactionType transactionType) {
-    super(transactionType);
-  }
+    BaseOtherInvestmentTransaction(TransactionType transactionType) {
+        super(transactionType);
+    }
 
-  /**
-   * Gets the {@link InvestmentTransaction} aggregate.
-   *
-   * @return the {@link InvestmentTransaction} aggregate
-   */
-  // @Override
-  @ChildAggregate( order = 10 )
-  public InvestmentTransaction getInvestmentTransaction() {
-    return investmentTransaction;
-  }
+    /**
+     * Gets the {@link InvestmentTransaction} aggregate.
+     *
+     * @return the {@link InvestmentTransaction} aggregate
+     */
+    // @Override
+    @ChildAggregate(order = 10)
+    public InvestmentTransaction getInvestmentTransaction() {
+        return investmentTransaction;
+    }
 
-  /**
-   * Sets the {@link InvestmentTransaction} aggregate.
-   *
-   * @param investmentTransaction the {@link InvestmentTransaction} aggregate
-   */
-  public void setInvestmentTransaction(InvestmentTransaction investmentTransaction) {
-    this.investmentTransaction = investmentTransaction;
-  }
+    /**
+     * Sets the {@link InvestmentTransaction} aggregate.
+     *
+     * @param investmentTransaction the {@link InvestmentTransaction} aggregate
+     */
+    public void setInvestmentTransaction(InvestmentTransaction investmentTransaction) {
+        this.investmentTransaction = investmentTransaction;
+    }
+
+    @Override
+    public String toString() {
+        String inherited = super.toString().replaceFirst("^\\w+\\{", "").replaceAll("}$", "");
+        return "BaseOtherInvestmentTransaction{" +
+                (inherited.trim().isEmpty() ? "" : (inherited + ", ")) +
+                "investmentTransaction=" + investmentTransaction +
+                "}";
+    }
 }

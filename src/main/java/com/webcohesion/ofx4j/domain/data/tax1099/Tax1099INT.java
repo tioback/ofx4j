@@ -17,7 +17,6 @@ package com.webcohesion.ofx4j.domain.data.tax1099;
 
 import com.webcohesion.ofx4j.meta.Aggregate;
 import com.webcohesion.ofx4j.meta.ChildAggregate;
-
 import com.webcohesion.ofx4j.meta.Element;
 
 /**
@@ -26,268 +25,286 @@ import com.webcohesion.ofx4j.meta.Element;
  */
 
 
-@Aggregate ( "TAX1099INT_V100")
-public class Tax1099INT  {
-
-  
-	private String srvrtId;
-	private String taxYear;
-	private String intIncome;
-	private String erlWithPen;
-	private String intUsbndtrs;
-	private String fedTaxWh;
-	private String investExp;
-	private String forTaxPd;
-		
-	private PayerAddress payerAddress;
-	private String payerId;
-	private RecAddress recAddress;
-	private String recId;
-	private String recAcct;
-	private String taxExemptInt;
-	private String specifiedPabInt;
-	 
-	  @Element ( name = "SRVRTID",required = true , order = 0 )
-	  public String getSrvrtId() {
-	    return srvrtId;
-	  }
-
-	  
-	  public void setSrvrtId(String srvrtId) {
-	    this.srvrtId = srvrtId;
-	  }
-
-	 
-	  @Element ( name = "TAXYEAR", required = true, order = 1 )
-	  public String getTaxYear() {
-	    return taxYear;
-	  }
-
-	 
-	  public void setTaxYear(String taxYear) {
-	    this.taxYear = taxYear;
-	  }
-
-	  	
-
-	/**
-	 * @return the intIncome
-	 */
-	@Element ( name = "INTINCOME",required = false , order = 2 )
-	public String getIntIncome() {
-		return intIncome;
-	}
+@Aggregate("TAX1099INT_V100")
+public class Tax1099INT {
 
 
-	/**
-	 * @param intIncome the intIncome to set
-	 */
-	public void setIntIncome(String intIncome) {
-		this.intIncome = intIncome;
-	}
+    private String srvrtId;
+    private String taxYear;
+    private String intIncome;
+    private String erlWithPen;
+    private String intUsbndtrs;
+    private String fedTaxWh;
+    private String investExp;
+    private String forTaxPd;
+
+    private PayerAddress payerAddress;
+    private String payerId;
+    private RecAddress recAddress;
+    private String recId;
+    private String recAcct;
+    private String taxExemptInt;
+    private String specifiedPabInt;
+
+    @Element(name = "SRVRTID", required = true, order = 0)
+    public String getSrvrtId() {
+        return srvrtId;
+    }
 
 
-	/**
-	 * @return the erlWithPen
-	 */
-	@Element ( name = "ERLWITHPEN",required = false , order = 3 )
-	public String getErlWithPen() {
-		return erlWithPen;
-	}
+    public void setSrvrtId(String srvrtId) {
+        this.srvrtId = srvrtId;
+    }
 
 
-	/**
-	 * @param erlWithPen the erlWithPen to set
-	 */
-	public void setErlWithPen(String erlWithPen) {
-		this.erlWithPen = erlWithPen;
-	}
+    @Element(name = "TAXYEAR", required = true, order = 1)
+    public String getTaxYear() {
+        return taxYear;
+    }
 
 
-	/**
-	 * @return the intUsbndtrs
-	 */
-	@Element ( name = "INTUSBNDTRS",required = false , order = 4 )
-	public String getIntUsbndtrs() {
-		return intUsbndtrs;
-	}
+    public void setTaxYear(String taxYear) {
+        this.taxYear = taxYear;
+    }
 
 
-	/**
-	 * @param intUsbndtrs the intUsbndtrs to set
-	 */
-	public void setIntUsbndtrs(String intUsbndtrs) {
-		this.intUsbndtrs = intUsbndtrs;
-	}
+    /**
+     * @return the intIncome
+     */
+    @Element(name = "INTINCOME", required = false, order = 2)
+    public String getIntIncome() {
+        return intIncome;
+    }
 
 
-	/**
-	 * @return the fedTaxWh
-	 */
-	@Element ( name = "FEDTAXWH", required = false, order = 5 )
-	public String getFedTaxWh() {
-		return fedTaxWh;
-	}
+    /**
+     * @param intIncome the intIncome to set
+     */
+    public void setIntIncome(String intIncome) {
+        this.intIncome = intIncome;
+    }
 
 
-	/**
-	 * @param fedTaxWh the fedTaxWh to set
-	 */
-	public void setFedTaxWh(String fedTaxWh) {
-		this.fedTaxWh = fedTaxWh;
-	}
+    /**
+     * @return the erlWithPen
+     */
+    @Element(name = "ERLWITHPEN", required = false, order = 3)
+    public String getErlWithPen() {
+        return erlWithPen;
+    }
 
 
-	/**
-	 * @return the investExp
-	 */
-	@Element ( name = "INVESTEXP", required = false, order = 6 )
-	public String getInvestExp() {
-		return investExp;
-	}
+    /**
+     * @param erlWithPen the erlWithPen to set
+     */
+    public void setErlWithPen(String erlWithPen) {
+        this.erlWithPen = erlWithPen;
+    }
 
 
-	/**
-	 * @param investExp the investExp to set
-	 */
-	public void setInvestExp(String investExp) {
-		this.investExp = investExp;
-	}
+    /**
+     * @return the intUsbndtrs
+     */
+    @Element(name = "INTUSBNDTRS", required = false, order = 4)
+    public String getIntUsbndtrs() {
+        return intUsbndtrs;
+    }
 
 
-	/**
-	 * @return the forTaxPd
-	 */
-	@Element ( name = "FORTAXPD", required = false, order = 7 )
-	public String getForTaxPd() {
-		return forTaxPd;
-	}
+    /**
+     * @param intUsbndtrs the intUsbndtrs to set
+     */
+    public void setIntUsbndtrs(String intUsbndtrs) {
+        this.intUsbndtrs = intUsbndtrs;
+    }
 
 
-	/**
-	 * @param forTaxPd the forTaxPd to set
-	 */
-	public void setForTaxPd(String forTaxPd) {
-		this.forTaxPd = forTaxPd;
-	}
+    /**
+     * @return the fedTaxWh
+     */
+    @Element(name = "FEDTAXWH", required = false, order = 5)
+    public String getFedTaxWh() {
+        return fedTaxWh;
+    }
 
 
-	/**
-	 * @return the payerAddress
-	 */
-	@ChildAggregate(required=true, order = 8)
-	public PayerAddress getPayerAddress() {
-		return payerAddress;
-	}
+    /**
+     * @param fedTaxWh the fedTaxWh to set
+     */
+    public void setFedTaxWh(String fedTaxWh) {
+        this.fedTaxWh = fedTaxWh;
+    }
 
 
-	/**
-	 * @param payerAddress the payerAddress to set
-	 */
-	public void setPayerAddress(PayerAddress payerAddress) {
-		this.payerAddress = payerAddress;
-	}
-	
-	/**
-	 * @return the payerId
-	 */
-	@Element ( name = "PAYERID", required = true, order = 9 )
-	public String getPayerId() {
-		return payerId;
-	}
+    /**
+     * @return the investExp
+     */
+    @Element(name = "INVESTEXP", required = false, order = 6)
+    public String getInvestExp() {
+        return investExp;
+    }
 
 
-	/**
-	 * @param payerId the payerId to set
-	 */
-	public void setPayerId(String payerId) {
-		this.payerId = payerId;
-	}
-	
-
-	/**
-	 * @return the recAddress
-	 */
-	@ChildAggregate(required=true, order = 10)
-	public RecAddress getRecAddress() {
-		return recAddress;
-	}
+    /**
+     * @param investExp the investExp to set
+     */
+    public void setInvestExp(String investExp) {
+        this.investExp = investExp;
+    }
 
 
-	/**
-	 * @param recAddress the recAddress to set
-	 */
-	public void setRecAddress(RecAddress recAddress) {
-		this.recAddress = recAddress;
-	}
-
-	/**
-	 * @return the recId
-	 */
-	@Element ( name = "RECID", required = true, order = 11 )
-	public String getRecId() {
-		return recId;
-	}
+    /**
+     * @return the forTaxPd
+     */
+    @Element(name = "FORTAXPD", required = false, order = 7)
+    public String getForTaxPd() {
+        return forTaxPd;
+    }
 
 
-	/**
-	 * @param recId the recId to set
-	 */
-	public void setRecId(String recId) {
-		this.recId = recId;
-	}
+    /**
+     * @param forTaxPd the forTaxPd to set
+     */
+    public void setForTaxPd(String forTaxPd) {
+        this.forTaxPd = forTaxPd;
+    }
 
 
-	/**
-	 * @return the recAcct
-	 */
-	@Element ( name = "RECACCT", required = true, order = 12 )
-	public String getRecAcct() {
-		return recAcct;
-	}
+    /**
+     * @return the payerAddress
+     */
+    @ChildAggregate(required = true, order = 8)
+    public PayerAddress getPayerAddress() {
+        return payerAddress;
+    }
 
 
-	/**
-	 * @param recAcct the recAcct to set
-	 */
-	public void setRecAcct(String recAcct) {
-		this.recAcct = recAcct;
-	}
+    /**
+     * @param payerAddress the payerAddress to set
+     */
+    public void setPayerAddress(PayerAddress payerAddress) {
+        this.payerAddress = payerAddress;
+    }
+
+    /**
+     * @return the payerId
+     */
+    @Element(name = "PAYERID", required = true, order = 9)
+    public String getPayerId() {
+        return payerId;
+    }
 
 
-	/**
-	 * @return the taxExemptInt
-	 */
-	@Element ( name = "TAXEXEMPTINT", required = false, order = 13 )
-	public String getTaxExemptInt() {
-		return taxExemptInt;
-	}
+    /**
+     * @param payerId the payerId to set
+     */
+    public void setPayerId(String payerId) {
+        this.payerId = payerId;
+    }
 
 
-	/**
-	 * @param taxExemptInt the taxExemptInt to set
-	 */
-	public void setTaxExemptInt(String taxExemptInt) {
-		this.taxExemptInt = taxExemptInt;
-	}
+    /**
+     * @return the recAddress
+     */
+    @ChildAggregate(required = true, order = 10)
+    public RecAddress getRecAddress() {
+        return recAddress;
+    }
 
 
-	/**
-	 * @return the specifiedPabInt
-	 */
-	@Element ( name = "SPECIFIEDPABINT", required = false, order = 14 )
-	public String getSpecifiedPabInt() {
-		return specifiedPabInt;
-	}
+    /**
+     * @param recAddress the recAddress to set
+     */
+    public void setRecAddress(RecAddress recAddress) {
+        this.recAddress = recAddress;
+    }
+
+    /**
+     * @return the recId
+     */
+    @Element(name = "RECID", required = true, order = 11)
+    public String getRecId() {
+        return recId;
+    }
 
 
-	/**
-	 * @param specifiedPabInt the specifiedPabInt to set
-	 */
-	public void setSpecifiedPabInt(String specifiedPabInt) {
-		this.specifiedPabInt = specifiedPabInt;
-	}
-	
-	
-	  
+    /**
+     * @param recId the recId to set
+     */
+    public void setRecId(String recId) {
+        this.recId = recId;
+    }
+
+
+    /**
+     * @return the recAcct
+     */
+    @Element(name = "RECACCT", required = true, order = 12)
+    public String getRecAcct() {
+        return recAcct;
+    }
+
+
+    /**
+     * @param recAcct the recAcct to set
+     */
+    public void setRecAcct(String recAcct) {
+        this.recAcct = recAcct;
+    }
+
+
+    /**
+     * @return the taxExemptInt
+     */
+    @Element(name = "TAXEXEMPTINT", required = false, order = 13)
+    public String getTaxExemptInt() {
+        return taxExemptInt;
+    }
+
+
+    /**
+     * @param taxExemptInt the taxExemptInt to set
+     */
+    public void setTaxExemptInt(String taxExemptInt) {
+        this.taxExemptInt = taxExemptInt;
+    }
+
+
+    /**
+     * @return the specifiedPabInt
+     */
+    @Element(name = "SPECIFIEDPABINT", required = false, order = 14)
+    public String getSpecifiedPabInt() {
+        return specifiedPabInt;
+    }
+
+
+    /**
+     * @param specifiedPabInt the specifiedPabInt to set
+     */
+    public void setSpecifiedPabInt(String specifiedPabInt) {
+        this.specifiedPabInt = specifiedPabInt;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Tax1099INT{" +
+                "srvrtId='" + srvrtId + '\'' +
+                ", taxYear='" + taxYear + '\'' +
+                ", intIncome='" + intIncome + '\'' +
+                ", erlWithPen='" + erlWithPen + '\'' +
+                ", intUsbndtrs='" + intUsbndtrs + '\'' +
+                ", fedTaxWh='" + fedTaxWh + '\'' +
+                ", investExp='" + investExp + '\'' +
+                ", forTaxPd='" + forTaxPd + '\'' +
+                ", payerAddress=" + payerAddress +
+                ", payerId='" + payerId + '\'' +
+                ", recAddress=" + recAddress +
+                ", recId='" + recId + '\'' +
+                ", recAcct='" + recAcct + '\'' +
+                ", taxExemptInt='" + taxExemptInt + '\'' +
+                ", specifiedPabInt='" + specifiedPabInt + '\'' +
+                "}";
+    }
 }

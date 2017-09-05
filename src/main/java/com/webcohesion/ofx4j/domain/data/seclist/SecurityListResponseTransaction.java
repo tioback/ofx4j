@@ -21,37 +21,46 @@ import com.webcohesion.ofx4j.meta.ChildAggregate;
 
 /**
  * Security list transaction response.
- * @see "Section 13.8.3.1, OFX Spec"
  *
  * @author Jon Perlow
+ * @see "Section 13.8.3.1, OFX Spec"
  */
-@Aggregate( "SECLISTTRNRS")
+@Aggregate("SECLISTTRNRS")
 public class SecurityListResponseTransaction
-    extends TransactionWrappedResponseMessage<SecurityListResponse> {
+        extends TransactionWrappedResponseMessage<SecurityListResponse> {
 
-  private SecurityListResponse message;
+    private SecurityListResponse message;
 
-  /**
-   * The message.
-   *
-   * @return The message.
-   */
-  @ChildAggregate( required = true, order = 30 )
-  public SecurityListResponse getMessage() {
-    return message;
-  }
+    /**
+     * The message.
+     *
+     * @return The message.
+     */
+    @ChildAggregate(required = true, order = 30)
+    public SecurityListResponse getMessage() {
+        return message;
+    }
 
-  /**
-   * The message.
-   *
-   * @param message The message.
-   */
-  public void setMessage(SecurityListResponse message) {
-    this.message = message;
-  }
+    /**
+     * The message.
+     *
+     * @param message The message.
+     */
+    public void setMessage(SecurityListResponse message) {
+        this.message = message;
+    }
 
-  // Inherited.
-  public SecurityListResponse getWrappedMessage() {
-    return getMessage();
-  }
+    // Inherited.
+    public SecurityListResponse getWrappedMessage() {
+        return getMessage();
+    }
+
+    @Override
+    public String toString() {
+        String inherited = super.toString().replaceFirst("^\\w+\\{", "").replaceAll("}$", "");
+        return "SecurityListResponseTransaction{" +
+                (inherited.trim().isEmpty() ? "" : (inherited + ", ")) +
+                "message=" + message +
+                "}";
+    }
 }

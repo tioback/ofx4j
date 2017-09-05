@@ -17,51 +17,60 @@
 package com.webcohesion.ofx4j.domain.data.banking;
 
 import com.webcohesion.ofx4j.domain.data.MessageSetType;
-import com.webcohesion.ofx4j.domain.data.RequestMessageSet;
 import com.webcohesion.ofx4j.domain.data.RequestMessage;
+import com.webcohesion.ofx4j.domain.data.RequestMessageSet;
 import com.webcohesion.ofx4j.meta.Aggregate;
 import com.webcohesion.ofx4j.meta.ChildAggregate;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Ryan Heaton
  */
-@Aggregate ( "BANKMSGSRQV1" )
+@Aggregate("BANKMSGSRQV1")
 public class BankingRequestMessageSet extends RequestMessageSet {
 
-  private BankStatementRequestTransaction statementRequest;
+    private BankStatementRequestTransaction statementRequest;
 
-  public MessageSetType getType() {
-    return MessageSetType.banking;
-  }
-
-  /**
-   * The statement request.
-   *
-   * @return The statement request.
-   */
-  @ChildAggregate( order = 0 )
-  public BankStatementRequestTransaction getStatementRequest() {
-    return statementRequest;
-  }
-
-  /**
-   * The statement request.
-   *
-   * @param statementRequest The statement request.
-   */
-  public void setStatementRequest(BankStatementRequestTransaction statementRequest) {
-    this.statementRequest = statementRequest;
-  }
-
-  // Inherited.
-  public List<RequestMessage> getRequestMessages() {
-    ArrayList<RequestMessage> requestMessages = new ArrayList<RequestMessage>();
-    if (getStatementRequest() != null) {
-      requestMessages.add(getStatementRequest());
+    public MessageSetType getType() {
+        return MessageSetType.banking;
     }
-    return requestMessages;
-  }
+
+    /**
+     * The statement request.
+     *
+     * @return The statement request.
+     */
+    @ChildAggregate(order = 0)
+    public BankStatementRequestTransaction getStatementRequest() {
+        return statementRequest;
+    }
+
+    /**
+     * The statement request.
+     *
+     * @param statementRequest The statement request.
+     */
+    public void setStatementRequest(BankStatementRequestTransaction statementRequest) {
+        this.statementRequest = statementRequest;
+    }
+
+    // Inherited.
+    public List<RequestMessage> getRequestMessages() {
+        ArrayList<RequestMessage> requestMessages = new ArrayList<RequestMessage>();
+        if (getStatementRequest() != null) {
+            requestMessages.add(getStatementRequest());
+        }
+        return requestMessages;
+    }
+
+    @Override
+    public String toString() {
+        String inherited = super.toString().replaceFirst("^\\w+\\{", "").replaceAll("}$", "");
+        return "BankingRequestMessageSet{" +
+                (inherited.trim().isEmpty() ? "" : (inherited + ", ")) +
+                "statementRequest=" + statementRequest +
+                '}';
+    }
 }

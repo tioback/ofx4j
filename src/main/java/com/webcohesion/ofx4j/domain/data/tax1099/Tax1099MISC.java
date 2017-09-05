@@ -17,7 +17,6 @@ package com.webcohesion.ofx4j.domain.data.tax1099;
 
 import com.webcohesion.ofx4j.meta.Aggregate;
 import com.webcohesion.ofx4j.meta.ChildAggregate;
-
 import com.webcohesion.ofx4j.meta.Element;
 
 /**
@@ -26,193 +25,210 @@ import com.webcohesion.ofx4j.meta.Element;
  */
 
 
-@Aggregate ( "TAX1099MISC_V100")
-public class Tax1099MISC  {
-
-  
-	private String srvrtId;
-	private String taxYear;
-	
-	private String royalties;
-	private String otherIncome;
-	private String fedTaxWh;
-	private String subPmts;
-			
-	private PayerAddress payerAddress;
-	private String payerId;
-	private RecAddress recAddress;
-	private String recId;
-	private String recAcct;
-	
-	 
-	  @Element ( name = "SRVRTID",required = true , order = 0 )
-	  public String getSrvrtId() {
-	    return srvrtId;
-	  }
-
-	  
-	  public void setSrvrtId(String srvrtId) {
-	    this.srvrtId = srvrtId;
-	  }
-
-	 
-	  @Element ( name = "TAXYEAR", required = true, order = 1 )
-	  public String getTaxYear() {
-	    return taxYear;
-	  }
-
-	 
-	  public void setTaxYear(String taxYear) {
-	    this.taxYear = taxYear;
-	  }
-
-	/**
-	 * @return the royalties
-	 */
-	@Element ( name = "ROYALTIES",required = false , order = 2 )
-	public String getRoyalties() {
-		return royalties;
-	}
+@Aggregate("TAX1099MISC_V100")
+public class Tax1099MISC {
 
 
-	/**
-	 * @param royalties the royalties to set
-	 */
-	public void setRoyalties(String royalties) {
-		this.royalties = royalties;
-	}
+    private String srvrtId;
+    private String taxYear;
+
+    private String royalties;
+    private String otherIncome;
+    private String fedTaxWh;
+    private String subPmts;
+
+    private PayerAddress payerAddress;
+    private String payerId;
+    private RecAddress recAddress;
+    private String recId;
+    private String recAcct;
 
 
-	/**
-	 * @return the otherIncome
-	 */
-	@Element ( name = "OTHERINCOME",required = false , order = 3 )
-	public String getOtherIncome() {
-		return otherIncome;
-	}
+    @Element(name = "SRVRTID", required = true, order = 0)
+    public String getSrvrtId() {
+        return srvrtId;
+    }
 
 
-	/**
-	 * @param otherIncome the otherIncome to set
-	 */
-	public void setOtherIncome(String otherIncome) {
-		this.otherIncome = otherIncome;
-	}
+    public void setSrvrtId(String srvrtId) {
+        this.srvrtId = srvrtId;
+    }
 
 
-	/**
-	 * @return the fedTaxWh
-	 */
-	@Element ( name = "FEDTAXWH",required = false , order = 4 )
-	public String getFedTaxWh() {
-		return fedTaxWh;
-	}
+    @Element(name = "TAXYEAR", required = true, order = 1)
+    public String getTaxYear() {
+        return taxYear;
+    }
 
 
-	/**
-	 * @param fedTaxWh the fedTaxWh to set
-	 */
-	public void setFedTaxWh(String fedTaxWh) {
-		this.fedTaxWh = fedTaxWh;
-	}
+    public void setTaxYear(String taxYear) {
+        this.taxYear = taxYear;
+    }
+
+    /**
+     * @return the royalties
+     */
+    @Element(name = "ROYALTIES", required = false, order = 2)
+    public String getRoyalties() {
+        return royalties;
+    }
 
 
-	/**
-	 * @return the subPmts
-	 */
-	@Element ( name = "SUBPMTS",required = false , order = 5 )
-	public String getSubPmts() {
-		return subPmts;
-	}
+    /**
+     * @param royalties the royalties to set
+     */
+    public void setRoyalties(String royalties) {
+        this.royalties = royalties;
+    }
 
 
-	/**
-	 * @param subPmts the subPmts to set
-	 */
-	public void setSubPmts(String subPmts) {
-		this.subPmts = subPmts;
-	}
+    /**
+     * @return the otherIncome
+     */
+    @Element(name = "OTHERINCOME", required = false, order = 3)
+    public String getOtherIncome() {
+        return otherIncome;
+    }
 
 
-	/**
-	 * @return the payerAddress
-	 */
-	@ChildAggregate(required=true, order = 6)
-	public PayerAddress getPayerAddress() {
-		return payerAddress;
-	}
+    /**
+     * @param otherIncome the otherIncome to set
+     */
+    public void setOtherIncome(String otherIncome) {
+        this.otherIncome = otherIncome;
+    }
 
 
-	/**
-	 * @param payerAddress the payerAddress to set
-	 */
-	public void setPayerAddress(PayerAddress payerAddress) {
-		this.payerAddress = payerAddress;
-	}
-	
-	/**
-	 * @return the payerId
-	 */
-	@Element ( name = "PAYERID", required = true, order = 7 )
-	public String getPayerId() {
-		return payerId;
-	}
+    /**
+     * @return the fedTaxWh
+     */
+    @Element(name = "FEDTAXWH", required = false, order = 4)
+    public String getFedTaxWh() {
+        return fedTaxWh;
+    }
 
 
-	/**
-	 * @param payerId the payerId to set
-	 */
-	public void setPayerId(String payerId) {
-		this.payerId = payerId;
-	}
-	
-
-	/**
-	 * @return the recAddress
-	 */
-	@ChildAggregate(required=true, order = 8)
-	public RecAddress getRecAddress() {
-		return recAddress;
-	}
+    /**
+     * @param fedTaxWh the fedTaxWh to set
+     */
+    public void setFedTaxWh(String fedTaxWh) {
+        this.fedTaxWh = fedTaxWh;
+    }
 
 
-	/**
-	 * @param recAddress the recAddress to set
-	 */
-	public void setRecAddress(RecAddress recAddress) {
-		this.recAddress = recAddress;
-	}
-
-	/**
-	 * @return the recId
-	 */
-	@Element ( name = "RECID", required = true, order = 9 )
-	public String getRecId() {
-		return recId;
-	}
+    /**
+     * @return the subPmts
+     */
+    @Element(name = "SUBPMTS", required = false, order = 5)
+    public String getSubPmts() {
+        return subPmts;
+    }
 
 
-	/**
-	 * @param recId the recId to set
-	 */
-	public void setRecId(String recId) {
-		this.recId = recId;
-	}
+    /**
+     * @param subPmts the subPmts to set
+     */
+    public void setSubPmts(String subPmts) {
+        this.subPmts = subPmts;
+    }
 
 
-	/**
-	 * @return the recAcct
-	 */
-	@Element ( name = "RECACCT", required = true, order = 10 )
-	public String getRecAcct() {
-		return recAcct;
-	}
+    /**
+     * @return the payerAddress
+     */
+    @ChildAggregate(required = true, order = 6)
+    public PayerAddress getPayerAddress() {
+        return payerAddress;
+    }
 
 
-	/**
-	 * @param recAcct the recAcct to set
-	 */
-	public void setRecAcct(String recAcct) {
-		this.recAcct = recAcct;
-	}
+    /**
+     * @param payerAddress the payerAddress to set
+     */
+    public void setPayerAddress(PayerAddress payerAddress) {
+        this.payerAddress = payerAddress;
+    }
+
+    /**
+     * @return the payerId
+     */
+    @Element(name = "PAYERID", required = true, order = 7)
+    public String getPayerId() {
+        return payerId;
+    }
+
+
+    /**
+     * @param payerId the payerId to set
+     */
+    public void setPayerId(String payerId) {
+        this.payerId = payerId;
+    }
+
+
+    /**
+     * @return the recAddress
+     */
+    @ChildAggregate(required = true, order = 8)
+    public RecAddress getRecAddress() {
+        return recAddress;
+    }
+
+
+    /**
+     * @param recAddress the recAddress to set
+     */
+    public void setRecAddress(RecAddress recAddress) {
+        this.recAddress = recAddress;
+    }
+
+    /**
+     * @return the recId
+     */
+    @Element(name = "RECID", required = true, order = 9)
+    public String getRecId() {
+        return recId;
+    }
+
+
+    /**
+     * @param recId the recId to set
+     */
+    public void setRecId(String recId) {
+        this.recId = recId;
+    }
+
+
+    /**
+     * @return the recAcct
+     */
+    @Element(name = "RECACCT", required = true, order = 10)
+    public String getRecAcct() {
+        return recAcct;
+    }
+
+
+    /**
+     * @param recAcct the recAcct to set
+     */
+    public void setRecAcct(String recAcct) {
+        this.recAcct = recAcct;
+    }
+
+    @Override
+    public String toString() {
+        return "Tax1099MISC{" +
+                "srvrtId='" + srvrtId + '\'' +
+                ", taxYear='" + taxYear + '\'' +
+                ", royalties='" + royalties + '\'' +
+                ", otherIncome='" + otherIncome + '\'' +
+                ", fedTaxWh='" + fedTaxWh + '\'' +
+                ", subPmts='" + subPmts + '\'' +
+                ", payerAddress=" + payerAddress +
+                ", payerId='" + payerId + '\'' +
+                ", recAddress=" + recAddress +
+                ", recId='" + recId + '\'' +
+                ", recAcct='" + recAcct + '\'' +
+                "}";
+    }
 }

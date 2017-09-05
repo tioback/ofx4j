@@ -29,106 +29,116 @@ import java.util.UUID;
  * @author Ryan Heaton
  * @see "Section 2.4.3, OFX Spec"
  */
-@Aggregate ( "OFX" )
+@Aggregate("OFX")
 public class RequestEnvelope {
 
-  //headers
-  private ApplicationSecurity security = ApplicationSecurity.NONE;
-  private String UID;
-  private String lastProcessedUID;
+    //headers
+    private ApplicationSecurity security = ApplicationSecurity.NONE;
+    private String UID;
+    private String lastProcessedUID;
 
-  //content
-  private SortedSet<RequestMessageSet> messageSets;
+    //content
+    private SortedSet<RequestMessageSet> messageSets;
 
-  public RequestEnvelope() {
-    this.UID = UUID.randomUUID().toString();
-  }
+    public RequestEnvelope() {
+        this.UID = UUID.randomUUID().toString();
+    }
 
-  public RequestEnvelope(String UID) {
-    this.UID = UID;
-  }
+    public RequestEnvelope(String UID) {
+        this.UID = UID;
+    }
 
-  /**
-   * The security of this envelope.
-   *
-   * @return The security of this envelope.
-   * @see "Section 2.2, OFX spec"
-   */
-  @Header ( name = "SECURITY" )
-  public ApplicationSecurity getSecurity() {
-    return security;
-  }
+    /**
+     * The security of this envelope.
+     *
+     * @return The security of this envelope.
+     * @see "Section 2.2, OFX spec"
+     */
+    @Header(name = "SECURITY")
+    public ApplicationSecurity getSecurity() {
+        return security;
+    }
 
-  /**
-   * The security of this envelope.
-   *
-   * @param security The security of this envelope.
-   * @see "Section 2.2, OFX spec"
-   */
-  public void setSecurity(ApplicationSecurity security) {
-    this.security = security;
-  }
+    /**
+     * The security of this envelope.
+     *
+     * @param security The security of this envelope.
+     * @see "Section 2.2, OFX spec"
+     */
+    public void setSecurity(ApplicationSecurity security) {
+        this.security = security;
+    }
 
-  /**
-   * The UID for the envelope.
-   *
-   * @return The UID for the envelope.
-   * @see "Section 2.2, OFX spec"
-   */
-  @Header ( name = "NEWFILEUID" )
-  public String getUID() {
-    return UID;
-  }
+    /**
+     * The UID for the envelope.
+     *
+     * @return The UID for the envelope.
+     * @see "Section 2.2, OFX spec"
+     */
+    @Header(name = "NEWFILEUID")
+    public String getUID() {
+        return UID;
+    }
 
-  /**
-   * The UID for the envelope.
-   *
-   * @param UID The UID for the envelope.
-   * @see "Section 2.2, OFX spec"
-   */
-  public void setUID(String UID) {
-    this.UID = UID;
-  }
+    /**
+     * The UID for the envelope.
+     *
+     * @param UID The UID for the envelope.
+     * @see "Section 2.2, OFX spec"
+     */
+    public void setUID(String UID) {
+        this.UID = UID;
+    }
 
-  /**
-   * The UID of the last-processed request/response (used for file-based error recovery).
-   *
-   * @return The UID of the last-processed request/response (used for file-based error recovery).
-   * @see "Section 2.2, OFX spec"
-   */
-  @Header ( name = "OLDFILEUID" )
-  public String getLastProcessedUID() {
-    return lastProcessedUID;
-  }
+    /**
+     * The UID of the last-processed request/response (used for file-based error recovery).
+     *
+     * @return The UID of the last-processed request/response (used for file-based error recovery).
+     * @see "Section 2.2, OFX spec"
+     */
+    @Header(name = "OLDFILEUID")
+    public String getLastProcessedUID() {
+        return lastProcessedUID;
+    }
 
-  /**
-   * The UID of the last-processed request/response (used for file-based error recovery).
-   *
-   * @param lastProcessedUID The UID of the last-processed request/response (used for file-based error recovery).
-   * @see "Section 2.2, OFX spec"
-   */
-  public void setLastProcessedUID(String lastProcessedUID) {
-    this.lastProcessedUID = lastProcessedUID;
-  }
+    /**
+     * The UID of the last-processed request/response (used for file-based error recovery).
+     *
+     * @param lastProcessedUID The UID of the last-processed request/response (used for file-based error recovery).
+     * @see "Section 2.2, OFX spec"
+     */
+    public void setLastProcessedUID(String lastProcessedUID) {
+        this.lastProcessedUID = lastProcessedUID;
+    }
 
-  /**
-   * The message sets that make up the content of this request.
-   *
-   * @return The message sets that make up the content of this request.
-   * @see "Section 2.4.5, OFX Spec"
-   */
-  @ChildAggregate ( order = 1 )
-  public SortedSet<RequestMessageSet> getMessageSets() {
-    return messageSets;
-  }
+    /**
+     * The message sets that make up the content of this request.
+     *
+     * @return The message sets that make up the content of this request.
+     * @see "Section 2.4.5, OFX Spec"
+     */
+    @ChildAggregate(order = 1)
+    public SortedSet<RequestMessageSet> getMessageSets() {
+        return messageSets;
+    }
 
-  /**
-   * The message sets that make up the content of this request.
-   *
-   * @param messageSets The message sets that make up the content of this request.
-   * @see "Section 2.4.5, OFX Spec"
-   */
-  public void setMessageSets(SortedSet<RequestMessageSet> messageSets) {
-    this.messageSets = messageSets;
-  }
+    /**
+     * The message sets that make up the content of this request.
+     *
+     * @param messageSets The message sets that make up the content of this request.
+     * @see "Section 2.4.5, OFX Spec"
+     */
+    public void setMessageSets(SortedSet<RequestMessageSet> messageSets) {
+        this.messageSets = messageSets;
+    }
+
+    @Override
+    public String toString() {
+        return "RequestEnvelope{" +
+                "security=" + security +
+                ", UID='" + UID + '\'' +
+                ", lastProcessedUID='" + lastProcessedUID + '\'' +
+                ", messageSets=" + messageSets +
+                "}";
+    }
 }

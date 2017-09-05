@@ -25,124 +25,136 @@ import com.webcohesion.ofx4j.meta.Element;
 /**
  * Transaction for journal security transactions between sub-accounts within the same investment
  * account.
- * @see "Section 13.9.2.4.4, OFX Spec"
  *
  * @author Jon Perlow
+ * @see "Section 13.9.2.4.4, OFX Spec"
  */
-@Aggregate( "JRNLSEC" )
+@Aggregate("JRNLSEC")
 public class JournalSecurityTransaction extends BaseOtherInvestmentTransaction
-    implements TransactionWithSecurity {
+        implements TransactionWithSecurity {
 
-  private SecurityId securityId;
-  private String subAccountFrom;
-  private String subAccountTo;
-  private Double total;
+    private SecurityId securityId;
+    private String subAccountFrom;
+    private String subAccountTo;
+    private Double total;
 
-  public JournalSecurityTransaction() {
-    super(TransactionType.JOURNAL_SECURITY);
-  }
+    public JournalSecurityTransaction() {
+        super(TransactionType.JOURNAL_SECURITY);
+    }
 
-  /**
-   * Gets the id of the security that was transferred. This is a required field according to the OFX
-   * spec.
-   * @see "Section 13.9.2.4.3, OFX Spec"
-   *
-   * @return the security id of the security that was bought
-   */
-  @ChildAggregate( required = true, order = 20 )
-  public SecurityId getSecurityId() {
-    return securityId;
-  }
+    /**
+     * Gets the id of the security that was transferred. This is a required field according to the OFX
+     * spec.
+     *
+     * @return the security id of the security that was bought
+     * @see "Section 13.9.2.4.3, OFX Spec"
+     */
+    @ChildAggregate(required = true, order = 20)
+    public SecurityId getSecurityId() {
+        return securityId;
+    }
 
-  /**
-   * Sets the id of the security that was transferred. This is a required field according to the OFX
-   * spec.
-   * @see "Section 13.9.2.4.3, OFX Spec"
-   *
-   * @param securityId the security id of the security that was bought
-   */
-  public void setSecurityId(SecurityId securityId) {
-    this.securityId = securityId;
-  }
+    /**
+     * Sets the id of the security that was transferred. This is a required field according to the OFX
+     * spec.
+     *
+     * @param securityId the security id of the security that was bought
+     * @see "Section 13.9.2.4.3, OFX Spec"
+     */
+    public void setSecurityId(SecurityId securityId) {
+        this.securityId = securityId;
+    }
 
-  /**
-   * Gets the sub account type the transer is from (e.g. CASH, MARGIN, SHORT, OTHER).
-   * @see "Section 13.9.2.4.4, OFX Spec"
-   *
-   * @return the sub account type
-   */
-  @Element( name = "SUBACCTFROM", order = 30)
-  public String getFromSubAccountFund() {
-    return subAccountFrom;
-  }
+    /**
+     * Gets the sub account type the transer is from (e.g. CASH, MARGIN, SHORT, OTHER).
+     *
+     * @return the sub account type
+     * @see "Section 13.9.2.4.4, OFX Spec"
+     */
+    @Element(name = "SUBACCTFROM", order = 30)
+    public String getFromSubAccountFund() {
+        return subAccountFrom;
+    }
 
-  /**
-   * Sets the sub account type the transer is from (e.g. CASH, MARGIN, SHORT, OTHER).
-   * @see "Section 13.9.2.4.4, OFX Spec"
-   *
-   * @param subAccountFrom the sub account type
-   */
-  public void setFromSubAccountFund(String subAccountFrom) {
-    this.subAccountFrom = subAccountFrom;
-  }
+    /**
+     * Sets the sub account type the transer is from (e.g. CASH, MARGIN, SHORT, OTHER).
+     *
+     * @param subAccountFrom the sub account type
+     * @see "Section 13.9.2.4.4, OFX Spec"
+     */
+    public void setFromSubAccountFund(String subAccountFrom) {
+        this.subAccountFrom = subAccountFrom;
+    }
 
-  /**
-   * Gets the result of getFromSubAccountFund as one of the well-known types.
-   *
-   * @return the type of null if it wasn't one of the well known types.
-   */
-  public SubAccountType getFromSubAccountFundEnum() {
-    return SubAccountType.fromOfx(getFromSubAccountFund());
-  }
+    /**
+     * Gets the result of getFromSubAccountFund as one of the well-known types.
+     *
+     * @return the type of null if it wasn't one of the well known types.
+     */
+    public SubAccountType getFromSubAccountFundEnum() {
+        return SubAccountType.fromOfx(getFromSubAccountFund());
+    }
 
-  /**
-   * Gets the sub account type that the transfer is to (e.g. CASH, MARGIN, SHORT, OTHER).
-   * @see "Section 13.9.2.4.4, OFX Spec"
-   *
-   * @return the sub account fund
-   */
-  @Element( name = "SUBACCTTO", order = 40)
-  public String getToSubAccountFund() {
-    return subAccountTo;
-  }
+    /**
+     * Gets the sub account type that the transfer is to (e.g. CASH, MARGIN, SHORT, OTHER).
+     *
+     * @return the sub account fund
+     * @see "Section 13.9.2.4.4, OFX Spec"
+     */
+    @Element(name = "SUBACCTTO", order = 40)
+    public String getToSubAccountFund() {
+        return subAccountTo;
+    }
 
-  /**
-   * sets the sub account type that the transfer is to (e.g. CASH, MARGIN, SHORT, OTHER).
-   * @see "Section 13.9.2.4.4, OFX Spec"
-   *
-   * @param subAccountTo the sub account fund
-   */
-  public void setToSubAccountFund(String subAccountTo) {
-    this.subAccountTo = subAccountTo;
-  }
+    /**
+     * sets the sub account type that the transfer is to (e.g. CASH, MARGIN, SHORT, OTHER).
+     *
+     * @param subAccountTo the sub account fund
+     * @see "Section 13.9.2.4.4, OFX Spec"
+     */
+    public void setToSubAccountFund(String subAccountTo) {
+        this.subAccountTo = subAccountTo;
+    }
 
-  /**
-   * Gets the result of getToSubAccountFund as one of the well-known types.
-   *
-   * @return the type of null if it wasn't one of the well known types.
-   */
-  public SubAccountType getToSubAccountFundEnum() {
-    return SubAccountType.fromOfx(getToSubAccountFund());
-  }
+    /**
+     * Gets the result of getToSubAccountFund as one of the well-known types.
+     *
+     * @return the type of null if it wasn't one of the well known types.
+     */
+    public SubAccountType getToSubAccountFundEnum() {
+        return SubAccountType.fromOfx(getToSubAccountFund());
+    }
 
-  /**
-   * Gets the total for the transaction.
-   * @see "Section 13.9.2.4.4, OFX Spec"
-   *
-   * @return the total
-   */
-  @Element( name = "TOTAL", order = 50)
-  public Double getTotal() {
-    return total;
-  }
+    /**
+     * Gets the total for the transaction.
+     *
+     * @return the total
+     * @see "Section 13.9.2.4.4, OFX Spec"
+     */
+    @Element(name = "TOTAL", order = 50)
+    public Double getTotal() {
+        return total;
+    }
 
-  /**
-   * Sets the total for the transaction.
-   * @see "Section 13.9.2.4.4, OFX Spec"
-   *
-   * @param total the total
-   */
-  public void setTotal(Double total) {
-    this.total = total;
-  }
+    /**
+     * Sets the total for the transaction.
+     *
+     * @param total the total
+     * @see "Section 13.9.2.4.4, OFX Spec"
+     */
+    public void setTotal(Double total) {
+        this.total = total;
+    }
+
+    @Override
+    public String toString() {
+        String inherited = super.toString().replaceFirst("^\\w+\\{", "").replaceAll("}$", "");
+        return "JournalSecurityTransaction{" +
+                (inherited.trim().isEmpty() ? "" : (inherited + ", ")) +
+                "securityId=" + securityId +
+                ", subAccountFrom='" + subAccountFrom + '\'' +
+                ", subAccountTo='" + subAccountTo + '\'' +
+                ", total=" + total +
+                "}";
+    }
 }

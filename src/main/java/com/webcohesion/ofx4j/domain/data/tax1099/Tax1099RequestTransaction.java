@@ -23,33 +23,41 @@ import com.webcohesion.ofx4j.meta.ChildAggregate;
  * @author Aparna Gawali
  * aparna.gawali@sungard.com
  */
-@Aggregate ("TAX1099TRNRQ")
+@Aggregate("TAX1099TRNRQ")
 public class Tax1099RequestTransaction extends TransactionWrappedRequestMessage<Tax1099Request> {
 
-  private Tax1099Request tax1099Request;
+    private Tax1099Request tax1099Request;
 
-  /**
-   * The tax1099Request.
-   *
-   * @return The tax1099Request.
-   */
-  @ChildAggregate( required = true, order = 30 )
-  public Tax1099Request getTax1099Request() {
-    return tax1099Request;
-  }
+    /**
+     * The tax1099Request.
+     *
+     * @return The tax1099Request.
+     */
+    @ChildAggregate(required = true, order = 30)
+    public Tax1099Request getTax1099Request() {
+        return tax1099Request;
+    }
 
-  /**
-   * The tax1099Request.
-   *
-   * @param tax1099Request The message.
-   *
-   */
-  public void setTax1099Request(Tax1099Request tax1099Request) {
-    this.tax1099Request = tax1099Request;
-  }
+    /**
+     * The tax1099Request.
+     *
+     * @param tax1099Request The message.
+     */
+    public void setTax1099Request(Tax1099Request tax1099Request) {
+        this.tax1099Request = tax1099Request;
+    }
 
-  // Inherited.
-  public void setWrappedMessage(Tax1099Request tax1099Request) {
-	  setTax1099Request(tax1099Request);
-  }
+    // Inherited.
+    public void setWrappedMessage(Tax1099Request tax1099Request) {
+        setTax1099Request(tax1099Request);
+    }
+
+    @Override
+    public String toString() {
+        String inherited = super.toString().replaceFirst("^\\w+\\{", "").replaceAll("}$", "");
+        return "Tax1099RequestTransaction{" +
+                (inherited.trim().isEmpty() ? "" : (inherited + ", ")) +
+                "tax1099Request=" + tax1099Request +
+                "}";
+    }
 }

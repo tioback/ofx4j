@@ -16,92 +16,106 @@
 
 package com.webcohesion.ofx4j.domain.data.profile.info;
 
-import com.webcohesion.ofx4j.domain.data.profile.VersionSpecificMessageSetInfo;
 import com.webcohesion.ofx4j.domain.data.MessageSetType;
+import com.webcohesion.ofx4j.domain.data.profile.VersionSpecificMessageSetInfo;
 import com.webcohesion.ofx4j.meta.Aggregate;
 import com.webcohesion.ofx4j.meta.Element;
 
 /**
- * @see "Section 13.7.1.1, OFX Spec"
- *
  * @author Jon Perlow
  * @author Ryan Heaton
+ * @see "Section 13.7.1.1, OFX Spec"
  */
-@Aggregate ( "INVSTMTMSGSETV1" )
+@Aggregate("INVSTMTMSGSETV1")
 public class InvestmentV1MessageSetInfo extends VersionSpecificMessageSetInfo {
 
-  private Boolean supportsStatementsDownload;
-  private Boolean supportsOpenOrdersDownload;
-  private Boolean supportsPositionsDownload;
-  private Boolean supportsBalanceDownload;
-  private Boolean supportsEmail;
-  private Boolean supports401kInformation;
-  private Boolean supportsClosingStatements;
+    private Boolean supportsStatementsDownload;
+    private Boolean supportsOpenOrdersDownload;
+    private Boolean supportsPositionsDownload;
+    private Boolean supportsBalanceDownload;
+    private Boolean supportsEmail;
+    private Boolean supports401kInformation;
+    private Boolean supportsClosingStatements;
 
-  public MessageSetType getMessageSetType() {
-    return MessageSetType.investment;
-  }
+    public MessageSetType getMessageSetType() {
+        return MessageSetType.investment;
+    }
 
-  @Element( name = "TRANDNLD", required=true, order = 10)
-  public Boolean getSupportsStatementsDownload() {
-    return supportsStatementsDownload;
-  }
+    @Element(name = "TRANDNLD", required = true, order = 10)
+    public Boolean getSupportsStatementsDownload() {
+        return supportsStatementsDownload;
+    }
 
-  public void setSupportsStatementsDownload(Boolean supportsStatementsDownload) {
-    this.supportsStatementsDownload = supportsStatementsDownload;
-  }
+    public void setSupportsStatementsDownload(Boolean supportsStatementsDownload) {
+        this.supportsStatementsDownload = supportsStatementsDownload;
+    }
 
-  @Element( name = "OODNLD", required=true, order = 20)
-  public Boolean getSupportsOpenOrdersDownload() {
-    return supportsOpenOrdersDownload;
-  }
+    @Element(name = "OODNLD", required = true, order = 20)
+    public Boolean getSupportsOpenOrdersDownload() {
+        return supportsOpenOrdersDownload;
+    }
 
-  public void setSupportsOpenOrdersDownload(Boolean supportsOpenOrdersDownload) {
-    this.supportsOpenOrdersDownload = supportsOpenOrdersDownload;
-  }
+    public void setSupportsOpenOrdersDownload(Boolean supportsOpenOrdersDownload) {
+        this.supportsOpenOrdersDownload = supportsOpenOrdersDownload;
+    }
 
-  @Element( name = "POSDNLD", required=true, order = 30)
-  public Boolean getSupportsPositionsDownload() {
-    return supportsPositionsDownload;
-  }
+    @Element(name = "POSDNLD", required = true, order = 30)
+    public Boolean getSupportsPositionsDownload() {
+        return supportsPositionsDownload;
+    }
 
-  public void setSupportsPositionsDownload(Boolean supportsPositionsDownload) {
-    this.supportsPositionsDownload = supportsPositionsDownload;
-  }
+    public void setSupportsPositionsDownload(Boolean supportsPositionsDownload) {
+        this.supportsPositionsDownload = supportsPositionsDownload;
+    }
 
-  @Element( name = "BALDNLD", required=true, order = 40)
-  public Boolean getSupportsBalanceDownload() {
-    return supportsBalanceDownload;
-  }
+    @Element(name = "BALDNLD", required = true, order = 40)
+    public Boolean getSupportsBalanceDownload() {
+        return supportsBalanceDownload;
+    }
 
-  public void setSupportsBalanceDownload(Boolean supportsBalanceDownload) {
-    this.supportsBalanceDownload = supportsBalanceDownload;
-  }
+    public void setSupportsBalanceDownload(Boolean supportsBalanceDownload) {
+        this.supportsBalanceDownload = supportsBalanceDownload;
+    }
 
-  @Element( name = "CANEMAIL", required=true, order = 50)
-  public Boolean getSupportsEmail() {
-    return supportsEmail;
-  }
+    @Element(name = "CANEMAIL", required = true, order = 50)
+    public Boolean getSupportsEmail() {
+        return supportsEmail;
+    }
 
-  public void setSupportsEmail(Boolean supportsEmail) {
-    this.supportsEmail = supportsEmail;
-  }
+    public void setSupportsEmail(Boolean supportsEmail) {
+        this.supportsEmail = supportsEmail;
+    }
 
-  @Element( name = "INV401KDNLD", order = 60)
-  public Boolean getSupports401kInformation() {
-    return supports401kInformation;
-  }
+    @Element(name = "INV401KDNLD", order = 60)
+    public Boolean getSupports401kInformation() {
+        return supports401kInformation;
+    }
 
-  public void setSupports401kInformation(Boolean supports401kInformation) {
-    this.supports401kInformation = supports401kInformation;
-  }
+    public void setSupports401kInformation(Boolean supports401kInformation) {
+        this.supports401kInformation = supports401kInformation;
+    }
 
-  @Element( name = "CLOSINGAVAIL", order = 70)
-  public Boolean getSupportsClosingStatements() {
-    return supportsClosingStatements;
-  }
+    @Element(name = "CLOSINGAVAIL", order = 70)
+    public Boolean getSupportsClosingStatements() {
+        return supportsClosingStatements;
+    }
 
-  public void setSupportsClosingStatements(Boolean supportsClosingStatements) {
-    this.supportsClosingStatements = supportsClosingStatements;
-  }
+    public void setSupportsClosingStatements(Boolean supportsClosingStatements) {
+        this.supportsClosingStatements = supportsClosingStatements;
+    }
+
+    @Override
+    public String toString() {
+        String inherited = super.toString().replaceFirst("^\\w+\\{", "").replaceAll("}$", "");
+        return "InvestmentV1MessageSetInfo{" +
+                (inherited.trim().isEmpty() ? "" : (inherited + ", ")) +
+                "supportsStatementsDownload=" + supportsStatementsDownload +
+                ", supportsOpenOrdersDownload=" + supportsOpenOrdersDownload +
+                ", supportsPositionsDownload=" + supportsPositionsDownload +
+                ", supportsBalanceDownload=" + supportsBalanceDownload +
+                ", supportsEmail=" + supportsEmail +
+                ", supports401kInformation=" + supports401kInformation +
+                ", supportsClosingStatements=" + supportsClosingStatements +
+                "}";
+    }
 }

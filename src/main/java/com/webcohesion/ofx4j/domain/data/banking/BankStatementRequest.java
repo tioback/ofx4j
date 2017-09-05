@@ -17,8 +17,8 @@
 package com.webcohesion.ofx4j.domain.data.banking;
 
 import com.webcohesion.ofx4j.domain.data.common.StatementRequest;
-import com.webcohesion.ofx4j.meta.ChildAggregate;
 import com.webcohesion.ofx4j.meta.Aggregate;
+import com.webcohesion.ofx4j.meta.ChildAggregate;
 
 /**
  * @author Ryan Heaton
@@ -26,25 +26,33 @@ import com.webcohesion.ofx4j.meta.Aggregate;
 @Aggregate("STMTRQ")
 public class BankStatementRequest extends StatementRequest {
 
-  private BankAccountDetails account;
+    private BankAccountDetails account;
 
-  /**
-   * The account details.
-   *
-   * @return The account details.
-   */
-  @ChildAggregate ( name = "BANKACCTFROM", required = true, order = 0 )
-  public BankAccountDetails getAccount() {
-    return account;
-  }
+    /**
+     * The account details.
+     *
+     * @return The account details.
+     */
+    @ChildAggregate(name = "BANKACCTFROM", required = true, order = 0)
+    public BankAccountDetails getAccount() {
+        return account;
+    }
 
-  /**
-   * The account details.
-   *
-   * @param account The account details.
-   */
-  public void setAccount(BankAccountDetails account) {
-    this.account = account;
-  }
+    /**
+     * The account details.
+     *
+     * @param account The account details.
+     */
+    public void setAccount(BankAccountDetails account) {
+        this.account = account;
+    }
 
+    @Override
+    public String toString() {
+        String inherited = super.toString().replaceFirst("^\\w+\\{", "").replaceAll("}$", "");
+        return "BankStatementRequest{" +
+                (inherited.trim().isEmpty() ? "" : (inherited + ", ")) +
+                "account=" + account +
+                '}';
+    }
 }

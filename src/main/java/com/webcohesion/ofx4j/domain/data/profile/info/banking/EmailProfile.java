@@ -21,32 +21,39 @@ import com.webcohesion.ofx4j.meta.Element;
 
 /**
  * Email Profile
+ *
  * @author Scott Priddy
  * @see "Section 11.13.2.3 OFX Spec"
  */
-@Aggregate( "EMAILPROF")
+@Aggregate("EMAILPROF")
 public class EmailProfile {
 
-  private Boolean canEmail;
-  private Boolean canNotify;
+    private Boolean canEmail;
+    private Boolean canNotify;
 
-  @Element( name = "CANEMAIL", required = true, order = 10 )
-  public Boolean getCanEmail() {
-    return canEmail;
-  }
+    @Element(name = "CANEMAIL", required = true, order = 10)
+    public Boolean getCanEmail() {
+        return canEmail;
+    }
 
-  public void setCanEmail(Boolean canEmail) {
-    this.canEmail = canEmail;
-  }
+    public void setCanEmail(Boolean canEmail) {
+        this.canEmail = canEmail;
+    }
 
-  @Element( name = "CANNOTIFY", required = true, order = 20 )
-  public Boolean getCanNotify() {
-    return canNotify;
-  }
+    @Element(name = "CANNOTIFY", required = true, order = 20)
+    public Boolean getCanNotify() {
+        return canNotify;
+    }
 
-  public void setCanNotify(Boolean canNotify) {
-    this.canNotify = canNotify;
-  }
+    public void setCanNotify(Boolean canNotify) {
+        this.canNotify = canNotify;
+    }
 
-
+    @Override
+    public String toString() {
+        return "EmailProfile{" +
+                "canEmail=" + canEmail +
+                ", canNotify=" + canNotify +
+                "}";
+    }
 }

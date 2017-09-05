@@ -16,16 +16,24 @@
 
 package com.webcohesion.ofx4j.domain.data.profile.info;
 
-import com.webcohesion.ofx4j.domain.data.profile.VersionSpecificMessageSetInfo;
 import com.webcohesion.ofx4j.domain.data.MessageSetType;
+import com.webcohesion.ofx4j.domain.data.profile.VersionSpecificMessageSetInfo;
 import com.webcohesion.ofx4j.meta.Aggregate;
 
 /**
  * @author Ryan Heaton
  */
-@Aggregate ( "PROFMSGSETV1" )
+@Aggregate("PROFMSGSETV1")
 public class ProfileV1MessageSetInfo extends VersionSpecificMessageSetInfo {
-  public MessageSetType getMessageSetType() {
-    return MessageSetType.profile;
-  }
+    public MessageSetType getMessageSetType() {
+        return MessageSetType.profile;
+    }
+
+    @Override
+    public String toString() {
+        String inherited = super.toString().replaceFirst("^\\w+\\{", "").replaceAll("}$", "");
+        return "ProfileV1MessageSetInfo{" +
+                (inherited.trim().isEmpty() ? "" : (inherited + ", ")) +
+                "}";
+    }
 }

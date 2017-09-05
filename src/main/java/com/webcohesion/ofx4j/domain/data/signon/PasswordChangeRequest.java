@@ -26,47 +26,57 @@ import com.webcohesion.ofx4j.meta.Element;
  * @author Ryan Heaton
  * @see "Section 2.5.2.1, OFX Spec."
  */
-@Aggregate ( "PINCHRQ" )
+@Aggregate("PINCHRQ")
 public class PasswordChangeRequest extends RequestMessage {
 
-  private String userId;
-  private String newPassword;
+    private String userId;
+    private String newPassword;
 
-  /**
-   * The id of the user changing password.
-   *
-   * @return The id of the user changing password.
-   */
-  @Element ( name = "USERID", required = true, order = 0 )
-  public String getUserId() {
-    return userId;
-  }
+    /**
+     * The id of the user changing password.
+     *
+     * @return The id of the user changing password.
+     */
+    @Element(name = "USERID", required = true, order = 0)
+    public String getUserId() {
+        return userId;
+    }
 
-  /**
-   * The id of the user changing password.
-   *
-   * @param userId The id of the user changing password.
-   */
-  public void setUserId(String userId) {
-    this.userId = userId;
-  }
+    /**
+     * The id of the user changing password.
+     *
+     * @param userId The id of the user changing password.
+     */
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 
-  /**
-   * The new password.
-   *
-   * @return The new password.
-   */
-  @Element ( name = "NEWUSERPASS", required = true, order = 10 )
-  public String getNewPassword() {
-    return newPassword;
-  }
+    /**
+     * The new password.
+     *
+     * @return The new password.
+     */
+    @Element(name = "NEWUSERPASS", required = true, order = 10)
+    public String getNewPassword() {
+        return newPassword;
+    }
 
-  /**
-   * The new password.
-   *
-   * @param newPassword The new password.
-   */
-  public void setNewPassword(String newPassword) {
-    this.newPassword = newPassword;
-  }
+    /**
+     * The new password.
+     *
+     * @param newPassword The new password.
+     */
+    public void setNewPassword(String newPassword) {
+        this.newPassword = newPassword;
+    }
+
+    @Override
+    public String toString() {
+        String inherited = super.toString().replaceFirst("^\\w+\\{", "").replaceAll("}$", "");
+        return "PasswordChangeRequest{" +
+                (inherited.trim().isEmpty() ? "" : (inherited + ", ")) +
+                "userId='" + userId + '\'' +
+                ", newPassword='" + newPassword + '\'' +
+                "}";
+    }
 }

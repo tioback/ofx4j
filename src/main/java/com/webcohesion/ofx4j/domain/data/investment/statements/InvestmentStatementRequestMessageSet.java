@@ -27,44 +27,53 @@ import java.util.List;
 
 /**
  * Investment statement request message set.
- * @see "Section 13.7.1.2.1, OFX Spec"
  *
  * @author Jon Perlow
+ * @see "Section 13.7.1.2.1, OFX Spec"
  */
-@Aggregate( "INVSTMTMSGSRQV1" )
+@Aggregate("INVSTMTMSGSRQV1")
 public class InvestmentStatementRequestMessageSet extends RequestMessageSet {
 
-  private InvestmentStatementRequestTransaction statementRequest;
+    private InvestmentStatementRequestTransaction statementRequest;
 
-  public MessageSetType getType() {
-    return MessageSetType.investment;
-  }
-
-  /**
-   * Gets the statement request.
-   *
-   * @return the request
-   */
-  @ChildAggregate(order = 0)
-  public InvestmentStatementRequestTransaction getStatementRequest() {
-    return statementRequest;
-  }
-
-  /**
-   * Sets the statement request.
-   *
-   * @param statementRequest the request
-   */
-  public void setStatementRequest(InvestmentStatementRequestTransaction statementRequest) {
-    this.statementRequest = statementRequest;
-  }
-
-  // Inherited.
-  public List<RequestMessage> getRequestMessages() {
-    ArrayList<RequestMessage> requestMessages = new ArrayList<RequestMessage>();
-    if (getStatementRequest() != null) {
-      requestMessages.add(getStatementRequest());
+    public MessageSetType getType() {
+        return MessageSetType.investment;
     }
-    return requestMessages;
-  }
+
+    /**
+     * Gets the statement request.
+     *
+     * @return the request
+     */
+    @ChildAggregate(order = 0)
+    public InvestmentStatementRequestTransaction getStatementRequest() {
+        return statementRequest;
+    }
+
+    /**
+     * Sets the statement request.
+     *
+     * @param statementRequest the request
+     */
+    public void setStatementRequest(InvestmentStatementRequestTransaction statementRequest) {
+        this.statementRequest = statementRequest;
+    }
+
+    // Inherited.
+    public List<RequestMessage> getRequestMessages() {
+        ArrayList<RequestMessage> requestMessages = new ArrayList<RequestMessage>();
+        if (getStatementRequest() != null) {
+            requestMessages.add(getStatementRequest());
+        }
+        return requestMessages;
+    }
+
+    @Override
+    public String toString() {
+        String inherited = super.toString().replaceFirst("^\\w+\\{", "").replaceAll("}$", "");
+        return "InvestmentStatementRequestMessageSet{" +
+                (inherited.trim().isEmpty() ? "" : (inherited + ", ")) +
+                "statementRequest=" + statementRequest +
+                "}";
+    }
 }

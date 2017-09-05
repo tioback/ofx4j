@@ -22,37 +22,46 @@ import com.webcohesion.ofx4j.meta.ChildAggregate;
 
 /**
  * Investment statement transaction request.
- * @see "Section 13.9.1.1, OFX Spec"
  *
  * @author Jon Perlow
+ * @see "Section 13.9.1.1, OFX Spec"
  */
 @Aggregate("INVSTMTTRNRQ")
 public class InvestmentStatementRequestTransaction
-    extends TransactionWrappedRequestMessage<InvestmentStatementRequest> {
+        extends TransactionWrappedRequestMessage<InvestmentStatementRequest> {
 
-  private InvestmentStatementRequest message;
+    private InvestmentStatementRequest message;
 
-  /**
-   * Gets the the statement request message.
-   *
-   * @return the statement request message.
-   */
-  @ChildAggregate( required = true, order = 30 )
-  public InvestmentStatementRequest getMessage() {
-    return message;
-  }
+    /**
+     * Gets the the statement request message.
+     *
+     * @return the statement request message.
+     */
+    @ChildAggregate(required = true, order = 30)
+    public InvestmentStatementRequest getMessage() {
+        return message;
+    }
 
-  /**
-   * Sets the the statement request message.
-   *
-   * @param message the statement request message.
-   */
-  public void setMessage(InvestmentStatementRequest message) {
-    this.message = message;
-  }
+    /**
+     * Sets the the statement request message.
+     *
+     * @param message the statement request message.
+     */
+    public void setMessage(InvestmentStatementRequest message) {
+        this.message = message;
+    }
 
-  // Inherited.
-  public void setWrappedMessage(InvestmentStatementRequest message) {
-    setMessage(message);
-  }
+    // Inherited.
+    public void setWrappedMessage(InvestmentStatementRequest message) {
+        setMessage(message);
+    }
+
+    @Override
+    public String toString() {
+        String inherited = super.toString().replaceFirst("^\\w+\\{", "").replaceAll("}$", "");
+        return "InvestmentStatementRequestTransaction{" +
+                (inherited.trim().isEmpty() ? "" : (inherited + ", ")) +
+                "message=" + message +
+                "}";
+    }
 }

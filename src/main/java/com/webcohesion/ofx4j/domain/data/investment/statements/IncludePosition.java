@@ -24,53 +24,61 @@ import java.util.Date;
 
 /**
  * Aggreate to indicate whether position information is requested as part of the statement
- * @see "Section 13.9.1.2, OFX Spec"
  *
  * @author Jon Perlow
+ * @see "Section 13.9.1.2, OFX Spec"
  */
-@Aggregate( "INCPOS" )
+@Aggregate("INCPOS")
 public class IncludePosition {
 
-  private Date sentDownDate;
-  private Boolean includePositions = Boolean.TRUE;
+    private Date sentDownDate;
+    private Boolean includePositions = Boolean.TRUE;
 
-  /**
-   * Gets the date that the position should be sent down for. This is an optional field according
-   * to the OFX spec.
-   *
-   * @return the date for the position
-   */
-  @Element( name = "DTASOF", order = 0)
-  public Date getDateSentDown() {
-    return sentDownDate;
-  }
+    /**
+     * Gets the date that the position should be sent down for. This is an optional field according
+     * to the OFX spec.
+     *
+     * @return the date for the position
+     */
+    @Element(name = "DTASOF", order = 0)
+    public Date getDateSentDown() {
+        return sentDownDate;
+    }
 
-  /**
-   * Sets the date that the position should be sent down for. This is an optional field according
-   * to the OFX spec.
-   *
-   * @param sentDownDate the date for the position
-   */
-  public void setDateSentDown(Date sentDownDate) {
-    this.sentDownDate = sentDownDate;
-  }
+    /**
+     * Sets the date that the position should be sent down for. This is an optional field according
+     * to the OFX spec.
+     *
+     * @param sentDownDate the date for the position
+     */
+    public void setDateSentDown(Date sentDownDate) {
+        this.sentDownDate = sentDownDate;
+    }
 
-  /**
-   * Gets whether to include positions in the statement download.
-   *
-   * @return whether to include positions in the statement download
-   */
-  @Element( name = "INCLUDE", order = 10)
-  public Boolean getIncludePositions() {
-    return includePositions;
-  }
+    /**
+     * Gets whether to include positions in the statement download.
+     *
+     * @return whether to include positions in the statement download
+     */
+    @Element(name = "INCLUDE", order = 10)
+    public Boolean getIncludePositions() {
+        return includePositions;
+    }
 
-  /**
-   * Sets whether to include positions in the statement download.
-   *
-   * @param includePositions whether to include positions in the statement download
-   */
-  public void setIncludePositions(Boolean includePositions) {
-    this.includePositions = includePositions;
-  }
+    /**
+     * Sets whether to include positions in the statement download.
+     *
+     * @param includePositions whether to include positions in the statement download
+     */
+    public void setIncludePositions(Boolean includePositions) {
+        this.includePositions = includePositions;
+    }
+
+    @Override
+    public String toString() {
+        return "IncludePosition{" +
+                "sentDownDate=" + sentDownDate +
+                ", includePositions=" + includePositions +
+                "}";
+    }
 }

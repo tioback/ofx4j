@@ -25,27 +25,36 @@ import java.util.Date;
 /**
  * @author Ryan Heaton
  */
-@Aggregate ("ACCTINFORQ")
+@Aggregate("ACCTINFORQ")
 public class AccountInfoRequest extends RequestMessage {
 
-  private Date lastUpdated = new Date(0); //default is never updated.
+    private Date lastUpdated = new Date(0); //default is never updated.
 
-  /**
-   * When the account info was last updated.
-   *
-   * @return When the account info was last updated.
-   */
-  @Element( name = "DTACCTUP", required = true, order = 0 )
-  public Date getLastUpdated() {
-    return lastUpdated;
-  }
+    /**
+     * When the account info was last updated.
+     *
+     * @return When the account info was last updated.
+     */
+    @Element(name = "DTACCTUP", required = true, order = 0)
+    public Date getLastUpdated() {
+        return lastUpdated;
+    }
 
-  /**
-   * When the account info was last updated.
-   *
-   * @param lastUpdated When the account info was last updated.
-   */
-  public void setLastUpdated(Date lastUpdated) {
-    this.lastUpdated = lastUpdated;
-  }
+    /**
+     * When the account info was last updated.
+     *
+     * @param lastUpdated When the account info was last updated.
+     */
+    public void setLastUpdated(Date lastUpdated) {
+        this.lastUpdated = lastUpdated;
+    }
+
+    @Override
+    public String toString() {
+        String inherited = super.toString().replaceFirst("^\\w+\\{", "").replaceAll("}$", "");
+        return "AccountInfoRequest{" +
+                (inherited.trim().isEmpty() ? "" : (inherited + ", ")) +
+                "lastUpdated=" + lastUpdated +
+                "}";
+    }
 }

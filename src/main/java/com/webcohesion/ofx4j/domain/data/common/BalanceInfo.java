@@ -27,44 +27,52 @@ import java.util.Date;
 @Aggregate
 public class BalanceInfo {
 
-  private double amount;
-  private Date asOfDate;
+    private double amount;
+    private Date asOfDate;
 
-  /**
-   * The amount.
-   *
-   * @return The amount.
-   */
-  @Element ( name = "BALAMT", required = true, order = 0)
-  public double getAmount() {
-    return amount;
-  }
+    /**
+     * The amount.
+     *
+     * @return The amount.
+     */
+    @Element(name = "BALAMT", required = true, order = 0)
+    public double getAmount() {
+        return amount;
+    }
 
-  /**
-   * The amount.
-   *
-   * @param amount The amount.
-   */
-  public void setAmount(double amount) {
-    this.amount = amount;
-  }
+    /**
+     * The amount.
+     *
+     * @param amount The amount.
+     */
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
 
-  /**
-   * The as-of date.
-   *
-   * @return The as-of date.
-   */
-  @Element ( name = "DTASOF", required = true, order = 10)
-  public Date getAsOfDate() {
-    return asOfDate;
-  }
+    /**
+     * The as-of date.
+     *
+     * @return The as-of date.
+     */
+    @Element(name = "DTASOF", required = true, order = 10)
+    public Date getAsOfDate() {
+        return asOfDate;
+    }
 
-  /**
-   * The as-of date.
-   *
-   * @param asOfDate The as-of date.
-   */
-  public void setAsOfDate(Date asOfDate) {
-    this.asOfDate = asOfDate;
-  }
+    /**
+     * The as-of date.
+     *
+     * @param asOfDate The as-of date.
+     */
+    public void setAsOfDate(Date asOfDate) {
+        this.asOfDate = asOfDate;
+    }
+
+    @Override
+    public String toString() {
+        return "BalanceInfo{" +
+                "amount=" + amount +
+                ", asOfDate=" + asOfDate +
+                '}';
+    }
 }

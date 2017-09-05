@@ -18,60 +18,70 @@ package com.webcohesion.ofx4j.domain.data.signup;
 
 import com.webcohesion.ofx4j.domain.data.ResponseMessage;
 import com.webcohesion.ofx4j.meta.Aggregate;
-import com.webcohesion.ofx4j.meta.Element;
 import com.webcohesion.ofx4j.meta.ChildAggregate;
+import com.webcohesion.ofx4j.meta.Element;
 
-import java.util.Date;
 import java.util.Collection;
+import java.util.Date;
 
 /**
  * @author Ryan Heaton
  */
-@Aggregate ("ACCTINFORS")
+@Aggregate("ACCTINFORS")
 public class AccountInfoResponse extends ResponseMessage {
 
-  private Date lastUpdated = new Date(0); //default is never updated.
-  private Collection<AccountProfile> accounts;
+    private Date lastUpdated = new Date(0); //default is never updated.
+    private Collection<AccountProfile> accounts;
 
-  public String getResponseMessageName() {
-    return "account info";
-  }
+    public String getResponseMessageName() {
+        return "account info";
+    }
 
-  /**
-   * When the account info was last updated.
-   *
-   * @return When the account info was last updated.
-   */
-  @Element ( name = "DTACCTUP", required = true, order = 0 )
-  public Date getLastUpdated() {
-    return lastUpdated;
-  }
+    /**
+     * When the account info was last updated.
+     *
+     * @return When the account info was last updated.
+     */
+    @Element(name = "DTACCTUP", required = true, order = 0)
+    public Date getLastUpdated() {
+        return lastUpdated;
+    }
 
-  /**
-   * When the account info was last updated.
-   *
-   * @param lastUpdated When the account info was last updated.
-   */
-  public void setLastUpdated(Date lastUpdated) {
-    this.lastUpdated = lastUpdated;
-  }
+    /**
+     * When the account info was last updated.
+     *
+     * @param lastUpdated When the account info was last updated.
+     */
+    public void setLastUpdated(Date lastUpdated) {
+        this.lastUpdated = lastUpdated;
+    }
 
-  /**
-   * The accounts.
-   *
-   * @return The accounts.
-   */
-  @ChildAggregate ( order = 10 )
-  public Collection<AccountProfile> getAccounts() {
-    return accounts;
-  }
+    /**
+     * The accounts.
+     *
+     * @return The accounts.
+     */
+    @ChildAggregate(order = 10)
+    public Collection<AccountProfile> getAccounts() {
+        return accounts;
+    }
 
-  /**
-   * The accounts.
-   *
-   * @param accounts The accounts.
-   */
-  public void setAccounts(Collection<AccountProfile> accounts) {
-    this.accounts = accounts;
-  }
+    /**
+     * The accounts.
+     *
+     * @param accounts The accounts.
+     */
+    public void setAccounts(Collection<AccountProfile> accounts) {
+        this.accounts = accounts;
+    }
+
+    @Override
+    public String toString() {
+        String inherited = super.toString().replaceFirst("^\\w+\\{", "").replaceAll("}$", "");
+        return "AccountInfoResponse{" +
+                (inherited.trim().isEmpty() ? "" : (inherited + ", ")) +
+                "lastUpdated=" + lastUpdated +
+                ", accounts=" + accounts +
+                "}";
+    }
 }

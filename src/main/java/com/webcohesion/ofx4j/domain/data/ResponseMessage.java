@@ -23,11 +23,15 @@ package com.webcohesion.ofx4j.domain.data;
  */
 public abstract class ResponseMessage {
 
-  /**
-   * The name of the response message.
-   *
-   * @return The name of the response message.
-   */
-  public abstract String getResponseMessageName();
+    /**
+     * The name of the response message.
+     *
+     * @return The name of the response message.
+     */
+    public abstract String getResponseMessageName();
 
+    @Override
+    public String toString() {
+        return "ResponseMessage{}";
+    }
 }

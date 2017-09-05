@@ -28,44 +28,53 @@ import java.util.List;
 
 /**
  * Security list request message set.
- * @see "Section 13.7.2.2.1, OFX Spec"
  *
  * @author Jon Perlow
+ * @see "Section 13.7.2.2.1, OFX Spec"
  */
-@Aggregate( "SECLISTMSGSRQV1" )
+@Aggregate("SECLISTMSGSRQV1")
 public class SecurityListRequestMessageSet extends RequestMessageSet {
 
-  private SecurityListRequestTransaction securityListRequest;
+    private SecurityListRequestTransaction securityListRequest;
 
-  public MessageSetType getType() {
-    return MessageSetType.investment;
-  }
-
-  /**
-   * Gets the security list request.
-   *
-   * @return the request
-   */
-  @ChildAggregate(order = 0)
-  public SecurityListRequestTransaction getSecurityListRequest() {
-    return securityListRequest;
-  }
-
-  /**
-   * Sets the security list request.
-   *
-   * @param statementRequest the request
-   */
-  public void setSecurityListRequest(SecurityListRequestTransaction statementRequest) {
-    this.securityListRequest = statementRequest;
-  }
-
-  // Inherited.
-  public List<RequestMessage> getRequestMessages() {
-    ArrayList<RequestMessage> requestMessages = new ArrayList<RequestMessage>();
-    if (getSecurityListRequest() != null) {
-      requestMessages.add(getSecurityListRequest());
+    public MessageSetType getType() {
+        return MessageSetType.investment;
     }
-    return requestMessages;
-  }
+
+    /**
+     * Gets the security list request.
+     *
+     * @return the request
+     */
+    @ChildAggregate(order = 0)
+    public SecurityListRequestTransaction getSecurityListRequest() {
+        return securityListRequest;
+    }
+
+    /**
+     * Sets the security list request.
+     *
+     * @param statementRequest the request
+     */
+    public void setSecurityListRequest(SecurityListRequestTransaction statementRequest) {
+        this.securityListRequest = statementRequest;
+    }
+
+    // Inherited.
+    public List<RequestMessage> getRequestMessages() {
+        ArrayList<RequestMessage> requestMessages = new ArrayList<RequestMessage>();
+        if (getSecurityListRequest() != null) {
+            requestMessages.add(getSecurityListRequest());
+        }
+        return requestMessages;
+    }
+
+    @Override
+    public String toString() {
+        String inherited = super.toString().replaceFirst("^\\w+\\{", "").replaceAll("}$", "");
+        return "SecurityListRequestMessageSet{" +
+                (inherited.trim().isEmpty() ? "" : (inherited + ", ")) +
+                "securityListRequest=" + securityListRequest +
+                "}";
+    }
 }

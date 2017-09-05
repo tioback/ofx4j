@@ -23,31 +23,38 @@ import java.util.List;
 
 /**
  * Aggregate for the investment balance list.
- * @see "Section 13.9.2.7, OFX Spec"
  *
  * @author Jon Perlow
+ * @see "Section 13.9.2.7, OFX Spec"
  */
 @Aggregate("BALLIST")
 public class BalanceList {
 
-  private List<BalanceRecord> balanceRecords;
+    private List<BalanceRecord> balanceRecords;
 
-  /**
-   * Gets the list of balance records.
-   *
-   * @return the list of balance records.
-   */
-  @ChildAggregate( order = 10 )
-  public List<BalanceRecord> getBalanceRecords() {
-    return balanceRecords;
-  }
+    /**
+     * Gets the list of balance records.
+     *
+     * @return the list of balance records.
+     */
+    @ChildAggregate(order = 10)
+    public List<BalanceRecord> getBalanceRecords() {
+        return balanceRecords;
+    }
 
-  /**
-   * Sets the list of balance records.
-   *
-   * @param balanceRecords the list of balance records.
-   */
-  public void setBalanceRecords(List<BalanceRecord> balanceRecords) {
-    this.balanceRecords = balanceRecords;
-  }
+    /**
+     * Sets the list of balance records.
+     *
+     * @param balanceRecords the list of balance records.
+     */
+    public void setBalanceRecords(List<BalanceRecord> balanceRecords) {
+        this.balanceRecords = balanceRecords;
+    }
+
+    @Override
+    public String toString() {
+        return "BalanceList{" +
+                "balanceRecords=" + balanceRecords +
+                "}";
+    }
 }

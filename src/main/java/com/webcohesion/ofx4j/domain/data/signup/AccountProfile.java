@@ -16,161 +16,168 @@
 
 package com.webcohesion.ofx4j.domain.data.signup;
 
-import com.webcohesion.ofx4j.domain.data.investment.accounts.InvestmentAccountInfo;
-import com.webcohesion.ofx4j.meta.Aggregate;
-import com.webcohesion.ofx4j.meta.Element;
-import com.webcohesion.ofx4j.meta.ChildAggregate;
 import com.webcohesion.ofx4j.domain.data.banking.BankAccountInfo;
 import com.webcohesion.ofx4j.domain.data.creditcard.CreditCardAccountInfo;
+import com.webcohesion.ofx4j.domain.data.investment.accounts.InvestmentAccountInfo;
+import com.webcohesion.ofx4j.meta.Aggregate;
+import com.webcohesion.ofx4j.meta.ChildAggregate;
+import com.webcohesion.ofx4j.meta.Element;
 
 /**
  * @author Ryan Heaton
  */
-@Aggregate ( "ACCTINFO" )
+@Aggregate("ACCTINFO")
 public class AccountProfile {
 
-  private String description;
-  private String phone;
-  private BankAccountInfo bankSpecifics;
-  private CreditCardAccountInfo creditCardSpecifics;
-  private InvestmentAccountInfo investSpecifics;
+    private String description;
+    private String phone;
+    private BankAccountInfo bankSpecifics;
+    private CreditCardAccountInfo creditCardSpecifics;
+    private InvestmentAccountInfo investSpecifics;
 
-  /**
-   * Description of the account.
-   *
-   * @return The description of the account.
-   */
-  @Element ( name = "DESC", order = 0 )
-  public String getDescription() {
-    return description;
-  }
-
-  /**
-   * The description of the account.
-   *
-   * @param description The description of the account.
-   */
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
-  /**
-   * Phone number for the account.
-   *
-   * @return Phone number for the account.
-   */
-  @Element ( name = "PHONE", order = 10 )
-  public String getPhone() {
-    return phone;
-  }
-
-  /**
-   * Phone number for the account.
-   *
-   * @param phone Phone number for the account.
-   */
-  public void setPhone(String phone) {
-    this.phone = phone;
-  }
-
-  /**
-   * Account specifics.
-   *
-   * @return Account specifics.
-   */
-  public com.webcohesion.ofx4j.domain.data.common.AccountInfo getSpecifics() {
-    if (getBankSpecifics() != null && getCreditCardSpecifics() != null) {
-      throw new IllegalStateException("Only one account specifics aggregate can be set at a time.");
+    /**
+     * Description of the account.
+     *
+     * @return The description of the account.
+     */
+    @Element(name = "DESC", order = 0)
+    public String getDescription() {
+        return description;
     }
-    else if (getBankSpecifics() != null) {
-      return getBankSpecifics();
-    } else if (getInvestmentSpecifics() != null) {
-      return getInvestmentSpecifics();
+
+    /**
+     * The description of the account.
+     *
+     * @param description The description of the account.
+     */
+    public void setDescription(String description) {
+        this.description = description;
     }
-    else {
-      return getCreditCardSpecifics();
+
+    /**
+     * Phone number for the account.
+     *
+     * @return Phone number for the account.
+     */
+    @Element(name = "PHONE", order = 10)
+    public String getPhone() {
+        return phone;
     }
-  }
 
-  /**
-   * Account specifics.
-   *
-   * @param specifics Account specifics.
-   */
-  public void setSpecifics(com.webcohesion.ofx4j.domain.data.common.AccountInfo specifics) {
-    if (specifics instanceof BankAccountInfo) {
-      setBankSpecifics((BankAccountInfo) specifics);
+    /**
+     * Phone number for the account.
+     *
+     * @param phone Phone number for the account.
+     */
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
-    else if (specifics instanceof CreditCardAccountInfo) {
-      setCreditCardSpecifics((CreditCardAccountInfo) specifics);
-    } else if (specifics instanceof InvestmentAccountInfo) {
-      setInvestmentSpecifics((InvestmentAccountInfo) specifics);
+
+    /**
+     * Account specifics.
+     *
+     * @return Account specifics.
+     */
+    public com.webcohesion.ofx4j.domain.data.common.AccountInfo getSpecifics() {
+        if (getBankSpecifics() != null && getCreditCardSpecifics() != null) {
+            throw new IllegalStateException("Only one account specifics aggregate can be set at a time.");
+        } else if (getBankSpecifics() != null) {
+            return getBankSpecifics();
+        } else if (getInvestmentSpecifics() != null) {
+            return getInvestmentSpecifics();
+        } else {
+            return getCreditCardSpecifics();
+        }
     }
-    else {
-      throw new IllegalArgumentException("Unknown specifics type: " + specifics);
+
+    /**
+     * Account specifics.
+     *
+     * @param specifics Account specifics.
+     */
+    public void setSpecifics(com.webcohesion.ofx4j.domain.data.common.AccountInfo specifics) {
+        if (specifics instanceof BankAccountInfo) {
+            setBankSpecifics((BankAccountInfo) specifics);
+        } else if (specifics instanceof CreditCardAccountInfo) {
+            setCreditCardSpecifics((CreditCardAccountInfo) specifics);
+        } else if (specifics instanceof InvestmentAccountInfo) {
+            setInvestmentSpecifics((InvestmentAccountInfo) specifics);
+        } else {
+            throw new IllegalArgumentException("Unknown specifics type: " + specifics);
+        }
     }
-  }
 
-  /**
-   * Bank-specific info.
-   *
-   * @return Bank-specific info.
-   */
-  @ChildAggregate ( order = 20 )
-  public BankAccountInfo getBankSpecifics() {
-    return bankSpecifics;
-  }
+    /**
+     * Bank-specific info.
+     *
+     * @return Bank-specific info.
+     */
+    @ChildAggregate(order = 20)
+    public BankAccountInfo getBankSpecifics() {
+        return bankSpecifics;
+    }
 
-  /**
-   * Bank-specific info.
-   *
-   * @param bankSpecifics Bank-specific info.
-   */
-  public void setBankSpecifics(BankAccountInfo bankSpecifics) {
-    this.creditCardSpecifics = null;
-    this.investSpecifics = null;
-    this.bankSpecifics = bankSpecifics;
-  }
+    /**
+     * Bank-specific info.
+     *
+     * @param bankSpecifics Bank-specific info.
+     */
+    public void setBankSpecifics(BankAccountInfo bankSpecifics) {
+        this.creditCardSpecifics = null;
+        this.investSpecifics = null;
+        this.bankSpecifics = bankSpecifics;
+    }
 
-  /**
-   * Credit-card account info.
-   *
-   * @return Credit-card account info.
-   */
-  @ChildAggregate ( order = 30 )
-  public CreditCardAccountInfo getCreditCardSpecifics() {
-    return creditCardSpecifics;
-  }
+    /**
+     * Credit-card account info.
+     *
+     * @return Credit-card account info.
+     */
+    @ChildAggregate(order = 30)
+    public CreditCardAccountInfo getCreditCardSpecifics() {
+        return creditCardSpecifics;
+    }
 
-  /**
-   * Credit-card account info.
-   *
-   * @param creditCardSpecifics Credit-card account info.
-   */
-  public void setCreditCardSpecifics(CreditCardAccountInfo creditCardSpecifics) {
-    this.bankSpecifics = null;
-    this.investSpecifics = null;
-    this.creditCardSpecifics = creditCardSpecifics;
-  }
+    /**
+     * Credit-card account info.
+     *
+     * @param creditCardSpecifics Credit-card account info.
+     */
+    public void setCreditCardSpecifics(CreditCardAccountInfo creditCardSpecifics) {
+        this.bankSpecifics = null;
+        this.investSpecifics = null;
+        this.creditCardSpecifics = creditCardSpecifics;
+    }
 
-  /**
-   * Investment account info.
-   *
-   * @return Investment account info.
-   */
-  @ChildAggregate ( order = 40 )
-  public InvestmentAccountInfo getInvestmentSpecifics() {
-    return investSpecifics;
-  }
+    /**
+     * Investment account info.
+     *
+     * @return Investment account info.
+     */
+    @ChildAggregate(order = 40)
+    public InvestmentAccountInfo getInvestmentSpecifics() {
+        return investSpecifics;
+    }
 
-  /**
-   * Investment account info.
-   *
-   * @param investSpecifics Investment account info.
-   */
-  public void setInvestmentSpecifics(InvestmentAccountInfo investSpecifics) {
-    this.bankSpecifics = null;
-    this.creditCardSpecifics = null;
-    this.investSpecifics = investSpecifics;
-  }
+    /**
+     * Investment account info.
+     *
+     * @param investSpecifics Investment account info.
+     */
+    public void setInvestmentSpecifics(InvestmentAccountInfo investSpecifics) {
+        this.bankSpecifics = null;
+        this.creditCardSpecifics = null;
+        this.investSpecifics = investSpecifics;
+    }
+
+    @Override
+    public String toString() {
+        return "AccountProfile{" +
+                "description='" + description + '\'' +
+                ", phone='" + phone + '\'' +
+                ", bankSpecifics=" + bankSpecifics +
+                ", creditCardSpecifics=" + creditCardSpecifics +
+                ", investSpecifics=" + investSpecifics +
+                "}";
+    }
 }

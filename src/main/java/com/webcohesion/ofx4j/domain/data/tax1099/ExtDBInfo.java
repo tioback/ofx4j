@@ -15,11 +15,11 @@
  */
 package com.webcohesion.ofx4j.domain.data.tax1099;
 
-import java.util.List;
-
 import com.webcohesion.ofx4j.meta.Aggregate;
 import com.webcohesion.ofx4j.meta.ChildAggregate;
 import com.webcohesion.ofx4j.meta.Element;
+
+import java.util.List;
 
 
 /**
@@ -28,87 +28,98 @@ import com.webcohesion.ofx4j.meta.Element;
  */
 
 
-@Aggregate ( "EXTDBINFO_V100")
+@Aggregate("EXTDBINFO_V100")
 public class ExtDBInfo {
 
-	private List<ProcDet> procDet;
-	private String teInterest;
-	private String pabInterest;
-	private String teIntDividend;
-	private String pabDividend;
-	
-	/**
-	 * @return the procDet
-	 */
-	@ChildAggregate(required=false, order = 0)
-	public List<ProcDet> getProcDet() {
-		return procDet;
-	}
+    private List<ProcDet> procDet;
+    private String teInterest;
+    private String pabInterest;
+    private String teIntDividend;
+    private String pabDividend;
 
-	/**
-	 * @param procDet the procDet to set
-	 */
-	public void setProcDet(List<ProcDet> procDet) {
-		this.procDet = procDet;
-	}
+    /**
+     * @return the procDet
+     */
+    @ChildAggregate(required = false, order = 0)
+    public List<ProcDet> getProcDet() {
+        return procDet;
+    }
 
-	/**
-	 * @return the teInterest
-	 */
-	@Element ( name = "TEINTEREST",required = false , order = 1 )
-	public String getTeInterest() {
-		return teInterest;
-	}
+    /**
+     * @param procDet the procDet to set
+     */
+    public void setProcDet(List<ProcDet> procDet) {
+        this.procDet = procDet;
+    }
 
-	/**
-	 * @param teInterest the teInterest to set
-	 */
-	public void setTeInterest(String teInterest) {
-		this.teInterest = teInterest;
-	}
+    /**
+     * @return the teInterest
+     */
+    @Element(name = "TEINTEREST", required = false, order = 1)
+    public String getTeInterest() {
+        return teInterest;
+    }
 
-	/**
-	 * @return the pabInterest
-	 */
-	@Element ( name = "PABINTEREST",required = false , order = 2 )
-	public String getPabInterest() {
-		return pabInterest;
-	}
+    /**
+     * @param teInterest the teInterest to set
+     */
+    public void setTeInterest(String teInterest) {
+        this.teInterest = teInterest;
+    }
 
-	/**
-	 * @param pabInterest the pabInterest to set
-	 */
-	public void setPabInterest(String pabInterest) {
-		this.pabInterest = pabInterest;
-	}
+    /**
+     * @return the pabInterest
+     */
+    @Element(name = "PABINTEREST", required = false, order = 2)
+    public String getPabInterest() {
+        return pabInterest;
+    }
 
-	/**
-	 * @return the teIntDividend
-	 */
-	@Element ( name = "TEINTDIVIDEND",required = false , order = 3 )
-	public String getTeIntDividend() {
-		return teIntDividend;
-	}
+    /**
+     * @param pabInterest the pabInterest to set
+     */
+    public void setPabInterest(String pabInterest) {
+        this.pabInterest = pabInterest;
+    }
 
-	/**
-	 * @param teIntDividend the teIntDividend to set
-	 */
-	public void setTeIntDividend(String teIntDividend) {
-		this.teIntDividend = teIntDividend;
-	}
+    /**
+     * @return the teIntDividend
+     */
+    @Element(name = "TEINTDIVIDEND", required = false, order = 3)
+    public String getTeIntDividend() {
+        return teIntDividend;
+    }
 
-	/**
-	 * @return the pabDividend
-	 */
-	@Element ( name = "PABDIVIDEND",required = false , order = 4 )
-	public String getPabDividend() {
-		return pabDividend;
-	}
+    /**
+     * @param teIntDividend the teIntDividend to set
+     */
+    public void setTeIntDividend(String teIntDividend) {
+        this.teIntDividend = teIntDividend;
+    }
 
-	/**
-	 * @param pabDividend the pabDividend to set
-	 */
-	public void setPabDividend(String pabDividend) {
-		this.pabDividend = pabDividend;
-	}	
+    /**
+     * @return the pabDividend
+     */
+    @Element(name = "PABDIVIDEND", required = false, order = 4)
+    public String getPabDividend() {
+        return pabDividend;
+    }
+
+    /**
+     * @param pabDividend the pabDividend to set
+     */
+    public void setPabDividend(String pabDividend) {
+        this.pabDividend = pabDividend;
+    }
+
+    @Override
+    public String toString() {
+        return "ExtDBInfo{" +
+                "procDet=" + procDet +
+                ", teInterest='" + teInterest + '\'' +
+                ", pabInterest='" + pabInterest + '\'' +
+                ", teIntDividend='" + teIntDividend + '\'' +
+                ", pabDividend='" + pabDividend + '\'' +
+                "}";
+    }
 }

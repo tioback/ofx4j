@@ -23,30 +23,37 @@ import java.util.List;
 
 /**
  * Aggregate for a list of invesment positions.
- * @see "Section 13.9.2.2, OFX Spec"
  *
  * @author Jon Perlow
+ * @see "Section 13.9.2.2, OFX Spec"
  */
 @Aggregate("INVPOSLIST")
 public class InvestmentPositionList {
-  private List<BasePosition> positions;
+    private List<BasePosition> positions;
 
-  /**
-   * Gets the list of positions
-   *
-   * @return the list of positions
-   */
-  @ChildAggregate( order = 10 )
-  public List<BasePosition> getPositions() {
-    return positions;
-  }
+    /**
+     * Gets the list of positions
+     *
+     * @return the list of positions
+     */
+    @ChildAggregate(order = 10)
+    public List<BasePosition> getPositions() {
+        return positions;
+    }
 
-  /**
-   * Sets the list of positions.
-   *
-   * @param positions the list of positions
-   */
-  public void setPositions(List<BasePosition> positions) {
-    this.positions = positions;
-  }
+    /**
+     * Sets the list of positions.
+     *
+     * @param positions the list of positions
+     */
+    public void setPositions(List<BasePosition> positions) {
+        this.positions = positions;
+    }
+
+    @Override
+    public String toString() {
+        return "InvestmentPositionList{" +
+                "positions=" + positions +
+                "}";
+    }
 }

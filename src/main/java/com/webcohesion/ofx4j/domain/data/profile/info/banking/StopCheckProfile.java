@@ -24,82 +24,96 @@ import java.util.List;
 
 /**
  * Stop Check Profile
+ *
  * @author Scott Priddy
  * @see "Section 11.13.2.3 OFX Spec"
  */
-@Aggregate( "STPCHKPROF" )
+@Aggregate("STPCHKPROF")
 public class StopCheckProfile {
 
-  private List<ProcessorDayOff> processorDaysOff;
-  private String processEndTime;
-  private Boolean canUseRange;
-  private Boolean canUseDescription;
-  private Double stopCheckFee;
+    private List<ProcessorDayOff> processorDaysOff;
+    private String processEndTime;
+    private Boolean canUseRange;
+    private Boolean canUseDescription;
+    private Double stopCheckFee;
 
-  /**
-   * Days of week that no processing occurs: MONDAY, TUESDAY, WEDNESDAY, THURSDAY,
-   * FRIDAY, SATURDAY, or SUNDAY. 0 or more <PROCDAYSOFF> can be sent.
-   * @return List of days during the week that no processing occurs.
-   */
-  @Element( name = "PROCDAYSOFF", order = 0 )
-  public List<ProcessorDayOff> getProcessorDaysOff() {
-    return processorDaysOff;
-  }
+    /**
+     * Days of week that no processing occurs: MONDAY, TUESDAY, WEDNESDAY, THURSDAY,
+     * FRIDAY, SATURDAY, or SUNDAY. 0 or more <PROCDAYSOFF> can be sent.
+     *
+     * @return List of days during the week that no processing occurs.
+     */
+    @Element(name = "PROCDAYSOFF", order = 0)
+    public List<ProcessorDayOff> getProcessorDaysOff() {
+        return processorDaysOff;
+    }
 
-  public void setProcessorDaysOff(List<ProcessorDayOff> processorDaysOff) {
-    this.processorDaysOff = processorDaysOff;
-  }
+    public void setProcessorDaysOff(List<ProcessorDayOff> processorDaysOff) {
+        this.processorDaysOff = processorDaysOff;
+    }
 
-  /**
-   * Gets time of day that day's processing ends.
-   *
-   * Time formatted as "HHMMSS.XXX[gmt offset[:tz name]]",
-   * the milliseconds and time zone are still optional, and default to GMT.
-   * @see "Section 3.2.8.3 OFX Spec"
-   * @return Time String formatted as "HHMMSS.XXX[gmt offset[:tz name]]"
-   */
-  @Element( name = "PROCENDTM", required = true, order = 10 )
-  public String getProcessEndTime() {
-    return processEndTime;
-  }
+    /**
+     * Gets time of day that day's processing ends.
+     * <p>
+     * Time formatted as "HHMMSS.XXX[gmt offset[:tz name]]",
+     * the milliseconds and time zone are still optional, and default to GMT.
+     *
+     * @return Time String formatted as "HHMMSS.XXX[gmt offset[:tz name]]"
+     * @see "Section 3.2.8.3 OFX Spec"
+     */
+    @Element(name = "PROCENDTM", required = true, order = 10)
+    public String getProcessEndTime() {
+        return processEndTime;
+    }
 
-  /**
-   * Sets the time of day that day's processing ends.
-   *
-   * Time formatted as "HHMMSS.XXX[gmt offset[:tz name]]",
-   * the milliseconds and time zone are still optional, and default to GMT.
+    /**
+     * Sets the time of day that day's processing ends.
+     * <p>
+     * Time formatted as "HHMMSS.XXX[gmt offset[:tz name]]",
+     * the milliseconds and time zone are still optional, and default to GMT.
+     *
+     * @param processEndTime formatted as "HHMMSS.XXX[gmt offset[:tz name]]"
+     * @see "Section 3.2.8.3 OFX Spec"
+     */
+    public void setProcessEndTime(String processEndTime) {
+        this.processEndTime = processEndTime;
+    }
 
-   * @see "Section 3.2.8.3 OFX Spec"
-   * @param processEndTime formatted as "HHMMSS.XXX[gmt offset[:tz name]]"
-   */
-  public void setProcessEndTime(String processEndTime) {
-    this.processEndTime = processEndTime;
-  }
+    @Element(name = "CANUSERANGE", required = true, order = 20)
+    public Boolean getCanUseRange() {
+        return canUseRange;
+    }
 
-  @Element( name = "CANUSERANGE", required = true, order = 20 )
-  public Boolean getCanUseRange() {
-    return canUseRange;
-  }
+    public void setCanUseRange(Boolean canUseRange) {
+        this.canUseRange = canUseRange;
+    }
 
-  public void setCanUseRange(Boolean canUseRange) {
-    this.canUseRange = canUseRange;
-  }
+    @Element(name = "CANUSEDESC", required = true, order = 30)
+    public Boolean getCanUseDescription() {
+        return canUseDescription;
+    }
 
-  @Element( name = "CANUSEDESC", required = true, order = 30 )
-  public Boolean getCanUseDescription() {
-    return canUseDescription;
-  }
+    public void setCanUseDescription(Boolean canUseDescription) {
+        this.canUseDescription = canUseDescription;
+    }
 
-  public void setCanUseDescription(Boolean canUseDescription) {
-    this.canUseDescription = canUseDescription;
-  }
+    @Element(name = "STPCHKFEE", required = true, order = 40)
+    public Double getStopCheckFee() {
+        return stopCheckFee;
+    }
 
-  @Element( name = "STPCHKFEE", required = true, order = 40 )
-  public Double getStopCheckFee() {
-    return stopCheckFee;
-  }
+    public void setStopCheckFee(Double stopCheckFee) {
+        this.stopCheckFee = stopCheckFee;
+    }
 
-  public void setStopCheckFee(Double stopCheckFee) {
-    this.stopCheckFee = stopCheckFee;
-  }
+    @Override
+    public String toString() {
+        return "StopCheckProfile{" +
+                "processorDaysOff=" + processorDaysOff +
+                ", processEndTime='" + processEndTime + '\'' +
+                ", canUseRange=" + canUseRange +
+                ", canUseDescription=" + canUseDescription +
+                ", stopCheckFee=" + stopCheckFee +
+                "}";
+    }
 }

@@ -51,4 +51,12 @@ public class BankStatementResponse extends StatementResponse {
     this.account = account;
   }
 
+  @Override
+  public String toString() {
+    String inherited = super.toString().replaceFirst("^\\w+\\{", "").replaceAll("}$", "");
+    return "BankStatementResponse{" +
+            (inherited.trim().isEmpty() ? "" : (inherited + ", ")) +
+            "account=" + account +
+            "}";
+  }
 }

@@ -23,99 +23,110 @@ import com.webcohesion.ofx4j.meta.Element;
 /**
  * Transaction for journal fund transactions between sub-accounts within the same investment
  * account.
- * @see "Section 13.9.2.4.4, OFX Spec"
  *
  * @author Jon Perlow
+ * @see "Section 13.9.2.4.4, OFX Spec"
  */
-@Aggregate( "JRNLFUND" )
+@Aggregate("JRNLFUND")
 public class JournalFundTransaction extends BaseOtherInvestmentTransaction {
 
-  private String subAccountFrom;
-  private String subAccountTo;
-  private Double total;
+    private String subAccountFrom;
+    private String subAccountTo;
+    private Double total;
 
-  public JournalFundTransaction() {
-    super(TransactionType.JOURNAL_FUND);
-  }
+    public JournalFundTransaction() {
+        super(TransactionType.JOURNAL_FUND);
+    }
 
-  /**
-   * Gets the sub account type the transer is from (e.g. CASH, MARGIN, SHORT, OTHER).
-   * @see "Section 13.9.2.4.4, OFX Spec"
-   *
-   * @return the sub account type
-   */
-  @Element( name = "SUBACCTFROM", order = 20)
-  public String getFromSubAccountFund() {
-    return subAccountFrom;
-  }
+    /**
+     * Gets the sub account type the transer is from (e.g. CASH, MARGIN, SHORT, OTHER).
+     *
+     * @return the sub account type
+     * @see "Section 13.9.2.4.4, OFX Spec"
+     */
+    @Element(name = "SUBACCTFROM", order = 20)
+    public String getFromSubAccountFund() {
+        return subAccountFrom;
+    }
 
-  /**
-   * Sets the sub account type the transer is from (e.g. CASH, MARGIN, SHORT, OTHER).
-   * @see "Section 13.9.2.4.4, OFX Spec"
-   *
-   * @param subAccountFrom the sub account type
-   */
-  public void setFromSubAccountFund(String subAccountFrom) {
-    this.subAccountFrom = subAccountFrom;
-  }
+    /**
+     * Sets the sub account type the transer is from (e.g. CASH, MARGIN, SHORT, OTHER).
+     *
+     * @param subAccountFrom the sub account type
+     * @see "Section 13.9.2.4.4, OFX Spec"
+     */
+    public void setFromSubAccountFund(String subAccountFrom) {
+        this.subAccountFrom = subAccountFrom;
+    }
 
-  /**
-   * Gets the result of getFromSubAccountFund as one of the well-known types.
-   *
-   * @return the type of null if it wasn't one of the well known types.
-   */
-  public SubAccountType getFromSubAccountFundEnum() {
-    return SubAccountType.fromOfx(getFromSubAccountFund());
-  }
+    /**
+     * Gets the result of getFromSubAccountFund as one of the well-known types.
+     *
+     * @return the type of null if it wasn't one of the well known types.
+     */
+    public SubAccountType getFromSubAccountFundEnum() {
+        return SubAccountType.fromOfx(getFromSubAccountFund());
+    }
 
-  /**
-   * Gets the sub account type that the transfer is to (e.g. CASH, MARGIN, SHORT, OTHER).
-   * @see "Section 13.9.2.4.4, OFX Spec"
-   *
-   * @return the sub account fund
-   */
-  @Element( name = "SUBACCTTO", order = 30)
-  public String getToSubAccountFund() {
-    return subAccountTo;
-  }
+    /**
+     * Gets the sub account type that the transfer is to (e.g. CASH, MARGIN, SHORT, OTHER).
+     *
+     * @return the sub account fund
+     * @see "Section 13.9.2.4.4, OFX Spec"
+     */
+    @Element(name = "SUBACCTTO", order = 30)
+    public String getToSubAccountFund() {
+        return subAccountTo;
+    }
 
-  /**
-   * Sets the sub account type that the transfer is to (e.g. CASH, MARGIN, SHORT, OTHER).
-   * @see "Section 13.9.2.4.4, OFX Spec"
-   *
-   * @param subAccountTo the sub account fund
-   */
-  public void setToSubAccountFund(String subAccountTo) {
-    this.subAccountTo = subAccountTo;
-  }
+    /**
+     * Sets the sub account type that the transfer is to (e.g. CASH, MARGIN, SHORT, OTHER).
+     *
+     * @param subAccountTo the sub account fund
+     * @see "Section 13.9.2.4.4, OFX Spec"
+     */
+    public void setToSubAccountFund(String subAccountTo) {
+        this.subAccountTo = subAccountTo;
+    }
 
-  /**
-   * Gets the result of getToSubAccountFund as one of the well-known types.
-   *
-   * @return the type of null if it wasn't one of the well known types.
-   */
-  public SubAccountType getToSubAccountFundEnum() {
-    return SubAccountType.fromOfx(getToSubAccountFund());
-  }
+    /**
+     * Gets the result of getToSubAccountFund as one of the well-known types.
+     *
+     * @return the type of null if it wasn't one of the well known types.
+     */
+    public SubAccountType getToSubAccountFundEnum() {
+        return SubAccountType.fromOfx(getToSubAccountFund());
+    }
 
-  /**
-   * Gets the total for the transaction.
-   * @see "Section 13.9.2.4.4, OFX Spec"
-   *
-   * @return the total
-   */
-  @Element( name = "TOTAL", order = 40)
-  public Double getTotal() {
-    return total;
-  }
+    /**
+     * Gets the total for the transaction.
+     *
+     * @return the total
+     * @see "Section 13.9.2.4.4, OFX Spec"
+     */
+    @Element(name = "TOTAL", order = 40)
+    public Double getTotal() {
+        return total;
+    }
 
-  /**
-   * Sets the total for the transaction.
-   * @see "Section 13.9.2.4.4, OFX Spec"
-   *
-   * @param total the total
-   */
-  public void setTotal(Double total) {
-    this.total = total;
-  }
+    /**
+     * Sets the total for the transaction.
+     *
+     * @param total the total
+     * @see "Section 13.9.2.4.4, OFX Spec"
+     */
+    public void setTotal(Double total) {
+        this.total = total;
+    }
+
+    @Override
+    public String toString() {
+        String inherited = super.toString().replaceFirst("^\\w+\\{", "").replaceAll("}$", "");
+        return "JournalFundTransaction{" +
+                (inherited.trim().isEmpty() ? "" : (inherited + ", ")) +
+                "subAccountFrom='" + subAccountFrom + '\'' +
+                ", subAccountTo='" + subAccountTo + '\'' +
+                ", total=" + total +
+                "}";
+    }
 }

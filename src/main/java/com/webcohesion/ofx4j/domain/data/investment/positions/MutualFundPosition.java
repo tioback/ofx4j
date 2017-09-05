@@ -21,91 +21,103 @@ import com.webcohesion.ofx4j.meta.Element;
 
 /**
  * Represents a mutual fund position.
- * @see "Section 13.9.2.6.1, OFX Spec"
  *
  * @author Jon Perlow
+ * @see "Section 13.9.2.6.1, OFX Spec"
  */
-@Aggregate( "POSMF" )
+@Aggregate("POSMF")
 public class MutualFundPosition extends BasePosition {
 
-  private Double unitsStreet;
-  private Double unitsUser;
-  private Boolean reinvestDividends;
-  private Boolean reinvestCapitalGains;
+    private Double unitsStreet;
+    private Double unitsUser;
+    private Boolean reinvestDividends;
+    private Boolean reinvestCapitalGains;
 
-  /**
-   * Gets the number of units in the financial insititution's street name.
-   *
-   * @return the number of units in the financial insititution's street name.
-   */
-  @Element( name = "UNITSSTREET", order = 20)
-  public Double getUnitsStreet() {
-    return unitsStreet;
-  }
+    /**
+     * Gets the number of units in the financial insititution's street name.
+     *
+     * @return the number of units in the financial insititution's street name.
+     */
+    @Element(name = "UNITSSTREET", order = 20)
+    public Double getUnitsStreet() {
+        return unitsStreet;
+    }
 
-  /**
-   * Sets the number of units in the financial insititution's street name.
-   *
-   * @param unitsStreet the number of units in the financial insititution's street name.
-   */
-  public void setUnitsStreet(Double unitsStreet) {
-    this.unitsStreet = unitsStreet;
-  }
+    /**
+     * Sets the number of units in the financial insititution's street name.
+     *
+     * @param unitsStreet the number of units in the financial insititution's street name.
+     */
+    public void setUnitsStreet(Double unitsStreet) {
+        this.unitsStreet = unitsStreet;
+    }
 
-  /**
-   * Gets the number of units in the user's name.
-   *
-   * @return the number of units in the user's name.
-   */
-  @Element( name = "UNITSUSER", order = 30)
-  public Double getUnitsUser() {
-    return unitsUser;
-  }
+    /**
+     * Gets the number of units in the user's name.
+     *
+     * @return the number of units in the user's name.
+     */
+    @Element(name = "UNITSUSER", order = 30)
+    public Double getUnitsUser() {
+        return unitsUser;
+    }
 
-  /**
-   * Sets the number of units in the user's name.
-   *
-   * @param unitsUser the number of units in the user's name.
-   */
-  public void setUnitsUser(Double unitsUser) {
-    this.unitsUser = unitsUser;
-  }
+    /**
+     * Sets the number of units in the user's name.
+     *
+     * @param unitsUser the number of units in the user's name.
+     */
+    public void setUnitsUser(Double unitsUser) {
+        this.unitsUser = unitsUser;
+    }
 
-  /**
-   * Gets whether dividends are automatically reinvested.
-   *
-   * @return whether dividends are automatically reinvested
-   */
-  @Element( name = "REINVDIV", order = 50)
-  public Boolean getReinvestDividends() {
-    return reinvestDividends;
-  }
+    /**
+     * Gets whether dividends are automatically reinvested.
+     *
+     * @return whether dividends are automatically reinvested
+     */
+    @Element(name = "REINVDIV", order = 50)
+    public Boolean getReinvestDividends() {
+        return reinvestDividends;
+    }
 
-  /**
-   * Sets whether dividends are automatically reinvested.
-   *
-   * @param reinvestDividends whether dividends are automatically reinvested
-   */
-  public void setReinvestDividends(Boolean reinvestDividends) {
-    this.reinvestDividends = reinvestDividends;
-  }
+    /**
+     * Sets whether dividends are automatically reinvested.
+     *
+     * @param reinvestDividends whether dividends are automatically reinvested
+     */
+    public void setReinvestDividends(Boolean reinvestDividends) {
+        this.reinvestDividends = reinvestDividends;
+    }
 
-  /**
-   * Gets whether capital gains are automatically reinvested.
-   *
-   * @return whether capital gains are automatically reinvested
-   */
-  @Element( name = "REINVCG", order = 60)
-  public Boolean getReinvestCapitalGains() {
-    return reinvestCapitalGains;
-  }
+    /**
+     * Gets whether capital gains are automatically reinvested.
+     *
+     * @return whether capital gains are automatically reinvested
+     */
+    @Element(name = "REINVCG", order = 60)
+    public Boolean getReinvestCapitalGains() {
+        return reinvestCapitalGains;
+    }
 
-  /**
-   * Sets whether capital gains are automatically reinvested.
-   *
-   * @param reinvestCapitalGains whether capital gains are automatically reinvested
-   */
-  public void setReinvestCapitalGains(Boolean reinvestCapitalGains) {
-    this.reinvestCapitalGains = reinvestCapitalGains;
-  }
+    /**
+     * Sets whether capital gains are automatically reinvested.
+     *
+     * @param reinvestCapitalGains whether capital gains are automatically reinvested
+     */
+    public void setReinvestCapitalGains(Boolean reinvestCapitalGains) {
+        this.reinvestCapitalGains = reinvestCapitalGains;
+    }
+
+    @Override
+    public String toString() {
+        String inherited = super.toString().replaceFirst("^\\w+\\{", "").replaceAll("}$", "");
+        return "MutualFundPosition{" +
+                (inherited.trim().isEmpty() ? "" : (inherited + ", ")) +
+                "unitsStreet=" + unitsStreet +
+                ", unitsUser=" + unitsUser +
+                ", reinvestDividends=" + reinvestDividends +
+                ", reinvestCapitalGains=" + reinvestCapitalGains +
+                "}";
+    }
 }

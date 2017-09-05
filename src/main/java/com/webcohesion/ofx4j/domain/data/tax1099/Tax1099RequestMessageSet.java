@@ -16,53 +16,61 @@
 package com.webcohesion.ofx4j.domain.data.tax1099;
 
 import com.webcohesion.ofx4j.domain.data.MessageSetType;
-import com.webcohesion.ofx4j.domain.data.RequestMessageSet;
 import com.webcohesion.ofx4j.domain.data.RequestMessage;
+import com.webcohesion.ofx4j.domain.data.RequestMessageSet;
 import com.webcohesion.ofx4j.meta.Aggregate;
 import com.webcohesion.ofx4j.meta.ChildAggregate;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author aparna.gawali
  * aparna.gawali@sungard.com
- * 
  */
-@Aggregate ( "TAX1099MSGSRQV1" )
+@Aggregate("TAX1099MSGSRQV1")
 public class Tax1099RequestMessageSet extends RequestMessageSet {
 
-  private Tax1099RequestTransaction taxRequestTransaction;
+    private Tax1099RequestTransaction taxRequestTransaction;
 
-  public MessageSetType getType() {
-    return MessageSetType.tax1099;
-  }
-
-  /**
-   * The statement request.
-   *
-   * @return The statement request.
-   */
-  @ChildAggregate( order = 0 )
-  public Tax1099RequestTransaction getTaxRequestTransaction() {
-    return taxRequestTransaction;
-  }
-
-  /**
-   * The statement request.
-   *
-   * @param taxRequestTransaction The statement request.
-   */
-  public void setTaxRequestTransaction(Tax1099RequestTransaction taxRequestTransaction) {
-    this.taxRequestTransaction = taxRequestTransaction;
-  }
-
-  // Inherited.
-  public List<RequestMessage> getRequestMessages() {
-    ArrayList<RequestMessage> requestMessages = new ArrayList<RequestMessage>();
-    if (getTaxRequestTransaction() != null) {
-      requestMessages.add(getTaxRequestTransaction());
+    public MessageSetType getType() {
+        return MessageSetType.tax1099;
     }
-    return requestMessages;
-  }
+
+    /**
+     * The statement request.
+     *
+     * @return The statement request.
+     */
+    @ChildAggregate(order = 0)
+    public Tax1099RequestTransaction getTaxRequestTransaction() {
+        return taxRequestTransaction;
+    }
+
+    /**
+     * The statement request.
+     *
+     * @param taxRequestTransaction The statement request.
+     */
+    public void setTaxRequestTransaction(Tax1099RequestTransaction taxRequestTransaction) {
+        this.taxRequestTransaction = taxRequestTransaction;
+    }
+
+    // Inherited.
+    public List<RequestMessage> getRequestMessages() {
+        ArrayList<RequestMessage> requestMessages = new ArrayList<RequestMessage>();
+        if (getTaxRequestTransaction() != null) {
+            requestMessages.add(getTaxRequestTransaction());
+        }
+        return requestMessages;
+    }
+
+    @Override
+    public String toString() {
+        String inherited = super.toString().replaceFirst("^\\w+\\{", "").replaceAll("}$", "");
+        return "Tax1099RequestMessageSet{" +
+                (inherited.trim().isEmpty() ? "" : (inherited + ", ")) +
+                "taxRequestTransaction=" + taxRequestTransaction +
+                "}";
+    }
 }

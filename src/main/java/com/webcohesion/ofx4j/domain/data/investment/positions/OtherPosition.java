@@ -20,10 +20,17 @@ import com.webcohesion.ofx4j.meta.Aggregate;
 
 /**
  * Represents other types of positions.
- * @see "Section 13.9.2.6.1, OFX Spec"
  *
  * @author Jon Perlow
+ * @see "Section 13.9.2.6.1, OFX Spec"
  */
-@Aggregate( "POSOTHER" )
+@Aggregate("POSOTHER")
 public class OtherPosition extends BasePosition {
+    @Override
+    public String toString() {
+        String inherited = super.toString().replaceFirst("^\\w+\\{", "").replaceAll("}$", "");
+        return "OtherPosition{" +
+                (inherited.trim().isEmpty() ? "" : (inherited + ", ")) +
+                "}";
+    }
 }
